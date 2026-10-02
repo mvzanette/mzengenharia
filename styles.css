@@ -460,6 +460,83 @@ summary:focus-visible {
   padding: 10px 18px;
 }
 
+/* ---------- Trabalhos realizados ---------- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.case {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.case-tag {
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case p {
+  flex: 1;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.case-meta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.case-cta {
+  justify-content: center;
+  background: var(--navy);
+  border-color: var(--navy);
+  border-top-color: var(--accent);
+}
+
+.case-cta h3 {
+  color: #fff;
+}
+
+.case-cta p {
+  flex: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.case-cta .btn {
+  align-self: flex-start;
+  padding: 10px 18px;
+}
+
+/* Metodologia (6 passos em 3 colunas) */
+.steps.six {
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 36px;
+}
+
+.norms {
+  margin-top: 40px;
+}
+
+.norms h3 {
+  margin-bottom: 12px;
+}
+
 /* ---------- Como funciona ---------- */
 .steps-section {
   background: var(--card);
@@ -777,7 +854,9 @@ summary:focus-visible {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .steps {
+  .steps,
+  .steps.six,
+  .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -829,6 +908,8 @@ summary:focus-visible {
 
   .services-grid,
   .steps,
+  .steps.six,
+  .portfolio-grid,
   .form-grid,
   .footer-grid,
   .split {

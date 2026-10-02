@@ -25,6 +25,8 @@ Também vale revisar em `index.html`:
 
 - a lista de **serviços**: remova o que você não faz e ajuste o que quiser
 - o prazo "Resposta em até 1 dia útil", se não for o seu caso
+- a seção **Trabalhos realizados** (`id="trabalhos"`): só descrições do tipo de trabalho. Nunca publique os laudos, fotos, números de série, placas ou códigos internos dos clientes.
+- os nomes **Vale** e **Petrobras** aparecem em dois lugares do `index.html`: no quadro "Por que me contratar?" e na introdução de "Trabalhos realizados". Se não tiver autorização para citá-los, troque por "grandes empresas de mineração e óleo e gás".
 
 ## 2. Publique de graça no GitHub Pages
 

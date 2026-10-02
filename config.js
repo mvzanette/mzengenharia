@@ -20,5 +20,5 @@ const CONFIG = {
 
   engenheiro: "Marcos Zanette – Engenheiro Mecânico",
   regiao: "Juiz de Fora e região",
-  crea: "CREA 1420122860",
+  crea: "CREA/RNP 1420122860",
 };
