@@ -1,6 +1,6 @@
 # Marcos Zanette — site de captação de clientes
 
-Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **engenheiro mecânico** em Juiz de Fora e região (laudos, PMOC, ART e projetos). Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
+Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **engenheiro mecânico** com base em Juiz de Fora (MG) e atendimento em todo o Brasil (laudos, PMOC, ART e projetos). Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
 
 Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 
@@ -11,7 +11,7 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `config.js`    | **Seus dados** (e-mail, WhatsApp, CREA, nome, região). Edite só este arquivo. |
 | `index.html`   | Página principal (textos dos serviços, FAQ, formulário).    |
 | `obrigado.html`| Página exibida depois que o cliente envia o formulário.     |
-| `laudo-nr12-juiz-de-fora.html`, `laudo-nr13-juiz-de-fora.html`, `pmoc-juiz-de-fora.html` | Páginas de cada serviço, feitas para aparecer no Google em buscas como "laudo NR-12 Juiz de Fora". Têm o mesmo cabeçalho, formulário e rodapé da página principal. |
+| `laudo-nr12.html`, `laudo-nr13.html`, `pmoc.html` | Páginas de cada serviço, feitas para aparecer no Google em buscas como "laudo NR-12". Têm o mesmo cabeçalho, formulário e rodapé da página principal. |
 | `styles.css`   | Visual do site (cores, fontes, layout).                     |
 | `main.js`      | Aplica os dados de `config.js` na página. Não precisa mexer. |
 
@@ -24,7 +24,6 @@ Já estão preenchidos em `config.js` (e-mail, WhatsApp, nome, CREA e região). 
 Também vale revisar em `index.html`:
 
 - a lista de **serviços**: remova o que você não faz e ajuste o que quiser
-- o prazo "Resposta em até 1 dia útil", se não for o seu caso
 - a seção **Trabalhos realizados** (`id="trabalhos"`): só descrições do tipo de trabalho. Nunca publique os laudos, fotos, números de série, placas ou códigos internos dos clientes.
 - os nomes **Vale** e **Petrobras** aparecem em dois lugares do `index.html`: no quadro "Por que me contratar?" e na introdução de "Trabalhos realizados". Se não tiver autorização para citá-los, troque por "grandes empresas de mineração e óleo e gás".
 

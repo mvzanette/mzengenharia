@@ -19,6 +19,6 @@ const CONFIG = {
   telefoneExibicao: "(32) 99811-1414",
 
   engenheiro: "Marcos Zanette – Engenheiro Mecânico",
-  regiao: "Juiz de Fora e região",
+  regiao: "Juiz de Fora (MG) e todo o Brasil",
   crea: "CREA/RNP 1420122860",
 };
