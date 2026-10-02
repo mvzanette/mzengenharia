@@ -25,7 +25,7 @@ Também vale revisar em `index.html`:
 
 - a lista de **serviços**: remova o que você não faz e ajuste o que quiser
 - a seção **Trabalhos realizados** (`id="trabalhos"`): só descrições do tipo de trabalho. Nunca publique os laudos, fotos, números de série, placas ou códigos internos dos clientes.
-- os nomes **Vale** e **Petrobras** aparecem em dois lugares do `index.html`: no quadro "Por que me contratar?" e na introdução de "Trabalhos realizados". Se não tiver autorização para citá-los, troque por "grandes empresas de mineração e óleo e gás".
+- não cite nomes de clientes de trabalhos feitos por outra empresa sem autorização. O site fala em "grandes empresas de mineração e óleo e gás" no quadro "Por que me contratar?" e na introdução de "Trabalhos realizados".
 
 ## 2. Publique de graça no GitHub Pages
 

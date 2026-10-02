@@ -844,6 +844,13 @@ summary:focus-visible {
 }
 
 /* ---------- Responsivo ---------- */
+/* Menu de texto só aparece quando cabe ao lado do logo */
+@media (max-width: 1040px) {
+  .nav a:not(.btn) {
+    display: none;
+  }
+}
+
 @media (max-width: 960px) {
   .hero-grid,
   .quote-grid {
@@ -870,9 +877,6 @@ summary:focus-visible {
     padding: 56px 0;
   }
 
-  .nav a:not(.btn) {
-    display: none;
-  }
 
   .logo {
     font-size: 1rem;
