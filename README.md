@@ -20,10 +20,8 @@ Já estão preenchidos em `config.js` (e-mail, WhatsApp, nome, CREA e região). 
 
 Também vale revisar em `index.html`:
 
-- o texto da seção **Sobre** (sua formação e experiência)
 - a lista de **serviços**: remova o que você não faz e ajuste o que quiser
 - o prazo "Resposta em até 1 dia útil", se não for o seu caso
-- a sua foto: salve como `foto.jpg` na pasta e siga o comentário na seção Sobre
 
 ## 2. Publique de graça no GitHub Pages
 
