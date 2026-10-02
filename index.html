@@ -68,9 +68,25 @@
             <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Engenheiro mecânico registrado no CREA</li>
             <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Orçamento gratuito e sem compromisso</li>
             <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Atendimento direto comigo, sem intermediários</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Documentos em PDF com assinatura digital</li>
+            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Engenheiro local: visita técnica rápida em Juiz de Fora e região</li>
           </ul>
         </aside>
+      </div>
+    </section>
+
+    <!-- ============ EXIGÊNCIAS ============ -->
+    <section class="triggers" aria-label="Situações atendidas">
+      <div class="container">
+        <p>Recebeu uma exigência? Eu resolvo:</p>
+        <ul class="chips">
+          <li>Fiscalização do trabalho</li>
+          <li>Auditoria de cliente</li>
+          <li>Vigilância sanitária</li>
+          <li>Corpo de Bombeiros</li>
+          <li>Seguradora</li>
+          <li>Licença de evento</li>
+          <li>Compra ou venda de máquina</li>
+        </ul>
       </div>
     </section>
 
@@ -85,19 +101,22 @@
           <article class="service">
             <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg></div>
             <h3>Laudo NR-12: máquinas e equipamentos</h3>
-            <p>Apreciação de riscos, adequação de proteções e dispositivos de segurança e laudo técnico com ART.</p>
+            <p>Apreciação de riscos, adequação de proteções e dispositivos de segurança e laudo técnico com ART. Evite multas e interdição.</p>
+            <a class="more" href="laudo-nr12-juiz-de-fora.html">Saiba mais sobre o laudo NR-12 →</a>
           </article>
 
           <article class="service">
             <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
             <h3>Laudo NR-13: vasos de pressão e caldeiras</h3>
             <p>Inspeção e laudo de compressores, reservatórios de ar, autoclaves e caldeiras.</p>
+            <a class="more" href="laudo-nr13-juiz-de-fora.html">Saiba mais sobre o laudo NR-13 →</a>
           </article>
 
           <article class="service">
             <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/><path d="M12 12v.01"/></svg></div>
             <h3>Climatização, exaustão e PMOC</h3>
             <p>Plano de Manutenção, Operação e Controle (Lei 13.589/2018), projetos de ar-condicionado e exaustão de cozinhas.</p>
+            <a class="more" href="pmoc-juiz-de-fora.html">Saiba mais sobre o PMOC →</a>
           </article>
 
           <article class="service">
@@ -188,8 +207,8 @@
             <p>Geralmente sim, quando o serviço envolve equipamentos, instalações ou estruturas que oferecem risco: ar-condicionado em ambientes coletivos (PMOC), vasos de pressão, gás, estruturas de eventos, máquinas industriais, entre outros. Na dúvida, descreva sua situação no formulário e eu te oriento sem compromisso.</p>
           </details>
           <details>
-            <summary>Quanto custa uma ART?</summary>
-            <p>Depende do tipo de serviço, do porte e da necessidade de vistoria. O orçamento é gratuito e informa separadamente os honorários e a taxa de registro da ART cobrada pelo CREA.</p>
+            <summary>Quanto custa?</summary>
+            <p>Depende do tipo de serviço, da quantidade de máquinas ou equipamentos e da necessidade de vistoria. O orçamento é gratuito e informa separadamente os honorários e a taxa de registro da ART cobrada pelo CREA. Para agilizar, informe no formulário quantos equipamentos são.</p>
           </details>
           <details>
             <summary>Quanto tempo leva?</summary>
@@ -251,9 +270,13 @@
               <label for="f-cidade">Cidade / UF</label>
               <input id="f-cidade" name="Cidade" type="text" autocomplete="address-level2" required>
             </div>
-            <div class="field full">
+            <div class="field">
               <label for="f-empresa">Empresa ou condomínio <span class="optional">(opcional)</span></label>
               <input id="f-empresa" name="Empresa" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-qtd">Nº de equipamentos <span class="optional">(aprox.)</span></label>
+              <input id="f-qtd" name="Quantidade" type="text" inputmode="numeric" placeholder="Ex.: 5">
             </div>
             <div class="field">
               <label for="f-servico">Tipo de serviço</label>
@@ -304,6 +327,14 @@
             <span style="color:#fff">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
           </a>
           <p style="margin-top:16px">ART, laudos e projetos de engenharia mecânica.</p>
+        </div>
+        <div>
+          <h3>Serviços</h3>
+          <ul>
+            <li><a href="laudo-nr12-juiz-de-fora.html">Laudo NR-12</a></li>
+            <li><a href="laudo-nr13-juiz-de-fora.html">Laudo NR-13</a></li>
+            <li><a href="pmoc-juiz-de-fora.html">PMOC</a></li>
+          </ul>
         </div>
         <div>
           <h3>Contato</h3>

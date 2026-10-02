@@ -11,8 +11,11 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `config.js`    | **Seus dados** (e-mail, WhatsApp, CREA, nome, região). Edite só este arquivo. |
 | `index.html`   | Página principal (textos dos serviços, FAQ, formulário).    |
 | `obrigado.html`| Página exibida depois que o cliente envia o formulário.     |
+| `laudo-nr12-juiz-de-fora.html`, `laudo-nr13-juiz-de-fora.html`, `pmoc-juiz-de-fora.html` | Páginas de cada serviço, feitas para aparecer no Google em buscas como "laudo NR-12 Juiz de Fora". Têm o mesmo cabeçalho, formulário e rodapé da página principal. |
 | `styles.css`   | Visual do site (cores, fontes, layout).                     |
 | `main.js`      | Aplica os dados de `config.js` na página. Não precisa mexer. |
+
+> Se mudar o cabeçalho, o formulário ou o rodapé em `index.html`, faça a mesma mudança nas três páginas de serviço. Os dados de contato não precisam disso: vêm todos do `config.js`.
 
 ## 1. Seus dados
 

@@ -295,6 +295,88 @@ summary:focus-visible {
   margin-top: 1px;
 }
 
+/* ---------- Faixa de exigências ---------- */
+.triggers {
+  padding: 24px 0;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.triggers .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.triggers p {
+  margin: 0;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips li {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.9rem;
+}
+
+/* ---------- Páginas de serviço ---------- */
+.page-hero {
+  padding: 64px 0 72px;
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.crumbs {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 20px;
+}
+
+.crumbs a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.check-list.dark li {
+  color: var(--text);
+}
+
+.check-list.dark svg {
+  color: var(--accent-dark);
+}
+
 /* ---------- Serviços ---------- */
 .services-grid {
   display: grid;
@@ -335,6 +417,19 @@ summary:focus-visible {
   color: var(--muted);
   font-size: 0.95rem;
   margin: 0;
+}
+
+.service .more {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+.service .more:hover {
+  text-decoration: underline;
 }
 
 .service-cta {
@@ -491,6 +586,7 @@ summary:focus-visible {
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: end;
   gap: 18px;
 }
 
@@ -561,7 +657,7 @@ summary:focus-visible {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 32px;
   margin-bottom: 32px;
 }
@@ -734,8 +830,13 @@ summary:focus-visible {
   .services-grid,
   .steps,
   .form-grid,
-  .footer-grid {
+  .footer-grid,
+  .split {
     grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 22px;
   }
 
   .quote-form {
