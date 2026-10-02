@@ -15,7 +15,7 @@ const CONFIG = {
 
   // WhatsApp só com números: 55 + DDD + número.
   whatsapp: "5532998111414",
-  whatsappTexto: "Olá, Marcos! Vim pelo site e gostaria de um orçamento de ART.",
+  whatsappTexto: "Olá, Marcos! Vim pelo site e gostaria de um orçamento.",
   telefoneExibicao: "(32) 99811-1414",
 
   engenheiro: "Marcos Zanette – Engenheiro Mecânico",

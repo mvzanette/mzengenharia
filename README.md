@@ -1,6 +1,6 @@
 # Marcos Zanette — site de captação de clientes
 
-Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **ART de engenheiro mecânico** em Juiz de Fora e região. Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
+Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **engenheiro mecânico** em Juiz de Fora e região (laudos, PMOC, ART e projetos). Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
 
 Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 
@@ -41,7 +41,7 @@ O formulário usa o [FormSubmit](https://formsubmit.co), que é gratuito e não 
 
 1. Com o site no ar, preencha e envie o formulário você mesmo.
 2. Você vai receber um e-mail do FormSubmit pedindo **confirmação**. Clique em *Activate*.
-3. Pronto: a partir daí, toda solicitação chega no seu e-mail, em formato de tabela, com o assunto `Orçamento ART: <serviço> – <nome>`. Clicar em *Responder* já responde direto ao cliente.
+3. Pronto: a partir daí, toda solicitação chega no seu e-mail, em formato de tabela, com o assunto `Orçamento: <serviço> – <nome>`. Clicar em *Responder* já responde direto ao cliente.
 4. *(Opcional)* No e-mail de ativação, o FormSubmit envia um código aleatório. Cole em `formsubmitId` no `config.js` para que seu e-mail não fique visível no código do site.
 
 O cliente também recebe uma resposta automática confirmando o recebimento (texto editável no campo `_autoresponse` do `index.html`).
@@ -59,7 +59,7 @@ Um endereço como `marcoszanette.com.br` ou `marcoszanette.eng.br` passa muito m
 
 ## 5. Para aparecer para os clientes
 
-- **Perfil da Empresa no Google** (gratuito): cadastre em [google.com/business](https://www.google.com/business/). É o que faz você aparecer em buscas como "ART engenheiro mecânico Juiz de Fora" e no Google Maps. Coloque o link do site lá.
+- **Perfil da Empresa no Google** (gratuito): cadastre em [google.com/business](https://www.google.com/business/). É o que faz você aparecer em buscas como "engenheiro mecânico Juiz de Fora" e no Google Maps. Coloque o link do site lá.
 - **Google Search Console** (gratuito): cadastre o site em [search.google.com/search-console](https://search.google.com/search-console) para o Google indexá-lo mais rápido.
 - Coloque o link do site na bio do Instagram, no WhatsApp Business e na assinatura de e-mail.
 

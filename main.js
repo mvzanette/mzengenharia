@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", () => {
     const servico = form.elements["Serviço"].value;
     const nome = form.elements["Nome"].value;
-    form.elements._subject.value = "Orçamento ART: " + servico + " – " + nome;
+    form.elements._subject.value = "Orçamento: " + servico + " – " + nome;
     form.querySelector("button[type=submit]").textContent = "Enviando…";
   });
 });
