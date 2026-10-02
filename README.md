@@ -1,6 +1,6 @@
-# Vectra Engenharia — site de captação de clientes
+# Marcos Zanette — site de captação de clientes
 
-Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **ART de engenheiro mecânico**. Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
+Site estático (HTML + CSS + JS, sem servidor) para captar clientes que precisam de **ART de engenheiro mecânico** em Juiz de Fora e região. Tem apresentação dos serviços, "como funciona", sobre, perguntas frequentes e um **formulário de orçamento que chega no seu e-mail**.
 
 Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 
@@ -14,14 +14,9 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `styles.css`   | Visual do site (cores, fontes, layout).                     |
 | `main.js`      | Aplica os dados de `config.js` na página. Não precisa mexer. |
 
-## 1. Coloque seus dados
+## 1. Seus dados
 
-Abra `config.js` e troque:
-
-- `email`: o e-mail que vai receber os orçamentos
-- `whatsapp`: só números, com 55 + DDD (ex.: `5551999998888`)
-- `telefoneExibicao`: como o número aparece no site (ex.: `(51) 99999-8888`)
-- `engenheiro`, `crea`, `regiao`
+Já estão preenchidos em `config.js` (e-mail, WhatsApp, nome, CREA e região). Para mudar algum, edite esse arquivo.
 
 Também vale revisar em `index.html`:
 
@@ -36,6 +31,11 @@ Também vale revisar em `index.html`:
 2. No GitHub: **Settings → Pages → Build and deployment**.
 3. Em *Source*, escolha **Deploy from a branch**, selecione a branch (ex.: `main`) e a pasta `/ (root)`. Clique em **Save**.
 4. Em 1 ou 2 minutos o site estará no ar em `https://mvzanette.github.io/vectraengenharia/`.
+
+**Para tirar o "vectraengenharia" do endereço**, escolha uma das opções:
+
+- **Grátis:** renomeie o repositório (*Settings → General → Repository name*) para `mvzanette.github.io`. O site passa a ficar em `https://mvzanette.github.io/`.
+- **Domínio próprio:** veja o passo 4 abaixo. Aí o nome do repositório não aparece.
 
 ## 3. Ative o formulário (uma única vez)
 
@@ -52,7 +52,7 @@ O cliente também recebe uma resposta automática confirmando o recebimento (tex
 
 ## 4. Domínio próprio (recomendado, ~R$ 40/ano)
 
-Um endereço como `vectraengenharia.com.br` passa muito mais confiança.
+Um endereço como `marcoszanette.com.br` ou `marcoszanette.eng.br` passa muito mais confiança.
 
 1. Registre o domínio em [registro.br](https://registro.br).
 2. No GitHub: **Settings → Pages → Custom domain**, digite o domínio e salve.
@@ -61,7 +61,7 @@ Um endereço como `vectraengenharia.com.br` passa muito mais confiança.
 
 ## 5. Para aparecer para os clientes
 
-- **Perfil da Empresa no Google** (gratuito): cadastre em [google.com/business](https://www.google.com/business/). É o que faz você aparecer em buscas como "ART engenheiro mecânico perto de mim" e no Google Maps. Coloque o link do site lá.
+- **Perfil da Empresa no Google** (gratuito): cadastre em [google.com/business](https://www.google.com/business/). É o que faz você aparecer em buscas como "ART engenheiro mecânico Juiz de Fora" e no Google Maps. Coloque o link do site lá.
 - **Google Search Console** (gratuito): cadastre o site em [search.google.com/search-console](https://search.google.com/search-console) para o Google indexá-lo mais rápido.
 - Coloque o link do site na bio do Instagram, no WhatsApp Business e na assinatura de e-mail.
 

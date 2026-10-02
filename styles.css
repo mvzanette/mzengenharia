@@ -175,8 +175,13 @@ summary:focus-visible {
 }
 
 .logo svg {
+  flex: none;
   width: 34px;
   height: 34px;
+}
+
+.logo span {
+  white-space: nowrap;
 }
 
 .logo small {
@@ -206,6 +211,10 @@ summary:focus-visible {
 .nav .btn {
   padding: 10px 18px;
   opacity: 1;
+}
+
+.only-sm {
+  display: none;
 }
 
 /* ---------- Hero ---------- */
@@ -753,6 +762,34 @@ summary:focus-visible {
     display: none;
   }
 
+  .logo {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .logo svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo small {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+  }
+
+  .nav .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .only-lg {
+    display: none;
+  }
+
+  .only-sm {
+    display: inline;
+  }
+
   .hero {
     padding: 64px 0 72px;
   }
@@ -770,6 +807,32 @@ summary:focus-visible {
 
   .hero-actions .btn {
     flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .site-header .container {
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 0.95rem;
+  }
+
+  .site-header .logo small {
+    display: none;
+  }
+
+  .nav .btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Telas muito estreitas: o botão do topo sai; o do início e o do WhatsApp continuam visíveis. */
+@media (max-width: 340px) {
+  .nav {
+    display: none;
   }
 }
 
