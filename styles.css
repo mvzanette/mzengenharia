@@ -370,13 +370,15 @@ svg.i {
   overflow: hidden;
 }
 
-/* Foto do topo em preto e branco escurecido (img/hero.jpg) */
+/* Foto do topo (img/hero.jpg), em cores e escurecida para o texto ficar legível */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("img/hero.jpg") center / cover no-repeat;
-  filter: grayscale(1) brightness(0.38);
+  background:
+    linear-gradient(rgba(17, 18, 20, 0.35), rgba(17, 18, 20, 0.55)),
+    url("img/hero.jpg") center 60% / cover no-repeat;
+  filter: brightness(0.8);
 }
 
 .hero .container {
