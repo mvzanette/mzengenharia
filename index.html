@@ -3,192 +3,465 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Engenheiro Mecânico em Juiz de Fora e todo o Brasil | Laudos NR-12 e PMOC</title>
-  <meta name="description" content="Engenheiro mecânico com base em Juiz de Fora (MG) e atendimento em todo o Brasil: laudo NR-12 de máquinas, laudo NR-13 de vasos de pressão e caldeiras, PMOC, ART, instalações de gás e estruturas para eventos. Orçamento gratuito.">
-  <meta property="og:title" content="Marcos Zanette | Engenheiro Mecânico – atendimento em todo o Brasil">
-  <meta property="og:description" content="Laudos NR-12 e NR-13, PMOC, ART e projetos de engenharia mecânica. Orçamento gratuito e sem compromisso.">
+  <title>Soluções em Engenharia Mecânica | Laudo NR-12 e Gestão de Frotas</title>
+  <meta name="description" content="Laudo NR-12 para equipamentos móveis, gestão e eletrificação de frotas, manutenção industrial, laudos NR-13, PMOC e ART. Engenheiro mecânico especialista em linha amarela e caminhões linha diesel.">
+  <meta property="og:title" content="Soluções em Engenharia Mecânica | Laudo NR-12 e Gestão de Frotas">
+  <meta property="og:description" content="Laudo NR-12 para equipamentos móveis, gestão e eletrificação de frotas, manutenção industrial, laudos NR-13, PMOC e ART. Engenheiro mecânico especialista em linha amarela e caminhões linha diesel.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f28c28'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='700' font-size='14' fill='%230f2a44'%3EMZ%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5b800'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='800' font-size='14' fill='%23111214'%3EMZ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>
+  <script src="tos-mecanica.js" defer></script>
   <script src="main.js" defer></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Marcos Zanette – Engenharia Mecânica",
-    "description": "Engenheiro mecânico com base em Juiz de Fora (MG), atendendo todo o Brasil: laudos NR-12 e NR-13, PMOC, ART, projetos, instalações de gás e estruturas para eventos.",
-    "telephone": "+55-32-99811-1414",
-    "email": "mvszanette@gmail.com",
-    "address": { "@type": "PostalAddress", "addressLocality": "Juiz de Fora", "addressRegion": "MG", "addressCountry": "BR" },
-    "areaServed": "Brasil"
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Marcos Zanette – Engenharia Mecânica",
+  "description": "Laudo NR-12 para equipamentos móveis, gestão e eletrificação de frotas, manutenção industrial, laudos NR-13, PMOC e ART.",
+  "telephone": "+55-32-99811-1414",
+  "email": "mvszanette@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Juiz de Fora",
+    "addressRegion": "MG",
+    "addressCountry": "BR"
+  },
+  "areaServed": "BR"
+}
   </script>
 </head>
 <body>
 
   <header class="site-header">
-    <div class="container">
-      <a class="logo" href="#inicio" aria-label="Marcos Zanette — início">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#f28c28"/><text x="16" y="21.5" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-weight="700" font-size="14" fill="#0f2a44">MZ</text></svg>
-        <span>MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
-      </a>
-      <nav class="nav" aria-label="Principal">
-        <a href="#servicos">Serviços</a>
-        <a href="#trabalhos">Trabalhos</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#duvidas">Dúvidas</a>
-        <a class="btn btn-primary" href="#orcamento"><span class="only-lg">Pedir orçamento</span><span class="only-sm">Orçamento</span></a>
-      </nav>
-    </div>
+    <a class="logo" href="#inicio" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
+      <span class="logo-mark" aria-hidden="true">MZ</span>
+      <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <nav class="nav" id="menu" aria-label="Principal">
+      <a href="#nr12">Laudo NR-12</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#frotas">Gestão de frotas</a>
+      <a href="#eletrificacao">Eletrificação</a>
+      <a href="#industrial">Manutenção industrial</a>
+      <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+    </nav>
   </header>
 
   <main>
-    <!-- ============ HERO ============ -->
+    <!-- ============ TOPO ============ -->
     <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Laudos NR-12 e NR-13 · PMOC · ART</span>
-          <h1>Engenheiro mecânico em <em>todo o Brasil</em></h1>
-          <p class="lead">Laudos NR-12 e NR-13, PMOC, ART e projetos para indústrias, empresas, condomínios e eventos. Base em Juiz de Fora (MG), atendimento em todo o Brasil e orçamento gratuito.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#orcamento">Solicitar orçamento grátis</a>
-            <a class="btn btn-outline" href="https://wa.me/5532998111414" data-whatsapp target="_blank" rel="noopener">
-              <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-              Falar no WhatsApp
-            </a>
-          </div>
+      <div class="container">
+        <h1>Soluções em engenharia mecânica</h1>
+        <p class="hero-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+          <a class="btn btn-outline" href="#nr12">Laudo NR-12</a>
         </div>
-        <aside class="hero-card">
-          <h2>Por que me contratar?</h2>
-          <ul class="check-list">
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Experiência em laudos para grandes empresas de mineração e óleo e gás</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Engenheiro mecânico registrado no CREA</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Orçamento gratuito e sem compromisso</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Atendimento direto comigo, sem intermediários</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Laudos detalhados, com metodologia e normas técnicas</li>
-          </ul>
-        </aside>
+      </div>
+      <a class="hero-down" href="#numeros" aria-label="Rolar para o conteúdo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    </section>
+
+    <!-- ============ NÚMEROS ============ -->
+    <section class="stats" id="numeros" aria-label="Números">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat"><strong>10</strong><span>Anos de atuação</span></div>
+          <div class="stat"><strong>+700</strong><span>Equipamentos sob gestão</span></div>
+          <div class="stat"><strong>+200</strong><span>Laudos emitidos</span></div>
+          <div class="stat"><strong>4</strong><span>Setores atendidos</span></div>
+        </div>
+        <div class="scope">
+          <p><b>Equipamentos</b>Linha amarela · Caminhões linha diesel · Veículos leves e de apoio</p>
+          <p><b>Setores</b>Mineração · Portos · Óleo e gás · Construção</p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ EXIGÊNCIAS ============ -->
-    <section class="triggers" aria-label="Situações atendidas">
+    <!-- ============ LAUDO NR-12 ============ -->
+    <section id="nr12">
       <div class="container">
-        <p>Recebeu uma exigência? Eu resolvo:</p>
-        <ul class="chips">
-          <li>Fiscalização do trabalho</li>
-          <li>Auditoria de cliente</li>
-          <li>Vigilância sanitária</li>
-          <li>Corpo de Bombeiros</li>
-          <li>Seguradora</li>
-          <li>Licença de evento</li>
-          <li>Compra ou venda de máquina</li>
+        <div class="feature">
+          <div class="feature-img photo" role="img" aria-label="Equipamento de linha amarela em operação"></div>
+          <div>
+            <h2 class="section-title">Laudo NR-12 para equipamentos móveis</h2>
+            <p class="section-intro">Avaliação técnica de conformidade com a NR-12 para equipamentos de linha amarela, caminhões e implementos, com apreciação de riscos, matriz de conformidade e ART registrada no CREA. Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Inspeção em campo</strong><span>Checklist do equipamento e teste de funcionamento, com simulação de paradas e emergências.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Apreciação de riscos</strong><span>Identificação dos perigos e cálculo HRN, com categoria de segurança e PLr quando aplicável.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Matriz de conformidade NR-12</strong><span>Verificação item a item dos requisitos aplicáveis ao equipamento.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Recomendações técnicas</strong><span>Medidas de adequação em ordem de prioridade, incluindo as recomendações do fabricante.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Laudo com ART</strong><span>Relatório com registro fotográfico, conclusão técnica e ART registrada no CREA.</span></div></li>
         </ul>
+            <div class="feature-actions">
+              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+              <a class="link-arrow" href="laudo-nr12.html">Detalhes do laudo NR-12</a>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Quando o laudo é exigido</h3>
+        <div class="req-grid">
+          <div class="req"><h3>Mobilização em contratantes</h3><p>Liberação de equipamentos em operações de mineração, portos e óleo e gás.</p></div>
+          <div class="req"><h3>Fiscalização do trabalho</h3><p>Comprovação da conformidade com a NR-12 perante a auditoria fiscal.</p></div>
+          <div class="req"><h3>Locação de equipamentos</h3><p>Documentação técnica exigida por locadoras e locatários.</p></div>
+          <div class="req"><h3>Compra e venda</h3><p>Avaliação das condições de segurança na aquisição ou venda de equipamentos.</p></div>
+          <div class="req"><h3>Auditorias e certificações</h3><p>Evidência técnica para auditorias de clientes e sistemas de gestão.</p></div>
+          <div class="req"><h3>Modificações e acidentes</h3><p>Reavaliação após alterações, mudança de aplicação ou ocorrências.</p></div>
+        </div>
+
+        <h3 class="subhead">Normas aplicadas</h3>
+        <ul class="chips">
+          <li>NR-12</li>
+          <li>NR-11</li>
+          <li>NR-22</li>
+          <li>NR-29</li>
+          <li>ABNT NBR ISO 12100</li>
+          <li>ISO/TR 14121-2</li>
+          <li>ABNT NBR 14153</li>
+          <li>ABNT NBR ISO 13849-1</li>
+          <li>ABNT NBR ISO 13850</li>
+          <li>ABNT NBR ISO 14118</li>
+          <li>ABNT NBR ISO 14119</li>
+          <li>ABNT NBR ISO 20474</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPAMENTOS ============ -->
+    <section class="bg-gray" id="equipamentos">
+      <div class="container">
+        <h2 class="section-title">Equipamentos atendidos</h2>
+        <p class="section-intro">Laudos, inspeções e gestão de manutenção para equipamentos de linha amarela, caminhões linha diesel e veículos de apoio.</p>
+        <div class="equip-grid">
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/escavadeira.jpg') center / cover no-repeat" role="img" aria-label="Escavadeira hidráulica"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Escavadeira hidráulica</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/pa-carregadeira.jpg') center / cover no-repeat" role="img" aria-label="Pá carregadeira"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Pá carregadeira</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/trator-esteiras.jpg') center / cover no-repeat" role="img" aria-label="Trator de esteiras"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Trator de esteiras</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/motoniveladora.jpg') center / cover no-repeat" role="img" aria-label="Motoniveladora"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Motoniveladora</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/rolo-compactador.jpg') center / cover no-repeat" role="img" aria-label="Rolo compactador"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Rolo compactador</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/retroescavadeira.jpg') center / cover no-repeat" role="img" aria-label="Retroescavadeira"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Retroescavadeira</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/minicarregadeira.jpg') center / cover no-repeat" role="img" aria-label="Minicarregadeira"></div>
+            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Minicarregadeira</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-munck.jpg') center / cover no-repeat" role="img" aria-label="Caminhão munck"></div>
+            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão munck</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-basculante.jpg') center / cover no-repeat" role="img" aria-label="Caminhão basculante"></div>
+            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão basculante</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-pipa.jpg') center / cover no-repeat" role="img" aria-label="Caminhão pipa"></div>
+            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão pipa</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-comboio.jpg') center / cover no-repeat" role="img" aria-label="Caminhão comboio"></div>
+            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão comboio</span></figcaption>
+          </figure>
+          <figure class="equip">
+            <div class="equip-img" style="--photo:url('img/equipamentos/veiculos-apoio.jpg') center / cover no-repeat" role="img" aria-label="Veículos leves e de apoio"></div>
+            <figcaption><span class="equip-tag">Apoio</span><span class="equip-name">Veículos leves e de apoio</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- ============ SERVIÇOS ============ -->
     <section id="servicos">
       <div class="container">
-        <span class="eyebrow">Serviços</span>
-        <h2>Serviços de engenharia mecânica</h2>
-        <p class="section-intro">Laudos, projetos e relatórios técnicos com ART registrada no CREA. Veja os serviços mais procurados:</p>
-
-        <div class="services-grid">
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg></div>
-            <h3>Laudo NR-12: máquinas e equipamentos</h3>
-            <p>Apreciação de riscos, adequação de proteções e dispositivos de segurança e laudo técnico com ART. Evite multas e interdição.</p>
-            <a class="more" href="laudo-nr12.html">Saiba mais sobre o laudo NR-12 →</a>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12H5a2 2 0 0 0-2 2v5"/><circle cx="13" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><path d="M8 19h3m5-17v17h6M6 12V7c0-1.1.9-2 2-2h3l5 5"/></svg></div>
-            <h3>Laudo NR-12: máquinas móveis e munck</h3>
-            <p>Caminhões com guindaste (munck), minicarregadeiras, retroescavadeiras e empilhadeiras, inclusive para liberação em áreas de mineração, portos e óleo e gás.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
-            <h3>Laudo NR-13: vasos de pressão e caldeiras</h3>
-            <p>Inspeção e laudo de compressores, reservatórios de ar, autoclaves e caldeiras.</p>
-            <a class="more" href="laudo-nr13.html">Saiba mais sobre o laudo NR-13 →</a>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/><path d="M12 12v.01"/></svg></div>
-            <h3>Climatização, exaustão e PMOC</h3>
-            <p>Plano de Manutenção, Operação e Controle (Lei 13.589/2018), projetos de ar-condicionado e exaustão de cozinhas.</p>
-            <a class="more" href="pmoc.html">Saiba mais sobre o PMOC →</a>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg></div>
-            <h3>Projetos e memoriais de cálculo</h3>
-            <p>Dimensionamento e verificação estrutural de equipamentos, reboques, trenós de arraste e pontos de içamento, com ART de projeto.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-            <h3>Parecer técnico e perícia</h3>
-            <p>Análise de falhas em motores, veículos e máquinas: compra com defeito, sinistros, seguros e processos judiciais.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v7"/><path d="M12 10a4 4 0 1 1-4 4"/></svg></div>
-            <h3>Equipamentos de elevação</h3>
-            <p>Pontes rolantes, talhas, elevadores de carga e plataformas: inspeção, laudo e ART.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
-            <h3>Instalações de gás</h3>
-            <p>Projeto, laudo de estanqueidade e ART de centrais e redes de GLP e gás natural.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
-            <h3>Combate a incêndio</h3>
-            <p>Sistemas de hidrantes e sprinklers: projeto, dimensionamento de bombas e ART de instalação.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/></svg></div>
-            <h3>Estruturas para eventos</h3>
-            <p>ART de montagem de palcos, tendas, arquibancadas, brinquedos e estruturas temporárias.</p>
-          </article>
-
-          <article class="service">
-            <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
-            <h3>Veículos, reboques e food trucks</h3>
-            <p>Laudos e ART para adaptações, carrocerias, reboques e food trucks.</p>
-          </article>
-
-          <article class="service service-cta">
-            <div>
-              <div class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
-              <h3>Não encontrou o seu caso?</h3>
-              <p>Descreva o que você precisa no formulário. Eu analiso e digo se é possível atender.</p>
+        <h2 class="section-title">Serviços</h2>
+        <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
+        <div class="svc-grid">
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12H5a2 2 0 0 0-2 2v5"/><circle cx="13" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><path d="M8 19h3m5-17v17h6M6 12V7c0-1.1.9-2 2-2h3l5 5"/></svg></span>
             </div>
-            <a class="btn btn-primary" href="#orcamento">Descrever minha necessidade</a>
+            <div class="svc-body">
+              <h3>Laudo NR-12</h3>
+              <p>Apreciação de riscos, matriz de conformidade e ART para equipamentos móveis, caminhões e máquinas industriais.</p>
+              <a class="link-arrow" href="laudo-nr12.html">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/laudo-nr13.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Laudo NR-13</h3>
+              <p>Inspeção de segurança de vasos de pressão, compressores, autoclaves e caldeiras.</p>
+              <a class="link-arrow" href="laudo-nr13.html">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/laudos-mecanicos.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Laudos mecânicos e eletromecânicos</h3>
+              <p>Avaliação técnica de equipamentos, componentes e sistemas mecânicos e eletromecânicos, com ART.</p>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/planos-manutencao.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Planos de manutenção</h3>
+              <p>Planos de manutenção preventiva e corretiva por equipamento, com base em horímetro, quilometragem e recomendações do fabricante.</p>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/consultoria-frotas.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Consultoria e treinamento para gestores de frota</h3>
+              <p>Diagnóstico, indicadores e capacitação para a gestão de manutenção de frotas.</p>
+              <a class="link-arrow" href="#frotas">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/insumos.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Especificação de insumos</h3>
+              <p>Indicação dos insumos mais adequados para cada aplicação: material rodante, pneus, insumos de manutenção e combustíveis.</p>
+              <a class="link-arrow" href="#frotas">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/eletrificacao.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Eletrificação de frotas</h3>
+              <p>Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos para modelos elétricos.</p>
+              <a class="link-arrow" href="#eletrificacao">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/manutencao-industrial.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Manutenção industrial</h3>
+              <p>Laudos, consultoria e assessoria técnica para a manutenção de máquinas, equipamentos e instalações industriais.</p>
+              <a class="link-arrow" href="#industrial">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/pmoc.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/><path d="M12 12v.01"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>PMOC</h3>
+              <p>Plano de Manutenção, Operação e Controle de sistemas de climatização, conforme a Lei 13.589/2018.</p>
+              <a class="link-arrow" href="pmoc.html">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/ar-condicionado.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M4.93 19.07 19.07 4.93"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Projeto de instalação de ar-condicionado</h3>
+              <p>Projeto de instalação de sistemas de ar-condicionado, com cálculo de carga térmica e ART.</p>
+              <a class="link-arrow" href="pmoc.html">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/art.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>ART</h3>
+              <p>Anotação de Responsabilidade Técnica para obras e serviços de engenharia mecânica.</p>
+            </div>
+          </article>
+          <article class="svc svc-others">
+            <div class="svc-body">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span>
+              <h3>Outros serviços</h3>
+              <ul>
+                <li>Instalações de gás</li>
+                <li>Sistemas de combate a incêndio</li>
+                <li>Estruturas para eventos</li>
+                <li>Equipamentos de elevação e içamento</li>
+                <li>Veículos, reboques e food trucks</li>
+                <li>Projetos e memoriais de cálculo</li>
+                <li>Parecer técnico e perícia</li>
+              </ul>
+              <a class="link-arrow" href="#contato">Solicitar proposta</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ TRABALHOS ============ -->
-    <!-- Apenas descrições do tipo de trabalho: os laudos são confidenciais e não devem ser publicados. -->
-    <section class="steps-section" id="trabalhos">
+    <!-- ============ GESTÃO DE FROTAS ============ -->
+    <section class="bg-gray" id="frotas">
       <div class="container">
-        <span class="eyebrow">Trabalhos realizados</span>
-        <h2>Laudos e projetos já entregues</h2>
-        <p class="section-intro">Experiência em laudos para grandes empresas de mineração e óleo e gás. Alguns trabalhos recentes:</p>
-        <div class="portfolio-grid">
+        <h2 class="section-title">Consultoria para gestão de frotas</h2>
+        <p class="section-intro">Apoio técnico a gestores de frotas de linha amarela e caminhões linha diesel, com foco na disponibilidade dos equipamentos, na redução do custo de manutenção e na conformidade com a legislação.</p>
+        <div class="fleet-grid">
+          <div class="panel">
+            <h3>Consultoria e treinamento</h3>
+            <h4>Consultoria</h4>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Diagnóstico da gestão de manutenção: processos, indicadores e histórico de falhas</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Estruturação de planos de manutenção preventiva por equipamento, com base no horímetro ou na quilometragem e nas recomendações do fabricante</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Definição e acompanhamento de indicadores: disponibilidade física, MTBF, MTTR, backlog e custo por hora trabalhada</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Análise de falhas recorrentes e ações de confiabilidade</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Rotinas de inspeção pré-uso e controle da documentação técnica (laudos NR-12, ARTs, manuais)</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Preparação da frota para mobilização em grandes contratantes</div></li>
+        </ul>
+            <h4>Treinamento</h4>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gestão de manutenção de frotas: planejamento, controle e indicadores</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>NR-12 aplicada a equipamentos móveis: requisitos, inspeção e documentação</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Inspeção pré-uso para operadores e mecânicos</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Lubrificação e controle de contaminação</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Confiabilidade e análise de falhas</div></li>
+        </ul>
+            <p class="note">Na empresa ou online, com conteúdo adaptado à frota e à operação. Certificado de participação.</p>
+          </div>
+          <div class="panel">
+            <h3>Especificação de insumos</h3>
+            <p>Indicação técnica dos insumos mais adequados para cada equipamento e condição de operação. <strong>Recomendação independente, sem vínculo com fabricantes ou fornecedores.</strong></p>
+            <div class="highlight-grid">
+            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg><h4>Material rodante</h4><p>Avaliação de desgaste e especificação de esteiras, roletes, rodas-guia e sapatas conforme a aplicação.</p></div>
+            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg><h4>Pneus</h4><p>Especificação por aplicação e severidade da operação, com acompanhamento de desgaste, pressão e custo por hora ou quilômetro.</p></div>
+            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg><h4>Insumos de manutenção preventiva e corretiva</h4><p>Filtros, lubrificantes, graxas, fluidos e componentes de reposição adequados a cada plano de manutenção.</p></div>
+            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h14"/><path d="M15 9h2a2 2 0 0 1 2 2v6a2 2 0 0 0 4 0V8l-3-3"/><path d="M7 7h4"/></svg><h4>Eficiência energética de combustíveis</h4><p>Análise de consumo por hora trabalhada ou por quilômetro, comparação entre combustíveis e aditivos e identificação de perdas.</p></div>
+            </div>
+            <div class="kv">
+              <p><b>Também avaliados:</b> peças de desgaste e ferramentas de penetração no solo (dentes, lâminas e bordas cortantes).</p>
+              <p><b>Critérios:</b> aplicação e severidade da operação, recomendações do fabricante, histórico de falhas, análise de óleo e custo por hora trabalhada.</p>
+              <p><b>Entregável:</b> relatório de especificação com as recomendações por equipamento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ELETRIFICAÇÃO ============ -->
+    <section id="eletrificacao">
+      <div class="container">
+        <div class="feature">
+          <div>
+            <h2 class="section-title">Eletrificação de frotas</h2>
+            <p class="section-intro">Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos. Metas de descarbonização, exigências de grandes contratantes e a variação do preço do diesel tornam a eletrificação uma decisão estratégica: a análise indica onde ela é viável e em quanto tempo o investimento retorna.</p>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Diagnóstico da frota</strong><span>Perfil de uso, ciclos de trabalho, quilometragem ou horas trabalhadas, consumo de combustível e custo de manutenção por equipamento.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Seleção dos candidatos</strong><span>Identificação dos veículos e equipamentos com maior potencial de eletrificação, conforme a operação e a disponibilidade de modelos no mercado.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Autonomia e ciclo de operação</strong><span>Compatibilidade entre a autonomia das baterias, os turnos de trabalho e as rotas.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Infraestrutura de recarga</strong><span>Levantamento da demanda de energia e do tipo, da quantidade e da localização dos carregadores, como base para o projeto elétrico.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Custo total de propriedade (TCO)</strong><span>Comparativo entre aquisição, energia e combustível, manutenção, vida útil das baterias e valor residual, com cálculo do retorno do investimento.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Emissões e ESG</strong><span>Estimativa da redução de emissões de CO₂ e indicadores para relatórios de sustentabilidade.</span></div></li>
+        </ul>
+            <p class="note"><b>Entregável:</b> relatório de viabilidade técnico-econômica, com recomendação por grupo de equipamentos e plano de transição em etapas.</p>
+            <div class="feature-actions">
+              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+            </div>
+          </div>
+          <div class="feature-img elec-img photo" role="img" aria-label="Veículo elétrico em recarga"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANUTENÇÃO INDUSTRIAL ============ -->
+    <section class="bg-gray" id="industrial">
+      <div class="container">
+        <h2 class="section-title">Manutenção industrial</h2>
+        <p class="section-intro">Laudos, consultoria e assessoria técnica para aumentar a disponibilidade e a segurança de máquinas, equipamentos e instalações industriais.</p>
+        <div class="ind-grid">
+          <div class="panel">
+            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
+            <h3>Laudos</h3>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos técnicos de máquinas e equipamentos industriais</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudo NR-12 de máquinas fixas e linhas de produção</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudo NR-13 de vasos de pressão, compressores e caldeiras</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos de condição e de análise de falhas</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos mecânicos e eletromecânicos com ART</div></li>
+        </ul>
+          </div>
+          <div class="panel">
+            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+            <h3>Consultoria</h3>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Estruturação do plano de manutenção preventiva, preditiva e corretiva</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Indicadores de manutenção: disponibilidade, MTBF, MTTR e backlog</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Classificação de criticidade e gestão de ativos</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Análise de causa raiz de falhas recorrentes</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gestão de sobressalentes e estoque de peças</div></li>
+        </ul>
+          </div>
+          <div class="panel">
+            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <h3>Assessoria técnica</h3>
+            <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Planejamento e acompanhamento de paradas programadas</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especificação técnica para compra de equipamentos e serviços</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Avaliação técnica de propostas e fornecedores</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Acompanhamento e fiscalização de serviços de terceiros</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Suporte técnico em auditorias e fiscalizações</div></li>
+        </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERFIL ============ -->
+    <section class="profile on-dark" id="perfil">
+      <div class="profile-text">
+        <h2 class="section-title">Responsável técnico</h2>
+        <p class="profile-name">MARCOS ZANETTE</p>
+        <p class="profile-role">Engenheiro Mecânico · <span data-config="crea">CREA/RNP 1420122860</span></p>
+        <ul class="checks">
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gerente de manutenção</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especialista em equipamentos de linha amarela e caminhões linha diesel</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especialista em confiabilidade e eficiência operacional</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Conformidade com a legislação</div></li>
+        </ul>
+        <div class="years"><strong>10</strong><span>Anos de atuação<br>na área</span></div>
+      </div>
+      <div class="profile-img photo" role="img" aria-label="Equipamento de linha amarela"></div>
+    </section>
+
+    <!-- ============ EXPERIÊNCIA ============ -->
+    <!-- Apenas descrições do tipo de trabalho: os laudos são confidenciais e não devem ser publicados. -->
+    <section id="experiencia">
+      <div class="container">
+        <h2 class="section-title">Experiência</h2>
+        <p class="section-intro">Laudos e projetos desenvolvidos para grandes empresas de mineração e óleo e gás.</p>
+        <div class="cases">
           <article class="case">
             <span class="case-tag">Laudo NR-12</span>
             <h3>Caminhão com guindaste hidráulico (munck)</h3>
@@ -219,105 +492,76 @@
             <p>Testes de ignição e injeção, desmontagem parcial e análise das evidências para apurar a natureza e a extensão do dano.</p>
             <span class="case-meta">Juiz de Fora/MG · 2026</span>
           </article>
-          <article class="case case-cta">
-            <h3>O seu projeto pode ser o próximo</h3>
-            <p>Conte o que você precisa e receba um orçamento sem compromisso.</p>
-            <a class="btn btn-primary" href="#orcamento">Pedir orçamento</a>
-          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ COMO FUNCIONA ============ -->
-    <section id="como-funciona">
+    <!-- ============ PERGUNTAS FREQUENTES ============ -->
+    <section class="bg-gray center" id="duvidas">
       <div class="container">
-        <span class="eyebrow">Como funciona</span>
-        <h2>Do pedido à entrega em 4 passos</h2>
-        <p class="section-intro">Processo simples e transparente, do primeiro contato à entrega dos documentos.</p>
-        <ol class="steps">
-          <li>
-            <h3>Envie sua solicitação</h3>
-            <p>Preencha o formulário com os dados do serviço. Leva menos de 2 minutos.</p>
-          </li>
-          <li>
-            <h3>Receba o orçamento</h3>
-            <p>Analiso o seu caso e envio uma proposta com valor e prazo.</p>
-          </li>
-          <li>
-            <h3>Análise técnica</h3>
-            <p>Vistoria, medições ou análise de documentos, conforme o serviço.</p>
-          </li>
-          <li>
-            <h3>ART e documentação</h3>
-            <p>ART registrada no CREA e laudo, projeto ou relatório entregues em PDF.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ DÚVIDAS ============ -->
-    <section class="steps-section" id="duvidas">
-      <div class="container">
-        <span class="eyebrow">Dúvidas frequentes</span>
-        <h2>Perguntas frequentes</h2>
+        <h2 class="section-title">Perguntas frequentes</h2>
         <div class="faq">
           <details>
-            <summary>Minha empresa precisa de laudo NR-12?</summary>
-            <p>A NR-12 vale para máquinas e equipamentos usados no trabalho, em qualquer empresa que tenha funcionários operando máquinas. Ela exige, entre outros pontos, a apreciação de riscos e a adequação de proteções e dispositivos de segurança. O laudo técnico com ART documenta essa adequação e é o que costuma ser apresentado em fiscalizações do trabalho e auditorias.</p>
+            <summary>Quais equipamentos precisam de laudo NR-12?</summary>
+            <p>A NR-12 se aplica a máquinas e equipamentos utilizados no trabalho, incluindo equipamentos móveis como escavadeiras, carregadeiras, caminhões munck e empilhadeiras. O laudo documenta a apreciação de riscos e a conformidade com os requisitos da norma.</p>
+          </details>
+          <details>
+            <summary>Qual a validade do laudo NR-12?</summary>
+            <p>A NR-12 não define um prazo fixo de validade. O laudo deve ser revisado sempre que houver modificação no equipamento, mudança de aplicação, acidente ou atualização normativa. Para equipamentos críticos, a revisão periódica é uma boa prática.</p>
+          </details>
+          <details>
+            <summary>O laudo atende às exigências de mobilização de grandes contratantes?</summary>
+            <p>O laudo contempla apreciação de riscos, matriz de conformidade, registro fotográfico e ART, que são os itens normalmente exigidos para a liberação de equipamentos em operações de mineração, portos e óleo e gás.</p>
           </details>
           <details>
             <summary>O que é ART?</summary>
-            <p>A Anotação de Responsabilidade Técnica (ART), instituída pela Lei 6.496/1977, é o documento registrado no CREA que identifica o profissional responsável por um serviço de engenharia — projeto, laudo, instalação, manutenção ou vistoria. É exigida por prefeituras, Corpo de Bombeiros, órgãos fiscalizadores e frequentemente solicitada por seguradoras e organizadores de eventos.</p>
+            <p>A Anotação de Responsabilidade Técnica, instituída pela Lei 6.496/1977, é o registro no CREA que identifica o profissional responsável por um serviço de engenharia, como laudo, projeto, vistoria ou plano de manutenção.</p>
           </details>
           <details>
-            <summary>Preciso de ART para o meu caso?</summary>
-            <p>Geralmente sim, quando o serviço envolve equipamentos, instalações ou estruturas que oferecem risco: ar-condicionado em ambientes coletivos (PMOC), vasos de pressão, gás, estruturas de eventos, máquinas industriais, entre outros. Na dúvida, descreva sua situação no formulário e eu te oriento sem compromisso.</p>
+            <summary>A consultoria atende frotas de qualquer porte?</summary>
+            <p>Sim. O escopo é definido de acordo com o tamanho da frota, os tipos de equipamento e os objetivos da operação.</p>
           </details>
           <details>
-            <summary>Quanto custa?</summary>
-            <p>Depende do tipo de serviço, da quantidade de máquinas ou equipamentos e da necessidade de vistoria. O orçamento é gratuito e informa separadamente os honorários e a taxa de registro da ART cobrada pelo CREA. Para agilizar, informe no formulário quantos equipamentos são.</p>
+            <summary>O treinamento pode ser realizado na empresa?</summary>
+            <p>Sim. Os treinamentos são realizados na empresa ou online, com conteúdo adaptado à frota e à operação, e emissão de certificado de participação.</p>
           </details>
           <details>
-            <summary>Quanto tempo leva?</summary>
-            <p>O prazo é combinado no orçamento, conforme o tipo de serviço e a necessidade de vistoria, ensaios ou projeto. As visitas técnicas são agendadas com antecedência, em data combinada com você.</p>
+            <summary>A análise de eletrificação inclui o projeto elétrico da recarga?</summary>
+            <p>A análise dimensiona a demanda de energia e a infraestrutura de recarga necessária e serve de base para o projeto elétrico, que é elaborado por profissional habilitado em engenharia elétrica.</p>
           </details>
           <details>
-            <summary>Você atende a minha cidade?</summary>
-            <p>Sim. Tenho base em Juiz de Fora (MG) e atendo em todo o Brasil. Para serviços fora da região, o deslocamento é considerado no orçamento.</p>
+            <summary>Quais serviços de manutenção industrial são atendidos?</summary>
+            <p>Laudos técnicos de máquinas e equipamentos, consultoria para estruturação e gestão da manutenção e assessoria técnica em paradas programadas, especificações, contratação e acompanhamento de serviços.</p>
           </details>
           <details>
-            <summary>Quais documentos eu recebo?</summary>
-            <p>Você recebe a ART registrada no CREA e, conforme o serviço, o laudo técnico, relatório, projeto ou PMOC, em PDF com assinatura digital.</p>
+            <summary>Como é definido o valor do serviço?</summary>
+            <p>O valor é definido conforme o tipo de serviço, a quantidade e o tipo de equipamento e a necessidade de deslocamento, e é informado na proposta.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ============ ORÇAMENTO ============ -->
-    <section class="quote-section" id="orcamento">
-      <div class="container quote-grid">
-        <div class="quote-info">
-          <span class="eyebrow">Orçamento</span>
-          <h2>Solicite seu orçamento gratuito</h2>
-          <p>Conte o que você precisa. Quanto mais detalhes, mais preciso será o orçamento.</p>
-          <ul class="check-list">
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Orçamento por escrito, com valor e prazo</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Sem compromisso</li>
-            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fotos e documentos podem ser enviados depois pelo WhatsApp</li>
+    <!-- ============ CONTATO ============ -->
+    <section class="contact on-dark" id="contato">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title">Contato</h2>
+          <p>Para solicitar uma proposta técnica, preencha o formulário com os dados do serviço e do equipamento.</p>
+          <ul class="contact-list">
+            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="m22 7-10 6L2 7"/></svg><div><small>E-mail</small><a href="mailto:mvszanette@gmail.com" data-email>mvszanette@gmail.com</a></div></li>
+            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><small>WhatsApp</small><a href="https://wa.me/5532998111414" data-whatsapp target="_blank" rel="noopener">(32) 99811-1414</a></div></li>
+            <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2M15 12h2M7 16h10"/></svg><div><small>Responsável técnico</small>Marcos Zanette – Engenheiro Mecânico<br><span data-config="crea">CREA/RNP 1420122860</span></div></li>
           </ul>
-          <a class="btn btn-outline" href="https://wa.me/5532998111414" data-whatsapp target="_blank" rel="noopener">
-            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-            Prefiro falar pelo WhatsApp
-          </a>
         </div>
 
-        <!-- O envio é feito pelo FormSubmit (gratuito). O e-mail de destino é definido em config.js. -->
-        <form class="quote-form" id="form-orcamento" action="https://formsubmit.co/mvszanette@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nova solicitação de orçamento pelo site">
+        <!-- Envio pelo FormSubmit (gratuito). O e-mail de destino é definido em config.js. -->
+        <form class="quote-form" id="form-proposta" action="https://formsubmit.co/mvszanette@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Solicitação de proposta pelo site">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="">
-          <input type="hidden" name="_autoresponse" value="Olá! Recebi sua solicitação de orçamento e vou retornar pelo WhatsApp ou e-mail. Obrigado pelo contato! — Marcos Zanette, Engenheiro Mecânico">
+          <input type="hidden" name="_autoresponse" value="Sua solicitação de proposta foi recebida e será respondida pelo e-mail ou telefone informado. Marcos Zanette – Engenheiro Mecânico – CREA/RNP 1420122860">
+          <input type="hidden" name="Código TOS" value="">
           <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <div class="form-grid">
@@ -326,76 +570,152 @@
               <input id="f-nome" name="Nome" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="f-whats">WhatsApp</label>
-              <input id="f-whats" name="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required>
-            </div>
-            <div class="field">
               <label for="f-email">E-mail</label>
               <input id="f-email" name="email" type="email" autocomplete="email" required>
             </div>
             <div class="field">
-              <label for="f-cidade">Cidade / UF</label>
-              <input id="f-cidade" name="Cidade" type="text" autocomplete="address-level2" required>
+              <label for="f-whats">WhatsApp</label>
+              <input id="f-whats" name="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" required>
             </div>
             <div class="field">
-              <label for="f-empresa">Empresa ou condomínio <span class="optional">(opcional)</span></label>
+              <label for="f-empresa">Empresa <span class="opt">(opcional)</span></label>
               <input id="f-empresa" name="Empresa" type="text" autocomplete="organization">
             </div>
-            <div class="field">
-              <label for="f-qtd">Nº de equipamentos <span class="optional">(aprox.)</span></label>
-              <input id="f-qtd" name="Quantidade" type="text" inputmode="numeric" placeholder="Ex.: 5">
+            <div class="field w4">
+              <label for="f-cidade">Cidade</label>
+              <input id="f-cidade" name="Cidade" type="text" autocomplete="address-level2" required>
             </div>
-            <div class="field">
-              <label for="f-servico">Tipo de serviço</label>
-              <select id="f-servico" name="Serviço" required>
-                <option value="" disabled selected>Selecione…</option>
-                <option>Laudo NR-12 (máquinas e equipamentos)</option>
-                <option>Laudo NR-12 (máquinas móveis / munck)</option>
-                <option>Laudo NR-13 (vasos de pressão / caldeiras)</option>
-                <option>Climatização / PMOC</option>
-                <option>Projeto / memorial de cálculo</option>
-                <option>Parecer técnico / perícia</option>
-                <option>Equipamentos de elevação</option>
-                <option>Instalações de gás</option>
-                <option>Combate a incêndio</option>
-                <option>Estruturas para eventos</option>
-                <option>Veículos / reboques / food trucks</option>
-                <option>Outro / não sei</option>
+            <div class="field w2">
+              <label for="f-uf">Estado</label>
+              <select id="f-uf" name="Estado" required>
+                <option value="" disabled selected>UF</option>
+                  <option>AC</option>
+                  <option>AL</option>
+                  <option>AP</option>
+                  <option>AM</option>
+                  <option>BA</option>
+                  <option>CE</option>
+                  <option>DF</option>
+                  <option>ES</option>
+                  <option>GO</option>
+                  <option>MA</option>
+                  <option>MT</option>
+                  <option>MS</option>
+                  <option>MG</option>
+                  <option>PA</option>
+                  <option>PB</option>
+                  <option>PR</option>
+                  <option>PE</option>
+                  <option>PI</option>
+                  <option>RJ</option>
+                  <option>RN</option>
+                  <option>RS</option>
+                  <option>RO</option>
+                  <option>RR</option>
+                  <option>SC</option>
+                  <option>SP</option>
+                  <option>SE</option>
+                  <option>TO</option>
               </select>
             </div>
             <div class="field">
-              <label for="f-prazo">Prazo desejado</label>
-              <select id="f-prazo" name="Prazo" required>
-                <option value="" disabled selected>Selecione…</option>
-                <option>Até 1 mês</option>
-                <option>De 1 a 3 meses</option>
-                <option>Sem data definida</option>
-              </select>
+              <label for="f-doc">CPF/CNPJ <span class="opt">(opcional)</span></label>
+              <input id="f-doc" name="CPF/CNPJ" type="text" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="f-qtd">Nº de equipamentos <span class="opt">(opcional)</span></label>
+              <input id="f-qtd" name="Quantidade" type="text" inputmode="numeric">
             </div>
             <div class="field full">
-              <label for="f-desc">Descreva o serviço</label>
-              <textarea id="f-desc" name="Descrição" placeholder="Ex.: laudo NR-12 de 5 máquinas em uma metalúrgica, ou PMOC de 12 aparelhos split em um escritório." required></textarea>
+              <label for="f-servico">Serviço</label>
+              <select id="f-servico" name="Serviço" required>
+                <option value="" disabled selected>Selecione o serviço…</option>
+                <optgroup label="Laudo NR-12">
+                  <option data-tos="16.7.29 16.5.6">Laudo NR-12 – equipamento móvel / linha amarela</option>
+                  <option data-tos="16.5.9">Laudo NR-12 – caminhão munck</option>
+                  <option data-tos="16.5.8">Laudo NR-12 – empilhadeira</option>
+                  <option data-tos="16.7.29 16.7.32">Laudo NR-12 – máquinas industriais</option>
+                </optgroup>
+                <optgroup label="Laudos mecânicos e eletromecânicos">
+                  <option data-tos="16.7.4.5">Laudo de equipamento de movimentação de terra</option>
+                  <option data-tos="16.7.4">Laudo mecânico</option>
+                  <option data-tos="16.7.5">Laudo eletromecânico</option>
+                  <option data-tos="16.5.5.4">Laudo de caminhões</option>
+                  <option data-tos="16.5.7 16.5.10">Laudo de implementos e reboques</option>
+                </optgroup>
+                <optgroup label="Laudo NR-13">
+                  <option data-tos="16.3.2 16.3.3 16.3.15">Laudo NR-13 – vaso de pressão / compressor</option>
+                  <option data-tos="16.2.1.10">Laudo NR-13 – caldeira</option>
+                </optgroup>
+                <optgroup label="Manutenção e gestão de frotas">
+                  <option data-tos="16.5.6 16.7.4">Plano de manutenção de frota / equipamentos</option>
+                  <option data-tos="16.5.6 16.5.5">Consultoria em gestão de frota</option>
+                  <option data-tos="16.5.6 16.5.5">Treinamento para gestores de frota</option>
+                  <option data-tos="16.5.6 16.5.5">Especificação de insumos</option>
+                </optgroup>
+                <optgroup label="Eletrificação de frotas">
+                  <option data-tos="16.5.5 16.5.6">Análise de viabilidade de eletrificação de frota</option>
+                </optgroup>
+                <optgroup label="Manutenção industrial">
+                  <option data-tos="16.7.32">Laudo de máquinas e equipamentos industriais</option>
+                  <option data-tos="16.7.13 16.7.32">Consultoria em manutenção industrial</option>
+                  <option data-tos="16.7.13 16.7.32">Assessoria técnica em manutenção industrial</option>
+                </optgroup>
+                <optgroup label="Climatização">
+                  <option data-tos="16.2.2">PMOC</option>
+                  <option data-tos="16.2.1.4">Projeto de instalação de ar-condicionado</option>
+                </optgroup>
+                <optgroup label="Içamento">
+                  <option data-tos="16.6.3 16.6.7">Plano de rigging / içamento</option>
+                </optgroup>
+                <optgroup label="ART e outros">
+                  <option data-tos="">ART de serviço de engenharia mecânica</option>
+                </optgroup>
+                <option data-outro value="Outro serviço (lista do CREA)">Outro serviço – escolher na lista do CREA</option>
+              </select>
+            </div>
+            <div class="tos-box" id="tos-box" hidden>
+              <p>Selecione o item na Tabela de Obras e Serviços do CREA (área de Mecânica).</p>
+              <div class="field full">
+                <label for="tos-subarea">Subárea</label>
+                <select id="tos-subarea"></select>
+              </div>
+              <div class="field full">
+                <label for="tos-obra">Obra ou serviço</label>
+                <select id="tos-obra"></select>
+              </div>
+              <div class="field full">
+                <label for="tos-complemento">Complemento <span class="opt">(quando houver)</span></label>
+                <select id="tos-complemento"></select>
+              </div>
+            </div>
+            <div class="field full">
+              <label for="f-equip">Equipamento <span class="opt">(fabricante, modelo e ano – opcional)</span></label>
+              <input id="f-equip" name="Equipamento" type="text">
+            </div>
+            <div class="field full">
+              <label for="f-msg">Mensagem <span class="opt">(opcional)</span></label>
+              <textarea id="f-msg" name="Mensagem"></textarea>
             </div>
           </div>
 
-          <div class="form-footer">
-            <small>Seus dados são usados apenas para responder a esta solicitação e não são compartilhados.</small>
-            <button class="btn btn-primary" type="submit">Enviar solicitação</button>
-          </div>
+          <p class="lgpd">Os dados informados são utilizados exclusivamente para a elaboração e o envio da proposta. Consulte a <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
+          <button class="btn btn-primary" type="submit">Enviar solicitação</button>
         </form>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="logo" href="#inicio" aria-label="Marcos Zanette — início">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#f28c28"/><text x="16" y="21.5" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-weight="700" font-size="14" fill="#0f2a44">MZ</text></svg>
-            <span style="color:#fff">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
+          <a class="logo" href="#inicio" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
+            <span class="logo-mark" aria-hidden="true">MZ</span>
+            <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
           </a>
-          <p style="margin-top:16px">ART, laudos e projetos de engenharia mecânica.</p>
+          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e frotas.</p>
         </div>
         <div>
           <h3>Serviços</h3>
@@ -403,31 +723,33 @@
             <li><a href="laudo-nr12.html">Laudo NR-12</a></li>
             <li><a href="laudo-nr13.html">Laudo NR-13</a></li>
             <li><a href="pmoc.html">PMOC</a></li>
+            <li><a href="#frotas">Gestão de frotas</a></li>
+            <li><a href="#eletrificacao">Eletrificação de frotas</a></li>
+            <li><a href="#industrial">Manutenção industrial</a></li>
           </ul>
         </div>
         <div>
           <h3>Contato</h3>
           <ul>
-            <li><a href="https://wa.me/5532998111414" data-whatsapp target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="tel:+5532998111414" data-tel>(32) 99811-1414</a></li>
             <li><a href="mailto:mvszanette@gmail.com" data-email>mvszanette@gmail.com</a></li>
+            <li><a href="#contato">Solicitar proposta</a></li>
           </ul>
         </div>
         <div>
           <h3>Responsável técnico</h3>
           <ul>
-            <li data-config="engenheiro">Marcos Zanette – Engenheiro Mecânico</li>
+            <li>Marcos Zanette</li>
+            <li>Engenheiro Mecânico</li>
             <li data-config="crea">CREA/RNP 1420122860</li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© <span id="ano">2026</span> Marcos Zanette – Engenharia Mecânica. Todos os direitos reservados.</div>
+      <div class="footer-bottom">
+        <span>© <span id="ano">2026</span> Marcos Zanette – Engenharia Mecânica</span>
+        <a href="politica-de-privacidade.html">Política de Privacidade</a>
+      </div>
     </div>
   </footer>
-
-  <a class="whatsapp-float" href="https://wa.me/5532998111414" data-whatsapp target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-  </a>
 
 </body>
 </html>

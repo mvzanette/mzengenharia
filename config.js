@@ -6,19 +6,18 @@
  *  Depois de salvar, o site inteiro é atualizado automaticamente.
  */
 const CONFIG = {
-  // E-mail que vai RECEBER as solicitações de orçamento.
+  // E-mail que vai RECEBER as solicitações de proposta.
   email: "mvszanette@gmail.com",
 
-  // Opcional: depois de ativar o FormSubmit, ele te envia um código
-  // aleatório. Cole aqui para esconder seu e-mail do código do site.
+  // Opcional: depois de ativar o FormSubmit, ele envia um código
+  // aleatório. Cole aqui para esconder o e-mail do código do site.
   formsubmitId: "",
 
   // WhatsApp só com números: 55 + DDD + número.
   whatsapp: "5532998111414",
-  whatsappTexto: "Olá, Marcos! Vim pelo site e gostaria de um orçamento.",
+  whatsappTexto: "Olá. Gostaria de solicitar uma proposta técnica.",
   telefoneExibicao: "(32) 99811-1414",
 
   engenheiro: "Marcos Zanette – Engenheiro Mecânico",
-  regiao: "Juiz de Fora (MG) e todo o Brasil",
   crea: "CREA/RNP 1420122860",
 };
