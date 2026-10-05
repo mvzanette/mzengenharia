@@ -1,0 +1,126 @@
+// Rotina diária de alertas de ART (executada pelo GitHub Actions).
+// Lê as ARTs sem baixa no Supabase, identifica os alertas do dia (30 dias, 7 dias, no dia e
+// semanalmente após o vencimento), envia um e-mail-resumo pelo Resend e registra o envio.
+//
+// Teste local, sem banco e sem envio:  node ferramentas/alertas-art.mjs --teste
+
+import { alertasPendentes, dataBR } from "../area/regras.js";
+
+const { SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY: CHAVE, RESEND_API_KEY, ALERTA_EMAIL, ALERTA_REMETENTE, ALERTA_LINK } = process.env;
+const TESTE = process.argv.includes("--teste");
+
+// Data de hoje no horário de Brasília (o servidor do GitHub usa UTC)
+const hoje = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
+
+async function rest(caminho, opcoes = {}) {
+  const resposta = await fetch(`${SUPABASE_URL}/rest/v1/${caminho}`, {
+    ...opcoes,
+    headers: {
+      apikey: CHAVE,
+      Authorization: `Bearer ${CHAVE}`,
+      "Content-Type": "application/json",
+      ...(opcoes.headers || {}),
+    },
+  });
+  if (!resposta.ok) throw new Error(`Supabase ${resposta.status}: ${await resposta.text()}`);
+  return resposta.status === 204 || resposta.status === 201 ? null : resposta.json();
+}
+
+function exemplo() {
+  const somar = (dias) => new Date(Date.parse(hoje) + dias * 86400000).toISOString().slice(0, 10);
+  return [
+    { id: "1", numero: "MG0000000001", contratante: "CLIENTE EXEMPLO A", fim: somar(30) },
+    { id: "2", numero: "RJ0000000002", contratante: "CLIENTE EXEMPLO B", fim: somar(7) },
+    { id: "3", numero: "MG0000000003", contratante: "CLIENTE EXEMPLO C", fim: somar(-10) },
+    { id: "4", numero: "MG0000000004", contratante: "CLIENTE EXEMPLO D", fim: somar(120) },
+  ];
+}
+
+const escapar = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+function montarEmail(alertas) {
+  const assunto = `Controle de ART: ${alertas.length} alerta${alertas.length > 1 ? "s" : ""} – ${dataBR(hoje)}`;
+  const texto = [
+    `Alertas de ART em ${dataBR(hoje)}:`,
+    "",
+    ...alertas.map((a) => `• ${a.mensagem}`),
+    "",
+    "Verifique se é preciso dar baixa ou emitir nova ART.",
+    ALERTA_LINK ? `Área restrita: ${ALERTA_LINK}` : "",
+  ].join("\n");
+  const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#1e2125">
+    <p style="border-left:4px solid #f5b800;padding-left:10px"><b>Alertas de ART em ${dataBR(hoje)}</b></p>
+    <ul>${alertas.map((a) => `<li style="margin-bottom:8px">${escapar(a.mensagem)}</li>`).join("")}</ul>
+    <p>Verifique se é preciso dar baixa ou emitir nova ART.</p>
+    ${ALERTA_LINK ? `<p><a href="${escapar(ALERTA_LINK)}">Abrir a área restrita</a></p>` : ""}
+  </div>`;
+  return { assunto, texto, html };
+}
+
+async function enviarEmail({ assunto, texto, html }) {
+  const resposta = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: ALERTA_REMETENTE || "Controle de ART <onboarding@resend.dev>",
+      to: ALERTA_EMAIL.split(",").map((e) => e.trim()),
+      subject: assunto,
+      text: texto,
+      html,
+    }),
+  });
+  if (!resposta.ok) throw new Error(`Resend ${resposta.status}: ${await resposta.text()}`);
+}
+
+async function principal() {
+  if (!TESTE && (!SUPABASE_URL || !CHAVE)) {
+    console.log("Supabase ainda não configurado (secrets SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY). Nada a fazer.");
+    return;
+  }
+
+  const arts = TESTE ? exemplo() : await rest("arts?select=*&baixa_data=is.null");
+  const tratados = TESTE
+    ? new Set()
+    : new Set(
+        (await rest("alertas?select=art_id,marco&or=(email_enviado_em.not.is.null,lido_em.not.is.null)")).map(
+          (a) => `${a.art_id}:${a.marco}`
+        )
+      );
+
+  const alertas = alertasPendentes(arts, tratados, hoje);
+  console.log(`${dataBR(hoje)}: ${arts.length} ART(s) sem baixa, ${alertas.length} alerta(s) novo(s).`);
+  if (!alertas.length) return;
+
+  const email = montarEmail(alertas);
+  if (TESTE) {
+    console.log(`\nAssunto: ${email.assunto}\n\n${email.texto}`);
+    return;
+  }
+
+  if (RESEND_API_KEY && ALERTA_EMAIL) {
+    await enviarEmail(email);
+    console.log(`E-mail enviado para ${ALERTA_EMAIL}.`);
+  } else {
+    console.log("Resend não configurado (RESEND_API_KEY e ALERTA_EMAIL): alertas registrados sem e-mail.");
+  }
+
+  const agora = new Date().toISOString();
+  await rest("alertas?on_conflict=art_id,marco", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify(
+      alertas.map((a) => ({
+        user_id: a.art.user_id,
+        art_id: a.art.id,
+        marco: a.marco,
+        mensagem: a.mensagem,
+        email_enviado_em: RESEND_API_KEY && ALERTA_EMAIL ? agora : null,
+      }))
+    ),
+  });
+}
+
+principal().catch((erro) => {
+  console.error(erro.message);
+  process.exit(1);
+});

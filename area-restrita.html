@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área restrita | Controle de ART</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5b800'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='800' font-size='14' fill='%23111214'%3EMZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="area/area.css">
+  <script src="tos-mecanica.js"></script>
+  <script type="module" src="area/app.js"></script>
+</head>
+<body class="area">
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Voltar ao site">
+      <span class="logo-mark" aria-hidden="true">MZ</span>
+      <span class="logo-text">MARCOS ZANETTE<small>ÁREA RESTRITA</small></span>
+    </a>
+    <div class="area-top" id="area-top" hidden>
+      <button class="sino" id="btn-alertas" type="button" aria-label="Alertas" aria-controls="painel-alertas" aria-expanded="false">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="contador" id="contador-alertas" hidden>0</span>
+      </button>
+      <span class="usuario" id="usuario"></span>
+      <button class="btn-link" id="btn-sair" type="button">Sair</button>
+    </div>
+  </header>
+
+  <div class="aviso-demo" id="aviso-demo" hidden>
+    <strong>Modo demonstração.</strong> Os dados ficam só neste navegador e os e-mails de alerta não são enviados.
+    Para usar de verdade, configure o Supabase conforme o README.
+    <button class="btn-link" id="btn-limpar-demo" type="button">Apagar dados de teste</button>
+  </div>
+
+  <main class="area-main">
+    <!-- ============ LOGIN ============ -->
+    <section class="tela-login" id="tela-login" hidden>
+      <form class="cartao login" id="form-login">
+        <h1>Controle de ART</h1>
+        <p>Acesso restrito.</p>
+        <label>E-mail<input type="email" name="email" autocomplete="username" required></label>
+        <label>Senha<input type="password" name="senha" autocomplete="current-password" required></label>
+        <p class="erro" id="erro-login" role="alert" hidden></p>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+        <button class="btn-link" id="btn-recuperar" type="button">Esqueci a senha</button>
+      </form>
+    </section>
+
+    <!-- ============ PAINEL ============ -->
+    <section id="tela-painel" hidden>
+      <div class="area-cabecalho">
+        <h1>Controle de ART</h1>
+        <div class="area-acoes">
+          <button class="btn btn-primary" id="btn-importar" type="button">Importar PDF</button>
+          <button class="btn btn-claro" id="btn-nova" type="button">Cadastrar manualmente</button>
+          <button class="btn btn-claro" id="btn-exportar" type="button">Exportar planilha</button>
+        </div>
+      </div>
+
+      <div class="faixa-alertas" id="faixa-alertas" hidden></div>
+
+      <div class="resumo" id="resumo"></div>
+
+      <div class="filtros">
+        <input type="search" id="busca" placeholder="Buscar por número, cliente, serviço ou TOS" aria-label="Buscar">
+        <select id="filtro-crea" aria-label="CREA">
+          <option value="">Todos os CREAs</option>
+          <option value="MG">CREA-MG</option>
+          <option value="RJ">CREA-RJ</option>
+          <option value="SP">CREA-SP</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <select id="filtro-situacao" aria-label="Situação">
+          <option value="">Todas as situações</option>
+          <option value="vencendo">Vence em até 30 dias</option>
+          <option value="vencida">Vencida sem baixa</option>
+          <option value="ativa">Ativa</option>
+          <option value="baixada">Baixada</option>
+          <option value="sem-data">Sem data de término</option>
+        </select>
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela" id="tabela">
+          <thead>
+            <tr>
+              <th>ART</th>
+              <th>CREA</th>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Início</th>
+              <th>Fim previsto</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="vazio" id="vazio" hidden>Nenhuma ART cadastrada ainda. Use <b>Importar PDF</b> para subir uma ART ou o relatório do CREA.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ALERTAS ============ -->
+  <aside class="gaveta" id="painel-alertas" hidden aria-label="Alertas">
+    <div class="gaveta-cab">
+      <h2>Alertas</h2>
+      <button class="btn-link" id="fechar-alertas" type="button">Fechar</button>
+    </div>
+    <div id="lista-alertas"></div>
+  </aside>
+
+  <!-- ============ DETALHE DA ART ============ -->
+  <dialog class="dialogo" id="dlg-art"></dialog>
+
+  <!-- ============ IMPORTAÇÃO ============ -->
+  <dialog class="dialogo largo" id="dlg-importar">
+    <div class="dlg-cab">
+      <h2>Importar PDF</h2>
+      <button class="btn-link" data-fechar type="button">Fechar</button>
+    </div>
+    <div class="dlg-corpo">
+      <p class="dica" id="dica-vinculo" hidden></p>
+      <label class="soltar" id="soltar">
+        <input type="file" id="arquivos" accept="application/pdf" multiple>
+        <strong>Selecione ou arraste os PDFs aqui</strong>
+        <span>ART individual do CREA-MG ou CREA-RJ, ou o relatório “ARTs (Todas)” do CREA-MG. Pode enviar vários de uma vez.</span>
+      </label>
+      <div id="status-importacao" role="status"></div>
+      <div id="previa" hidden>
+        <label class="marcar-todas"><input type="checkbox" id="marcar-vencidas"> Marcar todas as ARTs com fim já passado como <b>já baixadas</b></label>
+        <p class="dica">O relatório do CREA não informa se a ART já teve baixa. Marque as que já foram baixadas para não gerar alertas de pendência.</p>
+        <div class="tabela-wrap">
+          <table class="tabela compacta">
+            <thead><tr><th>Importar</th><th>ART</th><th>Cliente</th><th>Fim previsto</th><th>Situação</th><th>Já baixada?</th><th>Cadastro</th></tr></thead>
+            <tbody id="previa-linhas"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="dlg-rodape">
+      <button class="btn btn-claro" data-fechar type="button">Cancelar</button>
+      <button class="btn btn-primary" id="btn-confirmar-importacao" type="button" disabled>Importar</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

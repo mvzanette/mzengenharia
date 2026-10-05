@@ -15,6 +15,9 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `styles.css` | Visual do site (grafite e amarelo industrial). |
 | `main.js` | Menu do celular e formulário. Não precisa mexer. |
 | `img/` | Fotos do site (ver "Fotos"). |
+| `area-restrita.html`, `area/` | **Área restrita – Controle de ART** (ver seção própria abaixo). |
+| `supabase/schema.sql` | Estrutura do banco de dados da área restrita. |
+| `ferramentas/alertas-art.mjs`, `.github/workflows/alertas-art.yml` | Rotina diária que envia os alertas de ART por e-mail. |
 
 ## Fotos
 
@@ -81,3 +84,73 @@ O formulário usa o [FormSubmit](https://formsubmit.co), gratuito e sem cadastro
 - **Perfil da Empresa no Google** (gratuito): [google.com/business](https://www.google.com/business/), com o link do site.
 - **Google Search Console** (gratuito): [search.google.com/search-console](https://search.google.com/search-console), para indexar o site mais rápido.
 - Link do site no LinkedIn, no WhatsApp Business e na assinatura de e-mail.
+
+---
+
+# Área restrita – Controle de ART
+
+Endereço: `area-restrita.html` (link discreto no rodapé do site; não aparece no Google).
+
+## O que faz
+
+- **Importa PDFs com leitura automática:** ART individual do CREA-MG e do CREA-RJ, e o relatório "ARTs (Todas)" do CREA-MG (várias ARTs de uma vez). O CREA-SP ainda não tem leitor (falta um PDF de exemplo); por enquanto, cadastre manualmente.
+- **Painel:** ARTs ativas, que vencem em até 30 dias, vencidas sem baixa e baixadas, com busca e filtros por CREA e situação.
+- **Alertas** na plataforma (sino) e por e-mail, com base no **fim previsto** da ART:
+  - 30 dias antes: "Daqui a 30 dias a ART nº … do cliente … vencerá (fim previsto em …)."
+  - 7 dias antes e no dia;
+  - depois de vencida, uma vez por semana até a baixa ser registrada.
+- **Ajuda na decisão:** para serviço pontual (laudo, vistoria, projeto), pergunta se foi concluído; para serviço contínuo (PMOC, manutenção), pergunta se o contrato foi renovado. Indica se é caso de dar baixa, de emitir nova ART ou de ajustar a data.
+- **Registro de baixa**, vínculo entre a ART anterior e a nova (renovação) e **"Copiar dados para nova ART"**, para colar no portal do CREA.
+- **Exportação em planilha (CSV)**, que também serve como cópia de segurança.
+
+A emissão e a baixa da ART continuam sendo feitas no portal de cada CREA. Nenhum dos três CREAs oferece integração oficial para sistemas externos; por isso a plataforma trabalha com os PDFs.
+
+## Modo demonstração
+
+Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **modo demonstração**: os dados ficam só no navegador em uso e os e-mails não são enviados. Serve para testar a importação e as telas.
+
+## Ativar de verdade (uma única vez, ~20 minutos)
+
+### 1. Supabase (banco de dados e login – gratuito)
+
+1. Crie a conta em [supabase.com](https://supabase.com) e um projeto (região **South America (São Paulo)**). Guarde a senha do banco.
+2. Em **SQL Editor**, cole todo o conteúdo de `supabase/schema.sql` e clique em **Run**.
+3. Em **Authentication → Users → Add user**, crie o seu usuário (e-mail e senha, marcando *Auto Confirm User*).
+4. Em **Authentication → Sign In / Providers**, **desative "Allow new users to sign up"**: assim ninguém mais consegue criar conta.
+5. Em **Authentication → URL Configuration**, coloque o endereço do site em *Site URL* (usado no link de "Esqueci a senha").
+6. Em **Project Settings → API**, copie:
+   - **Project URL** e a chave **anon public** → cole em `area/config-area.js`;
+   - a chave **service_role** → **não** coloque no site; ela vai só para o GitHub (passo 3).
+
+### 2. Resend (envio dos e-mails – gratuito até 3.000/mês)
+
+1. Crie a conta em [resend.com](https://resend.com) com o e-mail que vai receber os alertas.
+2. Em **API Keys**, crie uma chave e copie.
+   Sem domínio próprio, o Resend envia apenas para o e-mail da própria conta, o que basta para os alertas.
+
+### 3. GitHub (rotina diária)
+
+Em **Settings → Secrets and variables → Actions**:
+
+- aba **Secrets** → *New repository secret*: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY` e `ALERTA_EMAIL` (o e-mail que recebe os alertas);
+- aba **Variables** → `ALERTA_LINK` com o endereço da área restrita (vai no e-mail).
+
+Para testar na hora: **Actions → Alertas de ART → Run workflow**. Depois disso a rotina roda todo dia às 8h (Brasília).
+
+Observações:
+
+- A rotina agendada roda a partir da branch principal do repositório.
+- Em repositório público, o GitHub pausa rotinas agendadas depois de 60 dias sem nenhuma alteração no repositório. Ele avisa por e-mail antes; basta clicar em **Enable workflow** em *Actions*.
+- A execução diária também mantém o projeto do Supabase ativo (o plano gratuito pausa projetos parados por uma semana).
+
+## Segurança e privacidade
+
+- O código do site é público, mas os dados não: ficam no Supabase, protegidos pelo login e por regras de acesso no banco (cada usuário só enxerga os próprios registros). Os PDFs ficam em armazenamento privado.
+- **Nunca** coloque PDFs de ART, relatórios ou planilhas exportadas dentro do repositório (o `.gitignore` já bloqueia `.pdf`, `.csv` e `.xlsx`).
+- A chave `service_role` dá acesso total ao banco: guarde-a só nos *Secrets* do GitHub.
+
+## Testes locais
+
+```
+node ferramentas/alertas-art.mjs --teste   # simula o e-mail do dia com ARTs fictícias
+```

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /area-restrita.html
+Disallow: /area/

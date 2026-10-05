@@ -1,0 +1,5 @@
+# Nunca publicar documentos de clientes: o repositório é público.
+*.pdf
+*.csv
+*.xlsx
+node_modules/

@@ -1,0 +1,29 @@
+name: Alertas de ART
+
+# Todos os dias às 8h (Brasília): verifica as ARTs e envia o e-mail de alertas.
+# Também pode ser executado manualmente em Actions → "Alertas de ART" → "Run workflow".
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  alertas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verificar ARTs e enviar alertas
+        run: node ferramentas/alertas-art.mjs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERTA_EMAIL: ${{ secrets.ALERTA_EMAIL }}
+          ALERTA_LINK: ${{ vars.ALERTA_LINK }}
