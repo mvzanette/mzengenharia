@@ -55,11 +55,21 @@ Cabeçalho, formulário e rodapé são iguais em todas as páginas e saem do mes
 ## 1. Publicar de graça no GitHub Pages
 
 1. O repositório precisa ser **público** (no plano gratuito do GitHub).
-2. No GitHub: **Settings → Pages → Build and deployment**.
-3. Em *Source*, escolha **Deploy from a branch**, selecione a branch e a pasta `/ (root)`. Clique em **Save**.
-4. Em 1 ou 2 minutos o site estará no ar em `https://mvzanette.github.io/vectraengenharia/`.
+2. Nome do repositório: `mzengenharia` (*Settings → General → Repository name → Rename*). O nome do repositório é o que aparece no endereço.
+3. No GitHub: **Settings → Pages → Build and deployment**.
+4. Em *Source*, escolha **Deploy from a branch**, selecione a branch principal do repositório (hoje `claude/exciting-curie-vngk32`) e a pasta `/ (root)`. Clique em **Save**.
+5. Em 1 ou 2 minutos o site estará no ar em `https://mvzanette.github.io/mzengenharia/`.
 
-**Para tirar o "vectraengenharia" do endereço:** renomeie o repositório (*Settings → General → Repository name*) para `mvzanette.github.io` (o site passa a ficar em `https://mvzanette.github.io/`) ou use um domínio próprio (passo 3).
+A cada alteração enviada para essa branch, o GitHub publica a nova versão sozinho (leva 1 ou 2 minutos).
+
+**Endereço mais curto:** renomeie o repositório para `mvzanette.github.io` (o site passa a ficar em `https://mvzanette.github.io/`) ou use um domínio próprio (passo 3).
+
+### Ver o site no computador, sem publicar
+
+1. No GitHub: **Code → Download ZIP** e descompacte.
+2. Dê dois cliques em `index.html`: o site abre no navegador como um arquivo comum.
+
+Nesse modo o formulário não envia e a área restrita não abre (o navegador bloqueia os módulos dela em arquivos locais). Para testar tudo, use o endereço do GitHub Pages.
 
 ## 2. Ativar o formulário (uma única vez)
 
