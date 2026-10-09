@@ -42,6 +42,8 @@ ICON = {
     "plug": '<path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/>',
     "leaf": '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
     "search": '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    "truck": '<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+    "car": '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
     "clipboard": '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
 }
 
@@ -106,6 +108,15 @@ def head(titulo, descricao, com_formulario=False, extra="", indexar=True):
 """
 
 
+# Linhas de projeto: submenu "Projetos" do cabeçalho, rodapé e seções de projetos.html
+PROJETOS_MENU = [
+    ("laudos-projetos", "Laudos e projetos de Engenharia Mecânica"),
+    ("gestao-frotas-ativos", "Consultoria em gestão de frotas e ativos"),
+    ("eletrificacao", "Projeto de eletrificação de frota"),
+    ("indicacao", "Indicação de serviços técnicos"),
+]
+
+
 def logo(home):
     return f"""<a class="logo" href="{home}" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
       <span class="logo-name">Marcos Zanette</span>
@@ -116,6 +127,7 @@ def logo(home):
 def header(inicio, contato="#contato"):
     """inicio = "" na página inicial ou "index.html" nas demais."""
     home = inicio or "#top"  # "#top" leva ao início da página
+    sub = "\n".join(f'            <a href="projetos.html#{a}">{t}</a>' for a, t in PROJETOS_MENU)
     return f"""
   <header class="site-header">
     <div class="header-top">
@@ -127,7 +139,13 @@ def header(inicio, contato="#contato"):
     <nav class="nav" id="menu" aria-label="Principal">
       <div class="container">
         <a href="{home}">Página inicial</a>
-        <a href="{inicio}#projetos">Projetos</a>
+        <div class="nav-drop">
+          <a class="nav-drop-link" href="projetos.html">Projetos</a>
+          <div class="nav-sub">
+{sub}
+            <a class="nav-sub-todos" href="projetos.html">Todos os projetos</a>
+          </div>
+        </div>
         <a href="{inicio}#equipamentos">Equipamentos atendidos</a>
         <a href="{inicio}#perfil">Sobre o profissional</a>
         <a class="btn btn-primary" href="{contato}">Contato</a>
@@ -312,10 +330,7 @@ def footer(inicio):
         <div>
           <h3>Projetos</h3>
           <ul>
-            <li><a href="{inicio}#conformidade">Laudos e projetos de engenharia mecânica</a></li>
-            <li><a href="{inicio}#gestao-ativos">Consultoria em gestão de frotas e ativos</a></li>
-            <li><a href="{inicio}#eletrificacao-frota">Projeto de eletrificação de frota</a></li>
-            <li><a href="{inicio}#indicacao">Indicação de serviços técnicos</a></li>
+{chr(10).join(f'            <li><a href="projetos.html#{a}">{t}</a></li>' for a, t in PROJETOS_MENU)}
           </ul>
         </div>
         <div>
@@ -356,66 +371,34 @@ def footer(inicio):
 
 
 # ---------------------------------------------------------------- página inicial
+def foto(*opcoes):
+    """Primeira foto que existir na pasta do site (a última opção é usada se nenhuma existir)."""
+    for caminho in opcoes:
+        if (RAIZ / caminho).exists():
+            return caminho
+    return opcoes[-1]
+
+
+# Grupos da seção "Equipamentos atendidos" (uma foto só, ao lado da lista)
 EQUIPAMENTOS = [
-    ("Linha amarela", "Escavadeira hidráulica", "escavadeira"),
-    ("Linha amarela", "Pá carregadeira", "pa-carregadeira"),
-    ("Linha amarela", "Trator de esteiras", "trator-esteiras"),
-    ("Linha amarela", "Motoniveladora", "motoniveladora"),
-    ("Linha amarela", "Rolo compactador", "rolo-compactador"),
-    ("Linha amarela", "Retroescavadeira", "retroescavadeira"),
-    ("Linha amarela", "Minicarregadeira", "minicarregadeira"),
-    ("Linha diesel", "Caminhão munck", "caminhao-munck"),
-    ("Linha diesel", "Caminhão basculante", "caminhao-basculante"),
-    ("Linha diesel", "Caminhão pipa", "caminhao-pipa"),
-    ("Linha diesel", "Caminhão comboio", "caminhao-comboio"),
-    ("Apoio", "Veículos leves e de apoio", "veiculos-apoio"),
+    ("track", "Linha amarela", ["Escavadeira hidráulica", "Pá carregadeira", "Trator de esteiras", "Motoniveladora",
+                                "Rolo compactador", "Retroescavadeira", "Minicarregadeira"]),
+    ("truck", "Caminhões linha diesel", ["Caminhão munck", "Caminhão basculante", "Caminhão pipa", "Caminhão comboio"]),
+    ("car", "Veículos leves e de apoio", ["Picapes e utilitários", "Veículos de apoio operacional"]),
 ]
 
-# Cards da seção Projetos (estrutura VIX): âncora, ícone, título, texto, itens, link (endereço, rótulo) e
-# nome da foto em img/servicos/<foto>.jpg
-PROJETOS = [
-    ("conformidade", "clipboard", "Análise e laudo de conformidade",
-     "Avaliação técnica da conformidade de máquinas e equipamentos com as normas regulamentadoras, com ART registrada no CREA.",
-     ["Laudo NR-12 de equipamentos móveis e máquinas industriais",
-      "Laudo NR-13 de vasos de pressão, compressores e caldeiras",
-      "Laudos mecânicos e eletromecânicos",
-      "Vistorias e pareceres técnicos"],
-     ("laudo-nr12.html", "Laudo NR-12"), "laudo-nr12"),
-    ("refrigeracao", "snow", "Projetos e laudos de sistemas de refrigeração",
-     "Projeto, manutenção e conformidade legal de sistemas de climatização e refrigeração.",
-     ["PMOC conforme a Lei 13.589/2018",
-      "Projeto de instalação de ar-condicionado com cálculo de carga térmica",
-      "Laudos técnicos de sistemas de climatização",
-      "ART de projeto, instalação e manutenção"],
-     ("pmoc.html", "PMOC"), "refrigeracao"),
-    ("treinamentos", "presentation", "Treinamentos técnicos",
-     "Capacitação de gestores, mecânicos e operadores, na empresa ou online, com conteúdo adaptado à operação e certificado de participação.",
-     ["Gestão de manutenção de frotas",
-      "NR-12 aplicada a equipamentos móveis",
-      "Inspeção pré-uso para operadores e mecânicos",
-      "Lubrificação, confiabilidade e análise de falhas"],
-     ("#frotas", "Saiba mais"), "treinamentos"),
-    ("gestao-ativos", "chart", "Consultoria em gestão de ativos",
-     "Estruturação e acompanhamento da manutenção de frotas e instalações industriais, com foco em disponibilidade, custo e conformidade.",
-     ["Planos de manutenção preventiva por equipamento",
-      "Indicadores: disponibilidade, MTBF, MTTR e custo por hora",
-      "Criticidade de ativos e análise de falhas recorrentes",
-      "Gestão da manutenção de frotas e plantas industriais"],
-     ("#frotas", "Saiba mais"), "consultoria-frotas"),
-    ("eletrificacao-frota", "bolt", "Eletrificação de frota",
-     "Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos.",
-     ["Diagnóstico da frota e seleção dos candidatos",
-      "Autonomia, ciclo de operação e infraestrutura de recarga",
-      "Custo total de propriedade (TCO) e retorno do investimento",
-      "Redução de emissões e indicadores ESG"],
-     ("#eletrificacao", "Saiba mais"), "eletrificacao"),
-    ("indicacao", "search", "Indicação de serviços técnicos",
-     "Indicação técnica e independente dos insumos e serviços mais adequados a cada equipamento e aplicação, sem vínculo com fabricantes ou fornecedores.",
-     ["Material rodante, pneus e peças de desgaste",
-      "Lubrificantes, filtros e insumos de manutenção",
-      "Eficiência energética de combustíveis",
-      "Serviços especializados de manutenção e reforma"],
-     ("#frotas", "Saiba mais"), "insumos"),
+# Cards de "Projetos" na página inicial (o Laudo NR-12 aparece antes, em destaque):
+# âncora em projetos.html, ícone, título, texto e foto em img/servicos/<foto>.jpg
+AREAS_INICIO = [
+    ("gestao-frotas-ativos", "presentation", "Consultoria para gestão de frotas",
+     "Planos de manutenção, indicadores, especificação de insumos e treinamentos para frotas de linha amarela e caminhões.",
+     "consultoria-frotas"),
+    ("eletrificacao", "bolt", "Eletrificação de frotas",
+     "Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos para modelos elétricos ou híbridos.",
+     "eletrificacao"),
+    ("manutencao-industrial", "factory", "Manutenção industrial",
+     "Laudos, consultoria e assessoria técnica para máquinas, equipamentos e instalações industriais.",
+     "manutencao-industrial"),
 ]
 
 OUTROS = [
@@ -424,8 +407,6 @@ OUTROS = [
     "Estruturas para eventos",
     "Equipamentos de elevação e içamento",
     "Veículos, reboques e food trucks",
-    "Projetos e memoriais de cálculo",
-    "Parecer técnico e perícia",
 ]
 
 CASOS = [
@@ -450,6 +431,11 @@ FAQ_INICIO = [
      "O laudo contempla apreciação de riscos, matriz de conformidade, registro fotográfico e ART, que são os itens normalmente exigidos para a liberação de equipamentos em operações de mineração, portos e óleo e gás."),
     ("O que é ART?",
      "A Anotação de Responsabilidade Técnica, instituída pela Lei 6.496/1977, é o registro no CREA que identifica o profissional responsável por um serviço de engenharia, como laudo, projeto, vistoria ou plano de manutenção."),
+    ("Como é definido o valor do serviço?",
+     "O valor é definido conforme o tipo de serviço, a quantidade e o tipo de equipamento e a necessidade de deslocamento, e é informado na proposta."),
+]
+
+FAQ_PROJETOS = [
     ("A consultoria atende frotas de qualquer porte?",
      "Sim. O escopo é definido de acordo com o tamanho da frota, os tipos de equipamento e os objetivos da operação."),
     ("O treinamento pode ser realizado na empresa?",
@@ -458,9 +444,44 @@ FAQ_INICIO = [
      "A análise dimensiona a demanda de energia e a infraestrutura de recarga necessária e serve de base para o projeto elétrico, que é elaborado por profissional habilitado em engenharia elétrica."),
     ("Quais serviços de manutenção industrial são atendidos?",
      "Laudos técnicos de máquinas e equipamentos, consultoria para estruturação e gestão da manutenção e assessoria técnica em paradas programadas, especificações, contratação e acompanhamento de serviços."),
-    ("Como é definido o valor do serviço?",
-     "O valor é definido conforme o tipo de serviço, a quantidade e o tipo de equipamento e a necessidade de deslocamento, e é informado na proposta."),
+    ("A indicação de insumos e serviços tem vínculo com fornecedores?",
+     "Não. A indicação é técnica e independente, baseada na aplicação, na severidade da operação, nas recomendações do fabricante e no custo por hora trabalhada."),
 ]
+
+NR12_RESUMO = [
+    "Inspeção em campo e teste de funcionamento",
+    "Apreciação de riscos com cálculo HRN",
+    "Matriz de conformidade item a item",
+    "Laudo com registro fotográfico e ART",
+]
+
+NR12_ETAPAS = [
+    ("Inspeção em campo", "Checklist do equipamento e teste de funcionamento, com simulação de paradas e emergências."),
+    ("Apreciação de riscos", "Identificação dos perigos e cálculo HRN, com categoria de segurança e PLr quando aplicável."),
+    ("Matriz de conformidade NR-12", "Verificação item a item dos requisitos aplicáveis ao equipamento."),
+    ("Recomendações técnicas", "Medidas de adequação em ordem de prioridade, incluindo as recomendações do fabricante."),
+    ("Laudo com ART", "Relatório com registro fotográfico, conclusão técnica e ART registrada no CREA."),
+]
+
+NR12_TEXTO = ("Avaliação técnica de conformidade com a NR-12 para equipamentos de linha amarela, caminhões e implementos, "
+              "com apreciação de riscos, matriz de conformidade e ART registrada no CREA.")
+
+
+def destaque_nr12(itens, extra="", contato="#contato"):
+    """Bloco escuro de destaque do Laudo NR-12 (página inicial e página de projetos)."""
+    return f"""<article class="destaque" id="laudo-nr12">
+          <div class="destaque-img photo" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela em operação"></div>
+          <div class="destaque-corpo">
+            <span class="selo">Destaque</span>
+            <h3>Laudo NR-12 para equipamentos móveis</h3>
+            <p>{NR12_TEXTO} Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
+            {checks(itens)}{extra}
+            <div class="feature-actions">
+              <a class="btn btn-primary" href="{contato}">Solicitar proposta</a>
+              <a class="link-arrow" href="laudo-nr12.html">Conheça o laudo NR-12</a>
+            </div>
+          </div>
+        </article>"""
 
 
 def pagina_inicial():
@@ -476,30 +497,28 @@ def pagina_inicial():
     }, ensure_ascii=False, indent=2)
     extra = '\n  <script type="application/ld+json">\n' + jsonld + "\n  </script>"
 
-    equip = "\n".join(
-        f"""          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/{slug}.jpg') center / cover no-repeat" role="img" aria-label="{nome}"></div>
-            <figcaption><span class="equip-tag">{tag}</span><span class="equip-name">{nome}</span></figcaption>
-          </figure>"""
-        for tag, nome, slug in EQUIPAMENTOS
-    )
-    projetos = "\n".join(
-        f"""          <article class="svc" id="{ancora}">
-            <div class="svc-img" style="--photo:url('img/servicos/{foto}.jpg') center / cover no-repeat">
+    areas = "\n".join(
+        f"""          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/{foto_}.jpg') center / cover no-repeat">
               <span class="svc-icon">{icon(ic)}</span>
             </div>
             <div class="svc-body">
               <h3>{titulo}</h3>
               <p>{texto}</p>
-              <ul class="svc-itens">
-{chr(10).join(f"                <li>{i}</li>" for i in itens)}
-              </ul>
-              <a class="link-arrow" href="{link[0]}">{link[1]}</a>
+              <a class="link-arrow" href="projetos.html#{ancora}">Saiba mais</a>
             </div>
           </article>"""
-        for ancora, ic, titulo, texto, itens, link, foto in PROJETOS
+        for ancora, ic, titulo, texto, foto_ in AREAS_INICIO
     )
-    outros = " · ".join(OUTROS)
+    grupos = "\n".join(
+        f"""            <div class="equip-grupo">
+              <h3>{icon(ic)}{titulo}</h3>
+              <ul>
+{chr(10).join(f"                <li>{i}</li>" for i in itens)}
+              </ul>
+            </div>"""
+        for ic, titulo, itens in EQUIPAMENTOS
+    )
     casos = "\n".join(
         f"""          <article class="case">
             <span class="case-tag">{tag}</span>
@@ -509,17 +528,7 @@ def pagina_inicial():
           </article>"""
         for tag, titulo, texto, meta in CASOS
     )
-    normas = "\n".join(f"          <li>{n}</li>" for n in NORMAS_NR12)
-    destaques = [
-        ("track", "Material rodante", "Avaliação de desgaste e especificação de esteiras, roletes, rodas-guia e sapatas conforme a aplicação."),
-        ("tire", "Pneus", "Especificação por aplicação e severidade da operação, com acompanhamento de desgaste, pressão e custo por hora ou quilômetro."),
-        ("filter", "Insumos de manutenção preventiva e corretiva", "Filtros, lubrificantes, graxas, fluidos e componentes de reposição adequados a cada plano de manutenção."),
-        ("fuel", "Eficiência energética de combustíveis", "Análise de consumo por hora trabalhada ou por quilômetro, comparação entre combustíveis e aditivos e identificação de perdas."),
-    ]
-    destaques_html = "\n".join(
-        f"""            <div class="highlight">{icon(ic)}<h4>{t}</h4><p>{d}</p></div>"""
-        for ic, t, d in destaques
-    )
+    foto_equip = foto("img/equipamentos.jpg", "img/servicos/insumos.jpg")
 
     return head(
         "Soluções em Engenharia Mecânica | Laudo NR-12 e Gestão de Frotas",
@@ -530,11 +539,11 @@ def pagina_inicial():
     <!-- ============ TOPO ============ -->
     <section class="band hero" id="inicio" style="--band-img:url('img/hero.jpg')">
       <div class="container">
-        <h1>Soluções em engenharia mecânica</h1>
-        <p class="band-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
+        <h1>Soluções em Engenharia Mecânica</h1>
+        <p class="band-lead">Soluções especializadas em engenharia mecânica para ativos, equipamentos móveis e instalações industriais, com foco em segurança, confiabilidade e desempenho operacional.</p>
+        <p class="band-lead">Atuamos na elaboração de laudos técnicos, planos de manutenção, inspeções, consultoria em engenharia e treinamentos técnicos, atendendo equipamentos de linha amarela, caminhões, veículos leves e de apoio.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
-          <a class="btn btn-outline" href="#nr12">Laudo NR-12</a>
         </div>
       </div>
     </section>
@@ -555,174 +564,33 @@ def pagina_inicial():
       </div>
     </section>
 
-    <!-- ============ LAUDO NR-12 ============ -->
-    <section id="nr12">
+    <!-- ============ PROJETOS (resumo; o detalhamento fica em projetos.html) ============ -->
+    <section id="projetos">
       <div class="container">
-        <div class="feature">
-          <div class="feature-img photo" role="img" aria-label="Equipamento de linha amarela em operação"></div>
-          <div>
-            <h2 class="section-title">Laudo NR-12 para equipamentos móveis</h2>
-            <p class="section-intro">Avaliação técnica de conformidade com a NR-12 para equipamentos de linha amarela, caminhões e implementos, com apreciação de riscos, matriz de conformidade e ART registrada no CREA. Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
-            {checks([
-                ("Inspeção em campo", "Checklist do equipamento e teste de funcionamento, com simulação de paradas e emergências."),
-                ("Apreciação de riscos", "Identificação dos perigos e cálculo HRN, com categoria de segurança e PLr quando aplicável."),
-                ("Matriz de conformidade NR-12", "Verificação item a item dos requisitos aplicáveis ao equipamento."),
-                ("Recomendações técnicas", "Medidas de adequação em ordem de prioridade, incluindo as recomendações do fabricante."),
-                ("Laudo com ART", "Relatório com registro fotográfico, conclusão técnica e ART registrada no CREA."),
-            ])}
-            <div class="feature-actions">
-              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
-              <a class="link-arrow" href="laudo-nr12.html">Detalhes do laudo NR-12</a>
-            </div>
-          </div>
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-intro">Laudos, projetos, consultoria e treinamentos em engenharia mecânica, com foco na segurança e na conformidade legal de equipamentos, frotas e instalações.</p>
+        {destaque_nr12(NR12_RESUMO)}
+        <div class="svc-grid">
+{areas}
         </div>
-
-        <h3 class="subhead">Quando o laudo é exigido</h3>
-        <div class="req-grid">
-          <div class="req"><h3>Mobilização em contratantes</h3><p>Liberação de equipamentos em operações de mineração, portos e óleo e gás.</p></div>
-          <div class="req"><h3>Fiscalização do trabalho</h3><p>Comprovação da conformidade com a NR-12 perante a auditoria fiscal.</p></div>
-          <div class="req"><h3>Locação de equipamentos</h3><p>Documentação técnica exigida por locadoras e locatários.</p></div>
-          <div class="req"><h3>Compra e venda</h3><p>Avaliação das condições de segurança na aquisição ou venda de equipamentos.</p></div>
-          <div class="req"><h3>Auditorias e certificações</h3><p>Evidência técnica para auditorias de clientes e sistemas de gestão.</p></div>
-          <div class="req"><h3>Modificações e acidentes</h3><p>Reavaliação após alterações, mudança de aplicação ou ocorrências.</p></div>
+        <div class="proj-mais">
+          <p><b>Também:</b> <a href="laudo-nr13.html">Laudo NR-13</a> · <a href="projetos.html#refrigeracao">Projetos e laudos de sistemas de refrigeração</a> · <a href="projetos.html#treinamentos">Treinamentos técnicos</a> · <a href="projetos.html#indicacao">Indicação de serviços técnicos</a></p>
+          <a class="btn btn-dark" href="projetos.html">Ver todos os projetos</a>
         </div>
-
-        <h3 class="subhead">Normas aplicadas</h3>
-        <ul class="chips">
-{normas}
-        </ul>
       </div>
     </section>
 
     <!-- ============ EQUIPAMENTOS ============ -->
     <section class="bg-gray" id="equipamentos">
       <div class="container">
-        <h2 class="section-title">Equipamentos atendidos</h2>
-        <p class="section-intro">Laudos, inspeções e gestão de manutenção para equipamentos de linha amarela, caminhões linha diesel e veículos de apoio.</p>
-        <div class="equip-grid">
-{equip}
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROJETOS ============ -->
-    <section id="projetos">
-      <div class="container">
-        <h2 class="section-title">Projetos</h2>
-        <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
-        <div class="svc-grid">
-{projetos}
-        </div>
-        <p class="svc-mais"><b>Outros serviços de engenharia mecânica:</b> {outros}.</p>
-      </div>
-    </section>
-
-    <!-- ============ GESTÃO DE FROTAS ============ -->
-    <section class="bg-gray" id="frotas">
-      <div class="container">
-        <h2 class="section-title">Consultoria para gestão de frotas</h2>
-        <p class="section-intro">Apoio técnico a gestores de frotas de linha amarela e caminhões linha diesel, com foco na disponibilidade dos equipamentos, na redução do custo de manutenção e na conformidade com a legislação.</p>
-        <div class="fleet-grid">
-          <div class="panel">
-            <h3>Consultoria e treinamento</h3>
-            <h4>Consultoria</h4>
-            {checks([
-                "Diagnóstico da gestão de manutenção: processos, indicadores e histórico de falhas",
-                "Estruturação de planos de manutenção preventiva por equipamento, com base no horímetro ou na quilometragem e nas recomendações do fabricante",
-                "Definição e acompanhamento de indicadores: disponibilidade física, MTBF, MTTR, backlog e custo por hora trabalhada",
-                "Análise de falhas recorrentes e ações de confiabilidade",
-                "Rotinas de inspeção pré-uso e controle da documentação técnica (laudos NR-12, ARTs, manuais)",
-                "Preparação da frota para mobilização em grandes contratantes",
-            ])}
-            <h4>Treinamento</h4>
-            {checks([
-                "Gestão de manutenção de frotas: planejamento, controle e indicadores",
-                "NR-12 aplicada a equipamentos móveis: requisitos, inspeção e documentação",
-                "Inspeção pré-uso para operadores e mecânicos",
-                "Lubrificação e controle de contaminação",
-                "Confiabilidade e análise de falhas",
-            ])}
-            <p class="note">Na empresa ou online, com conteúdo adaptado à frota e à operação. Certificado de participação.</p>
-          </div>
-          <div class="panel">
-            <h3>Especificação de insumos</h3>
-            <p>Indicação técnica dos insumos mais adequados para cada equipamento e condição de operação. <strong>Recomendação independente, sem vínculo com fabricantes ou fornecedores.</strong></p>
-            <div class="highlight-grid">
-{destaques_html}
-            </div>
-            <div class="kv">
-              <p><b>Também avaliados:</b> peças de desgaste e ferramentas de penetração no solo (dentes, lâminas e bordas cortantes).</p>
-              <p><b>Critérios:</b> aplicação e severidade da operação, recomendações do fabricante, histórico de falhas, análise de óleo e custo por hora trabalhada.</p>
-              <p><b>Entregável:</b> relatório de especificação com as recomendações por equipamento.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ ELETRIFICAÇÃO ============ -->
-    <section id="eletrificacao">
-      <div class="container">
-        <div class="feature">
+        <div class="equip-layout">
+          <div class="equip-foto photo" style="--photo:url('{foto_equip}') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela"></div>
           <div>
-            <h2 class="section-title">Eletrificação de frotas</h2>
-            <p class="section-intro">Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos. Metas de descarbonização, exigências de grandes contratantes e a variação do preço do diesel tornam a eletrificação uma decisão estratégica: a análise indica onde ela é viável e em quanto tempo o investimento retorna.</p>
-            {checks([
-                ("Diagnóstico da frota", "Perfil de uso, ciclos de trabalho, quilometragem ou horas trabalhadas, consumo de combustível e custo de manutenção por equipamento."),
-                ("Seleção dos candidatos", "Identificação dos veículos e equipamentos com maior potencial de eletrificação, conforme a operação e a disponibilidade de modelos no mercado."),
-                ("Autonomia e ciclo de operação", "Compatibilidade entre a autonomia das baterias, os turnos de trabalho e as rotas."),
-                ("Infraestrutura de recarga", "Levantamento da demanda de energia e do tipo, da quantidade e da localização dos carregadores, como base para o projeto elétrico."),
-                ("Custo total de propriedade (TCO)", "Comparativo entre aquisição, energia e combustível, manutenção, vida útil das baterias e valor residual, com cálculo do retorno do investimento."),
-                ("Emissões e ESG", "Estimativa da redução de emissões de CO₂ e indicadores para relatórios de sustentabilidade."),
-            ])}
-            <p class="note"><b>Entregável:</b> relatório de viabilidade técnico-econômica, com recomendação por grupo de equipamentos e plano de transição em etapas.</p>
-            <div class="feature-actions">
-              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+            <h2 class="section-title">Equipamentos atendidos</h2>
+            <p class="section-intro">Laudos, inspeções, planos de manutenção e consultoria para equipamentos móveis, caminhões e veículos de apoio.</p>
+            <div class="equip-grupos">
+{grupos}
             </div>
-          </div>
-          <div class="feature-img elec-img photo" role="img" aria-label="Veículo elétrico em recarga"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MANUTENÇÃO INDUSTRIAL ============ -->
-    <section class="bg-gray" id="industrial">
-      <div class="container">
-        <h2 class="section-title">Manutenção industrial</h2>
-        <p class="section-intro">Laudos, consultoria e assessoria técnica para aumentar a disponibilidade e a segurança de máquinas, equipamentos e instalações industriais.</p>
-        <div class="ind-grid">
-          <div class="panel">
-            <div class="service-icon">{icon("clipboard")}</div>
-            <h3>Laudos</h3>
-            {checks([
-                "Laudos técnicos de máquinas e equipamentos industriais",
-                "Laudo NR-12 de máquinas fixas e linhas de produção",
-                "Laudo NR-13 de vasos de pressão, compressores e caldeiras",
-                "Laudos de condição e de análise de falhas",
-                "Laudos mecânicos e eletromecânicos com ART",
-            ])}
-          </div>
-          <div class="panel">
-            <div class="service-icon">{icon("chart")}</div>
-            <h3>Consultoria</h3>
-            {checks([
-                "Estruturação do plano de manutenção preventiva, preditiva e corretiva",
-                "Indicadores de manutenção: disponibilidade, MTBF, MTTR e backlog",
-                "Classificação de criticidade e gestão de ativos",
-                "Análise de causa raiz de falhas recorrentes",
-                "Gestão de sobressalentes e estoque de peças",
-            ])}
-          </div>
-          <div class="panel">
-            <div class="service-icon">{icon("search")}</div>
-            <h3>Assessoria técnica</h3>
-            {checks([
-                "Planejamento e acompanhamento de paradas programadas",
-                "Especificação técnica para compra de equipamentos e serviços",
-                "Avaliação técnica de propostas e fornecedores",
-                "Acompanhamento e fiscalização de serviços de terceiros",
-                "Suporte técnico em auditorias e fiscalizações",
-            ])}
           </div>
         </div>
       </div>
@@ -773,6 +641,206 @@ def pagina_inicial():
 {contato()}
   </main>
 """ + footer("")
+
+
+# ---------------------------------------------------------------- página de projetos
+LAUDOS = [
+    ("laudo-nr13", "gauge", "Laudo NR-13",
+     ["Vasos de pressão e compressores", "Autoclaves e caldeiras", "Inspeção de segurança com ART"],
+     ("laudo-nr13.html", "Saiba mais")),
+    ("laudos-mecanicos", "wrench", "Laudos mecânicos e eletromecânicos",
+     ["Avaliação técnica de equipamentos e componentes", "Laudos de condição e de análise de falhas", "Sistemas mecânicos e eletromecânicos, com ART"],
+     None),
+    ("refrigeracao", "snow", "Projetos e laudos de sistemas de refrigeração",
+     ["PMOC conforme a Lei 13.589/2018", "Projeto de instalação de ar-condicionado com cálculo de carga térmica", "Laudos técnicos de sistemas de climatização"],
+     ("pmoc.html", "PMOC")),
+    ("pareceres", "file", "Vistorias, pareceres e memoriais de cálculo",
+     ["Vistorias técnicas e pareceres", "Perícia em equipamentos e veículos", "Memoriais de cálculo estrutural e de içamento"],
+     None),
+]
+
+
+def painel(ancora, ic, titulo, itens, link=None, nota=""):
+    link_html = f'\n            <a class="link-arrow" href="{link[0]}">{link[1]}</a>' if link else ""
+    ancora_html = f' id="{ancora}"' if ancora else ""
+    return f"""          <div class="panel"{ancora_html}>
+            <div class="service-icon">{icon(ic)}</div>
+            <h3>{titulo}</h3>
+            {checks(itens)}{nota}{link_html}
+          </div>"""
+
+
+def pagina_projetos():
+    normas = "\n".join(f"          <li>{n}</li>" for n in NORMAS_NR12)
+    quando = """
+            <h4 class="destaque-sub">Quando o laudo é exigido</h4>
+            <ul class="destaque-tags">
+              <li>Mobilização em contratantes</li>
+              <li>Fiscalização do trabalho</li>
+              <li>Locação de equipamentos</li>
+              <li>Compra e venda</li>
+              <li>Auditorias e certificações</li>
+              <li>Modificações e acidentes</li>
+            </ul>"""
+    laudos = "\n".join(painel(a, ic, t, itens, link) for a, ic, t, itens, link in LAUDOS)
+    destaques = [
+        ("track", "Material rodante", "Avaliação de desgaste e especificação de esteiras, roletes, rodas-guia e sapatas conforme a aplicação."),
+        ("tire", "Pneus", "Especificação por aplicação e severidade da operação, com acompanhamento de desgaste, pressão e custo por hora ou quilômetro."),
+        ("filter", "Insumos de manutenção preventiva e corretiva", "Filtros, lubrificantes, graxas, fluidos e componentes de reposição adequados a cada plano de manutenção."),
+        ("fuel", "Eficiência energética de combustíveis", "Análise de consumo por hora trabalhada ou por quilômetro, comparação entre combustíveis e aditivos e identificação de perdas."),
+    ]
+    destaques_html = "\n".join(
+        f"""            <div class="highlight">{icon(ic)}<h4>{t}</h4><p>{d}</p></div>"""
+        for ic, t, d in destaques
+    )
+    subnav = "\n".join(f'        <a href="#{a}">{t}</a>' for a, t in PROJETOS_MENU)
+    faixa = foto("img/projetos.jpg", "img/servicos/consultoria-frotas.jpg")
+
+    return head(
+        "Projetos de Engenharia Mecânica | Laudo NR-12, Gestão de Frotas e Eletrificação",
+        "Laudos e projetos de engenharia mecânica, laudo NR-12 para equipamentos móveis, consultoria em gestão de frotas e ativos, eletrificação de frotas, manutenção industrial e indicação de serviços técnicos.",
+        com_formulario=True,
+    ) + header("index.html") + f"""
+  <main>
+    <section class="band page-hero" style="--band-img:url('{faixa}')">
+      <div class="container">
+        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Página inicial</a> / Projetos</nav>
+        <h1>Projetos</h1>
+        <p>Laudos, projetos, consultoria e treinamentos em engenharia mecânica para equipamentos móveis, frotas e instalações industriais.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="subnav" aria-label="Projetos">
+      <div class="container">
+{subnav}
+      </div>
+    </nav>
+
+    <!-- ============ LAUDOS E PROJETOS ============ -->
+    <section id="laudos-projetos">
+      <div class="container">
+        <h2 class="section-title">Laudos e projetos de Engenharia Mecânica</h2>
+        <p class="section-intro">Laudos técnicos, projetos e pareceres com ART registrada no CREA, para equipamentos móveis, máquinas e instalações.</p>
+        {destaque_nr12(NR12_ETAPAS, extra=quando)}
+        <h3 class="subhead">Normas aplicadas ao laudo NR-12</h3>
+        <ul class="chips">
+{normas}
+        </ul>
+        <div class="grid-2">
+{laudos}
+        </div>
+        <p class="svc-mais"><b>Outros serviços de engenharia mecânica:</b> {" · ".join(OUTROS)}.</p>
+      </div>
+    </section>
+
+    <!-- ============ GESTÃO DE FROTAS E ATIVOS ============ -->
+    <section class="bg-gray" id="gestao-frotas-ativos">
+      <div class="container">
+        <h2 class="section-title">Consultoria em gestão de frotas e ativos</h2>
+        <p class="section-intro">Apoio técnico a gestores de frotas e de manutenção industrial, com foco na disponibilidade dos equipamentos, na redução do custo de manutenção e na conformidade com a legislação.</p>
+        <div class="fleet-grid">
+{painel("", "presentation", "Consultoria para gestão de frotas", [
+    "Diagnóstico da gestão de manutenção: processos, indicadores e histórico de falhas",
+    "Planos de manutenção preventiva por equipamento, com base no horímetro ou na quilometragem e nas recomendações do fabricante",
+    "Indicadores: disponibilidade física, MTBF, MTTR, backlog e custo por hora trabalhada",
+    "Análise de falhas recorrentes e ações de confiabilidade",
+    "Rotinas de inspeção pré-uso e controle da documentação técnica (laudos NR-12, ARTs, manuais)",
+    "Preparação da frota para mobilização em grandes contratantes",
+])}
+{painel("treinamentos", "badge", "Treinamentos técnicos", [
+    "Gestão de manutenção de frotas: planejamento, controle e indicadores",
+    "NR-12 aplicada a equipamentos móveis: requisitos, inspeção e documentação",
+    "Inspeção pré-uso para operadores e mecânicos",
+    "Lubrificação e controle de contaminação",
+    "Confiabilidade e análise de falhas",
+], nota='''
+            <p class="note">Na empresa ou online, com conteúdo adaptado à frota e à operação. Certificado de participação.</p>''')}
+        </div>
+
+        <h3 class="subhead" id="manutencao-industrial">Manutenção industrial</h3>
+        <p class="section-intro">Laudos, consultoria e assessoria técnica para aumentar a disponibilidade e a segurança de máquinas, equipamentos e instalações industriais.</p>
+        <div class="ind-grid">
+{painel("", "clipboard", "Laudos", [
+    "Laudos técnicos de máquinas e equipamentos industriais",
+    "Laudo NR-12 de máquinas fixas e linhas de produção",
+    "Laudo NR-13 de vasos de pressão, compressores e caldeiras",
+    "Laudos de condição e de análise de falhas",
+])}
+{painel("", "chart", "Consultoria", [
+    "Plano de manutenção preventiva, preditiva e corretiva",
+    "Indicadores: disponibilidade, MTBF, MTTR e backlog",
+    "Criticidade e gestão de ativos",
+    "Análise de causa raiz de falhas recorrentes",
+    "Gestão de sobressalentes e estoque de peças",
+])}
+{painel("", "search", "Assessoria técnica", [
+    "Planejamento e acompanhamento de paradas programadas",
+    "Especificação técnica para compra de equipamentos e serviços",
+    "Avaliação técnica de propostas e fornecedores",
+    "Acompanhamento e fiscalização de serviços de terceiros",
+    "Suporte técnico em auditorias e fiscalizações",
+])}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ELETRIFICAÇÃO ============ -->
+    <section id="eletrificacao">
+      <div class="container">
+        <div class="feature">
+          <div>
+            <h2 class="section-title">Projeto de eletrificação de frota</h2>
+            <p class="section-intro">Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos. Metas de descarbonização, exigências de grandes contratantes e a variação do preço do diesel tornam a eletrificação uma decisão estratégica: a análise indica onde ela é viável e em quanto tempo o investimento retorna.</p>
+            {checks([
+                ("Diagnóstico da frota", "Perfil de uso, ciclos de trabalho, quilometragem ou horas trabalhadas, consumo de combustível e custo de manutenção por equipamento."),
+                ("Seleção dos candidatos", "Identificação dos veículos e equipamentos com maior potencial de eletrificação, conforme a operação e a disponibilidade de modelos no mercado."),
+                ("Autonomia e ciclo de operação", "Compatibilidade entre a autonomia das baterias, os turnos de trabalho e as rotas."),
+                ("Infraestrutura de recarga", "Levantamento da demanda de energia e do tipo, da quantidade e da localização dos carregadores, como base para o projeto elétrico."),
+                ("Custo total de propriedade (TCO)", "Comparativo entre aquisição, energia e combustível, manutenção, vida útil das baterias e valor residual, com cálculo do retorno do investimento."),
+                ("Emissões e ESG", "Estimativa da redução de emissões de CO₂ e indicadores para relatórios de sustentabilidade."),
+            ])}
+            <p class="note"><b>Entregável:</b> relatório de viabilidade técnico-econômica, com recomendação por grupo de equipamentos e plano de transição em etapas.</p>
+            <div class="feature-actions">
+              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+            </div>
+          </div>
+          <div class="feature-img elec-img photo" role="img" aria-label="Veículo elétrico em recarga"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INDICAÇÃO DE SERVIÇOS TÉCNICOS ============ -->
+    <section class="bg-gray" id="indicacao">
+      <div class="container">
+        <h2 class="section-title">Indicação de serviços técnicos</h2>
+        <p class="section-intro">Indicação técnica dos insumos e serviços mais adequados a cada equipamento e condição de operação. <strong>Recomendação independente, sem vínculo com fabricantes ou fornecedores.</strong></p>
+        <div class="highlight-grid highlight-4">
+{destaques_html}
+        </div>
+        <div class="kv">
+          <p><b>Serviços especializados:</b> indicação de serviços de manutenção, reforma de componentes e análises laboratoriais adequados a cada caso.</p>
+          <p><b>Também avaliados:</b> peças de desgaste e ferramentas de penetração no solo (dentes, lâminas e bordas cortantes).</p>
+          <p><b>Critérios:</b> aplicação e severidade da operação, recomendações do fabricante, histórico de falhas, análise de óleo e custo por hora trabalhada.</p>
+          <p><b>Entregável:</b> relatório de especificação com as recomendações por equipamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERGUNTAS FREQUENTES ============ -->
+    <section class="center" id="duvidas">
+      <div class="container">
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <div class="faq">
+{faq(FAQ_PROJETOS)}
+        </div>
+      </div>
+    </section>
+{contato()}
+  </main>
+""" + footer("index.html")
 
 
 # ---------------------------------------------------------------- páginas de serviço
@@ -1030,7 +1098,7 @@ def pagina_privacidade():
 
 
 def main():
-    paginas = {"index.html": pagina_inicial(), "obrigado.html": pagina_obrigado(),
+    paginas = {"index.html": pagina_inicial(), "projetos.html": pagina_projetos(), "obrigado.html": pagina_obrigado(),
                "politica-de-privacidade.html": pagina_privacidade()}
     for p in PAGINAS:
         paginas[p["arquivo"]] = pagina_servico(p)

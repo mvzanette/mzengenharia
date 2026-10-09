@@ -50,7 +50,16 @@
     <nav class="nav" id="menu" aria-label="Principal">
       <div class="container">
         <a href="#top">Página inicial</a>
-        <a href="#projetos">Projetos</a>
+        <div class="nav-drop">
+          <a class="nav-drop-link" href="projetos.html">Projetos</a>
+          <div class="nav-sub">
+            <a href="projetos.html#laudos-projetos">Laudos e projetos de Engenharia Mecânica</a>
+            <a href="projetos.html#gestao-frotas-ativos">Consultoria em gestão de frotas e ativos</a>
+            <a href="projetos.html#eletrificacao">Projeto de eletrificação de frota</a>
+            <a href="projetos.html#indicacao">Indicação de serviços técnicos</a>
+            <a class="nav-sub-todos" href="projetos.html">Todos os projetos</a>
+          </div>
+        </div>
         <a href="#equipamentos">Equipamentos atendidos</a>
         <a href="#perfil">Sobre o profissional</a>
         <a class="btn btn-primary" href="#contato">Contato</a>
@@ -63,11 +72,11 @@
     <!-- ============ TOPO ============ -->
     <section class="band hero" id="inicio" style="--band-img:url('img/hero.jpg')">
       <div class="container">
-        <h1>Soluções em engenharia mecânica</h1>
-        <p class="band-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
+        <h1>Soluções em Engenharia Mecânica</h1>
+        <p class="band-lead">Soluções especializadas em engenharia mecânica para ativos, equipamentos móveis e instalações industriais, com foco em segurança, confiabilidade e desempenho operacional.</p>
+        <p class="band-lead">Atuamos na elaboração de laudos técnicos, planos de manutenção, inspeções, consultoria em engenharia e treinamentos técnicos, atendendo equipamentos de linha amarela, caminhões, veículos leves e de apoio.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
-          <a class="btn btn-outline" href="#nr12">Laudo NR-12</a>
         </div>
       </div>
     </section>
@@ -88,330 +97,106 @@
       </div>
     </section>
 
-    <!-- ============ LAUDO NR-12 ============ -->
-    <section id="nr12">
+    <!-- ============ PROJETOS (resumo; o detalhamento fica em projetos.html) ============ -->
+    <section id="projetos">
       <div class="container">
-        <div class="feature">
-          <div class="feature-img photo" role="img" aria-label="Equipamento de linha amarela em operação"></div>
-          <div>
-            <h2 class="section-title">Laudo NR-12 para equipamentos móveis</h2>
-            <p class="section-intro">Avaliação técnica de conformidade com a NR-12 para equipamentos de linha amarela, caminhões e implementos, com apreciação de riscos, matriz de conformidade e ART registrada no CREA. Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-intro">Laudos, projetos, consultoria e treinamentos em engenharia mecânica, com foco na segurança e na conformidade legal de equipamentos, frotas e instalações.</p>
+        <article class="destaque" id="laudo-nr12">
+          <div class="destaque-img photo" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela em operação"></div>
+          <div class="destaque-corpo">
+            <span class="selo">Destaque</span>
+            <h3>Laudo NR-12 para equipamentos móveis</h3>
+            <p>Avaliação técnica de conformidade com a NR-12 para equipamentos de linha amarela, caminhões e implementos, com apreciação de riscos, matriz de conformidade e ART registrada no CREA. Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
             <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Inspeção em campo</strong><span>Checklist do equipamento e teste de funcionamento, com simulação de paradas e emergências.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Apreciação de riscos</strong><span>Identificação dos perigos e cálculo HRN, com categoria de segurança e PLr quando aplicável.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Matriz de conformidade NR-12</strong><span>Verificação item a item dos requisitos aplicáveis ao equipamento.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Recomendações técnicas</strong><span>Medidas de adequação em ordem de prioridade, incluindo as recomendações do fabricante.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Laudo com ART</strong><span>Relatório com registro fotográfico, conclusão técnica e ART registrada no CREA.</span></div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Inspeção em campo e teste de funcionamento</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Apreciação de riscos com cálculo HRN</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Matriz de conformidade item a item</div></li>
+          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudo com registro fotográfico e ART</div></li>
         </ul>
             <div class="feature-actions">
               <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
-              <a class="link-arrow" href="laudo-nr12.html">Detalhes do laudo NR-12</a>
+              <a class="link-arrow" href="laudo-nr12.html">Conheça o laudo NR-12</a>
             </div>
           </div>
+        </article>
+        <div class="svc-grid">
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/consultoria-frotas.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Consultoria para gestão de frotas</h3>
+              <p>Planos de manutenção, indicadores, especificação de insumos e treinamentos para frotas de linha amarela e caminhões.</p>
+              <a class="link-arrow" href="projetos.html#gestao-frotas-ativos">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/eletrificacao.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Eletrificação de frotas</h3>
+              <p>Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos para modelos elétricos ou híbridos.</p>
+              <a class="link-arrow" href="projetos.html#eletrificacao">Saiba mais</a>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img" style="--photo:url('img/servicos/manutencao-industrial.jpg') center / cover no-repeat">
+              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <h3>Manutenção industrial</h3>
+              <p>Laudos, consultoria e assessoria técnica para máquinas, equipamentos e instalações industriais.</p>
+              <a class="link-arrow" href="projetos.html#manutencao-industrial">Saiba mais</a>
+            </div>
+          </article>
         </div>
-
-        <h3 class="subhead">Quando o laudo é exigido</h3>
-        <div class="req-grid">
-          <div class="req"><h3>Mobilização em contratantes</h3><p>Liberação de equipamentos em operações de mineração, portos e óleo e gás.</p></div>
-          <div class="req"><h3>Fiscalização do trabalho</h3><p>Comprovação da conformidade com a NR-12 perante a auditoria fiscal.</p></div>
-          <div class="req"><h3>Locação de equipamentos</h3><p>Documentação técnica exigida por locadoras e locatários.</p></div>
-          <div class="req"><h3>Compra e venda</h3><p>Avaliação das condições de segurança na aquisição ou venda de equipamentos.</p></div>
-          <div class="req"><h3>Auditorias e certificações</h3><p>Evidência técnica para auditorias de clientes e sistemas de gestão.</p></div>
-          <div class="req"><h3>Modificações e acidentes</h3><p>Reavaliação após alterações, mudança de aplicação ou ocorrências.</p></div>
+        <div class="proj-mais">
+          <p><b>Também:</b> <a href="laudo-nr13.html">Laudo NR-13</a> · <a href="projetos.html#refrigeracao">Projetos e laudos de sistemas de refrigeração</a> · <a href="projetos.html#treinamentos">Treinamentos técnicos</a> · <a href="projetos.html#indicacao">Indicação de serviços técnicos</a></p>
+          <a class="btn btn-dark" href="projetos.html">Ver todos os projetos</a>
         </div>
-
-        <h3 class="subhead">Normas aplicadas</h3>
-        <ul class="chips">
-          <li>NR-12</li>
-          <li>NR-11</li>
-          <li>NR-22</li>
-          <li>NR-29</li>
-          <li>ABNT NBR ISO 12100</li>
-          <li>ISO/TR 14121-2</li>
-          <li>ABNT NBR 14153</li>
-          <li>ABNT NBR ISO 13849-1</li>
-          <li>ABNT NBR ISO 13850</li>
-          <li>ABNT NBR ISO 14118</li>
-          <li>ABNT NBR ISO 14119</li>
-          <li>ABNT NBR ISO 20474</li>
-        </ul>
       </div>
     </section>
 
     <!-- ============ EQUIPAMENTOS ============ -->
     <section class="bg-gray" id="equipamentos">
       <div class="container">
-        <h2 class="section-title">Equipamentos atendidos</h2>
-        <p class="section-intro">Laudos, inspeções e gestão de manutenção para equipamentos de linha amarela, caminhões linha diesel e veículos de apoio.</p>
-        <div class="equip-grid">
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/escavadeira.jpg') center / cover no-repeat" role="img" aria-label="Escavadeira hidráulica"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Escavadeira hidráulica</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/pa-carregadeira.jpg') center / cover no-repeat" role="img" aria-label="Pá carregadeira"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Pá carregadeira</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/trator-esteiras.jpg') center / cover no-repeat" role="img" aria-label="Trator de esteiras"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Trator de esteiras</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/motoniveladora.jpg') center / cover no-repeat" role="img" aria-label="Motoniveladora"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Motoniveladora</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/rolo-compactador.jpg') center / cover no-repeat" role="img" aria-label="Rolo compactador"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Rolo compactador</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/retroescavadeira.jpg') center / cover no-repeat" role="img" aria-label="Retroescavadeira"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Retroescavadeira</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/minicarregadeira.jpg') center / cover no-repeat" role="img" aria-label="Minicarregadeira"></div>
-            <figcaption><span class="equip-tag">Linha amarela</span><span class="equip-name">Minicarregadeira</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-munck.jpg') center / cover no-repeat" role="img" aria-label="Caminhão munck"></div>
-            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão munck</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-basculante.jpg') center / cover no-repeat" role="img" aria-label="Caminhão basculante"></div>
-            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão basculante</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-pipa.jpg') center / cover no-repeat" role="img" aria-label="Caminhão pipa"></div>
-            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão pipa</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/caminhao-comboio.jpg') center / cover no-repeat" role="img" aria-label="Caminhão comboio"></div>
-            <figcaption><span class="equip-tag">Linha diesel</span><span class="equip-name">Caminhão comboio</span></figcaption>
-          </figure>
-          <figure class="equip">
-            <div class="equip-img" style="--photo:url('img/equipamentos/veiculos-apoio.jpg') center / cover no-repeat" role="img" aria-label="Veículos leves e de apoio"></div>
-            <figcaption><span class="equip-tag">Apoio</span><span class="equip-name">Veículos leves e de apoio</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROJETOS ============ -->
-    <section id="projetos">
-      <div class="container">
-        <h2 class="section-title">Projetos</h2>
-        <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
-        <div class="svc-grid">
-          <article class="svc" id="conformidade">
-            <div class="svc-img" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Análise e laudo de conformidade</h3>
-              <p>Avaliação técnica da conformidade de máquinas e equipamentos com as normas regulamentadoras, com ART registrada no CREA.</p>
-              <ul class="svc-itens">
-                <li>Laudo NR-12 de equipamentos móveis e máquinas industriais</li>
-                <li>Laudo NR-13 de vasos de pressão, compressores e caldeiras</li>
-                <li>Laudos mecânicos e eletromecânicos</li>
-                <li>Vistorias e pareceres técnicos</li>
-              </ul>
-              <a class="link-arrow" href="laudo-nr12.html">Laudo NR-12</a>
-            </div>
-          </article>
-          <article class="svc" id="refrigeracao">
-            <div class="svc-img" style="--photo:url('img/servicos/refrigeracao.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M4.93 19.07 19.07 4.93"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Projetos e laudos de sistemas de refrigeração</h3>
-              <p>Projeto, manutenção e conformidade legal de sistemas de climatização e refrigeração.</p>
-              <ul class="svc-itens">
-                <li>PMOC conforme a Lei 13.589/2018</li>
-                <li>Projeto de instalação de ar-condicionado com cálculo de carga térmica</li>
-                <li>Laudos técnicos de sistemas de climatização</li>
-                <li>ART de projeto, instalação e manutenção</li>
-              </ul>
-              <a class="link-arrow" href="pmoc.html">PMOC</a>
-            </div>
-          </article>
-          <article class="svc" id="treinamentos">
-            <div class="svc-img" style="--photo:url('img/servicos/treinamentos.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Treinamentos técnicos</h3>
-              <p>Capacitação de gestores, mecânicos e operadores, na empresa ou online, com conteúdo adaptado à operação e certificado de participação.</p>
-              <ul class="svc-itens">
-                <li>Gestão de manutenção de frotas</li>
-                <li>NR-12 aplicada a equipamentos móveis</li>
-                <li>Inspeção pré-uso para operadores e mecânicos</li>
-                <li>Lubrificação, confiabilidade e análise de falhas</li>
-              </ul>
-              <a class="link-arrow" href="#frotas">Saiba mais</a>
-            </div>
-          </article>
-          <article class="svc" id="gestao-ativos">
-            <div class="svc-img" style="--photo:url('img/servicos/consultoria-frotas.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Consultoria em gestão de ativos</h3>
-              <p>Estruturação e acompanhamento da manutenção de frotas e instalações industriais, com foco em disponibilidade, custo e conformidade.</p>
-              <ul class="svc-itens">
-                <li>Planos de manutenção preventiva por equipamento</li>
-                <li>Indicadores: disponibilidade, MTBF, MTTR e custo por hora</li>
-                <li>Criticidade de ativos e análise de falhas recorrentes</li>
-                <li>Gestão da manutenção de frotas e plantas industriais</li>
-              </ul>
-              <a class="link-arrow" href="#frotas">Saiba mais</a>
-            </div>
-          </article>
-          <article class="svc" id="eletrificacao-frota">
-            <div class="svc-img" style="--photo:url('img/servicos/eletrificacao.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Eletrificação de frota</h3>
-              <p>Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos.</p>
-              <ul class="svc-itens">
-                <li>Diagnóstico da frota e seleção dos candidatos</li>
-                <li>Autonomia, ciclo de operação e infraestrutura de recarga</li>
-                <li>Custo total de propriedade (TCO) e retorno do investimento</li>
-                <li>Redução de emissões e indicadores ESG</li>
-              </ul>
-              <a class="link-arrow" href="#eletrificacao">Saiba mais</a>
-            </div>
-          </article>
-          <article class="svc" id="indicacao">
-            <div class="svc-img" style="--photo:url('img/servicos/insumos.jpg') center / cover no-repeat">
-              <span class="svc-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-            </div>
-            <div class="svc-body">
-              <h3>Indicação de serviços técnicos</h3>
-              <p>Indicação técnica e independente dos insumos e serviços mais adequados a cada equipamento e aplicação, sem vínculo com fabricantes ou fornecedores.</p>
-              <ul class="svc-itens">
-                <li>Material rodante, pneus e peças de desgaste</li>
-                <li>Lubrificantes, filtros e insumos de manutenção</li>
-                <li>Eficiência energética de combustíveis</li>
-                <li>Serviços especializados de manutenção e reforma</li>
-              </ul>
-              <a class="link-arrow" href="#frotas">Saiba mais</a>
-            </div>
-          </article>
-        </div>
-        <p class="svc-mais"><b>Outros serviços de engenharia mecânica:</b> Instalações de gás · Sistemas de combate a incêndio · Estruturas para eventos · Equipamentos de elevação e içamento · Veículos, reboques e food trucks · Projetos e memoriais de cálculo · Parecer técnico e perícia.</p>
-      </div>
-    </section>
-
-    <!-- ============ GESTÃO DE FROTAS ============ -->
-    <section class="bg-gray" id="frotas">
-      <div class="container">
-        <h2 class="section-title">Consultoria para gestão de frotas</h2>
-        <p class="section-intro">Apoio técnico a gestores de frotas de linha amarela e caminhões linha diesel, com foco na disponibilidade dos equipamentos, na redução do custo de manutenção e na conformidade com a legislação.</p>
-        <div class="fleet-grid">
-          <div class="panel">
-            <h3>Consultoria e treinamento</h3>
-            <h4>Consultoria</h4>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Diagnóstico da gestão de manutenção: processos, indicadores e histórico de falhas</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Estruturação de planos de manutenção preventiva por equipamento, com base no horímetro ou na quilometragem e nas recomendações do fabricante</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Definição e acompanhamento de indicadores: disponibilidade física, MTBF, MTTR, backlog e custo por hora trabalhada</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Análise de falhas recorrentes e ações de confiabilidade</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Rotinas de inspeção pré-uso e controle da documentação técnica (laudos NR-12, ARTs, manuais)</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Preparação da frota para mobilização em grandes contratantes</div></li>
-        </ul>
-            <h4>Treinamento</h4>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gestão de manutenção de frotas: planejamento, controle e indicadores</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>NR-12 aplicada a equipamentos móveis: requisitos, inspeção e documentação</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Inspeção pré-uso para operadores e mecânicos</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Lubrificação e controle de contaminação</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Confiabilidade e análise de falhas</div></li>
-        </ul>
-            <p class="note">Na empresa ou online, com conteúdo adaptado à frota e à operação. Certificado de participação.</p>
-          </div>
-          <div class="panel">
-            <h3>Especificação de insumos</h3>
-            <p>Indicação técnica dos insumos mais adequados para cada equipamento e condição de operação. <strong>Recomendação independente, sem vínculo com fabricantes ou fornecedores.</strong></p>
-            <div class="highlight-grid">
-            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg><h4>Material rodante</h4><p>Avaliação de desgaste e especificação de esteiras, roletes, rodas-guia e sapatas conforme a aplicação.</p></div>
-            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg><h4>Pneus</h4><p>Especificação por aplicação e severidade da operação, com acompanhamento de desgaste, pressão e custo por hora ou quilômetro.</p></div>
-            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg><h4>Insumos de manutenção preventiva e corretiva</h4><p>Filtros, lubrificantes, graxas, fluidos e componentes de reposição adequados a cada plano de manutenção.</p></div>
-            <div class="highlight"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M2 22h14"/><path d="M15 9h2a2 2 0 0 1 2 2v6a2 2 0 0 0 4 0V8l-3-3"/><path d="M7 7h4"/></svg><h4>Eficiência energética de combustíveis</h4><p>Análise de consumo por hora trabalhada ou por quilômetro, comparação entre combustíveis e aditivos e identificação de perdas.</p></div>
-            </div>
-            <div class="kv">
-              <p><b>Também avaliados:</b> peças de desgaste e ferramentas de penetração no solo (dentes, lâminas e bordas cortantes).</p>
-              <p><b>Critérios:</b> aplicação e severidade da operação, recomendações do fabricante, histórico de falhas, análise de óleo e custo por hora trabalhada.</p>
-              <p><b>Entregável:</b> relatório de especificação com as recomendações por equipamento.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ ELETRIFICAÇÃO ============ -->
-    <section id="eletrificacao">
-      <div class="container">
-        <div class="feature">
+        <div class="equip-layout">
+          <div class="equip-foto photo" style="--photo:url('img/servicos/insumos.jpg') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela"></div>
           <div>
-            <h2 class="section-title">Eletrificação de frotas</h2>
-            <p class="section-intro">Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos. Metas de descarbonização, exigências de grandes contratantes e a variação do preço do diesel tornam a eletrificação uma decisão estratégica: a análise indica onde ela é viável e em quanto tempo o investimento retorna.</p>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Diagnóstico da frota</strong><span>Perfil de uso, ciclos de trabalho, quilometragem ou horas trabalhadas, consumo de combustível e custo de manutenção por equipamento.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Seleção dos candidatos</strong><span>Identificação dos veículos e equipamentos com maior potencial de eletrificação, conforme a operação e a disponibilidade de modelos no mercado.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Autonomia e ciclo de operação</strong><span>Compatibilidade entre a autonomia das baterias, os turnos de trabalho e as rotas.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Infraestrutura de recarga</strong><span>Levantamento da demanda de energia e do tipo, da quantidade e da localização dos carregadores, como base para o projeto elétrico.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Custo total de propriedade (TCO)</strong><span>Comparativo entre aquisição, energia e combustível, manutenção, vida útil das baterias e valor residual, com cálculo do retorno do investimento.</span></div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div><strong>Emissões e ESG</strong><span>Estimativa da redução de emissões de CO₂ e indicadores para relatórios de sustentabilidade.</span></div></li>
-        </ul>
-            <p class="note"><b>Entregável:</b> relatório de viabilidade técnico-econômica, com recomendação por grupo de equipamentos e plano de transição em etapas.</p>
-            <div class="feature-actions">
-              <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+            <h2 class="section-title">Equipamentos atendidos</h2>
+            <p class="section-intro">Laudos, inspeções, planos de manutenção e consultoria para equipamentos móveis, caminhões e veículos de apoio.</p>
+            <div class="equip-grupos">
+            <div class="equip-grupo">
+              <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg>Linha amarela</h3>
+              <ul>
+                <li>Escavadeira hidráulica</li>
+                <li>Pá carregadeira</li>
+                <li>Trator de esteiras</li>
+                <li>Motoniveladora</li>
+                <li>Rolo compactador</li>
+                <li>Retroescavadeira</li>
+                <li>Minicarregadeira</li>
+              </ul>
             </div>
-          </div>
-          <div class="feature-img elec-img photo" role="img" aria-label="Veículo elétrico em recarga"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MANUTENÇÃO INDUSTRIAL ============ -->
-    <section class="bg-gray" id="industrial">
-      <div class="container">
-        <h2 class="section-title">Manutenção industrial</h2>
-        <p class="section-intro">Laudos, consultoria e assessoria técnica para aumentar a disponibilidade e a segurança de máquinas, equipamentos e instalações industriais.</p>
-        <div class="ind-grid">
-          <div class="panel">
-            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
-            <h3>Laudos</h3>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos técnicos de máquinas e equipamentos industriais</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudo NR-12 de máquinas fixas e linhas de produção</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudo NR-13 de vasos de pressão, compressores e caldeiras</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos de condição e de análise de falhas</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Laudos mecânicos e eletromecânicos com ART</div></li>
-        </ul>
-          </div>
-          <div class="panel">
-            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-            <h3>Consultoria</h3>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Estruturação do plano de manutenção preventiva, preditiva e corretiva</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Indicadores de manutenção: disponibilidade, MTBF, MTTR e backlog</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Classificação de criticidade e gestão de ativos</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Análise de causa raiz de falhas recorrentes</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gestão de sobressalentes e estoque de peças</div></li>
-        </ul>
-          </div>
-          <div class="panel">
-            <div class="service-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-            <h3>Assessoria técnica</h3>
-            <ul class="checks">
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Planejamento e acompanhamento de paradas programadas</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especificação técnica para compra de equipamentos e serviços</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Avaliação técnica de propostas e fornecedores</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Acompanhamento e fiscalização de serviços de terceiros</div></li>
-          <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Suporte técnico em auditorias e fiscalizações</div></li>
-        </ul>
+            <div class="equip-grupo">
+              <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>Caminhões linha diesel</h3>
+              <ul>
+                <li>Caminhão munck</li>
+                <li>Caminhão basculante</li>
+                <li>Caminhão pipa</li>
+                <li>Caminhão comboio</li>
+              </ul>
+            </div>
+            <div class="equip-grupo">
+              <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>Veículos leves e de apoio</h3>
+              <ul>
+                <li>Picapes e utilitários</li>
+                <li>Veículos de apoio operacional</li>
+              </ul>
+            </div>
+            </div>
           </div>
         </div>
       </div>
@@ -499,22 +284,6 @@
           <details>
             <summary>O que é ART?</summary>
             <p>A Anotação de Responsabilidade Técnica, instituída pela Lei 6.496/1977, é o registro no CREA que identifica o profissional responsável por um serviço de engenharia, como laudo, projeto, vistoria ou plano de manutenção.</p>
-          </details>
-          <details>
-            <summary>A consultoria atende frotas de qualquer porte?</summary>
-            <p>Sim. O escopo é definido de acordo com o tamanho da frota, os tipos de equipamento e os objetivos da operação.</p>
-          </details>
-          <details>
-            <summary>O treinamento pode ser realizado na empresa?</summary>
-            <p>Sim. Os treinamentos são realizados na empresa ou online, com conteúdo adaptado à frota e à operação, e emissão de certificado de participação.</p>
-          </details>
-          <details>
-            <summary>A análise de eletrificação inclui o projeto elétrico da recarga?</summary>
-            <p>A análise dimensiona a demanda de energia e a infraestrutura de recarga necessária e serve de base para o projeto elétrico, que é elaborado por profissional habilitado em engenharia elétrica.</p>
-          </details>
-          <details>
-            <summary>Quais serviços de manutenção industrial são atendidos?</summary>
-            <p>Laudos técnicos de máquinas e equipamentos, consultoria para estruturação e gestão da manutenção e assessoria técnica em paradas programadas, especificações, contratação e acompanhamento de serviços.</p>
           </details>
           <details>
             <summary>Como é definido o valor do serviço?</summary>
@@ -703,10 +472,10 @@
         <div>
           <h3>Projetos</h3>
           <ul>
-            <li><a href="#conformidade">Laudos e projetos de engenharia mecânica</a></li>
-            <li><a href="#gestao-ativos">Consultoria em gestão de frotas e ativos</a></li>
-            <li><a href="#eletrificacao-frota">Projeto de eletrificação de frota</a></li>
-            <li><a href="#indicacao">Indicação de serviços técnicos</a></li>
+            <li><a href="projetos.html#laudos-projetos">Laudos e projetos de Engenharia Mecânica</a></li>
+            <li><a href="projetos.html#gestao-frotas-ativos">Consultoria em gestão de frotas e ativos</a></li>
+            <li><a href="projetos.html#eletrificacao">Projeto de eletrificação de frota</a></li>
+            <li><a href="projetos.html#indicacao">Indicação de serviços técnicos</a></li>
           </ul>
         </div>
         <div>

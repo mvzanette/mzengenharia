@@ -10,7 +10,7 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | --- | --- |
 | `config.js` | **Dados de contato** (e-mail, WhatsApp, CREA). Edite só este arquivo para trocar contatos. |
 | `ferramentas/gerar_site.py` | **Todos os textos das páginas.** Gera os arquivos `.html` (ver "Alterar textos"). |
-| `index.html`, `laudo-nr12.html`, `laudo-nr13.html`, `pmoc.html`, `obrigado.html`, `politica-de-privacidade.html` | Páginas geradas pelo script acima. Não edite à mão. |
+| `index.html`, `projetos.html`, `laudo-nr12.html`, `laudo-nr13.html`, `pmoc.html`, `obrigado.html`, `politica-de-privacidade.html` | Páginas geradas pelo script acima. Não edite à mão. |
 | `tos-mecanica.js` | Tabela de Obras e Serviços (TOS) do CREA, área 16 (Mecânica), usada no formulário. |
 | `styles.css` | Visual do site (fundo branco, grafite e amarelo industrial). |
 | `main.js` | Menu do celular e formulário. Não precisa mexer. |
@@ -26,11 +26,12 @@ Enquanto uma foto não existir, o site mostra um espaço reservado com um ícone
 | Arquivo | Onde aparece | Formato ideal |
 | --- | --- | --- |
 | `img/hero.jpg` | Faixa do topo da página inicial, à direita (o texto fica sobre o fundo preto, à esquerda) | Horizontal, 1600 px ou mais |
-| `img/nr12.jpg` | Seção "Laudo NR-12 para equipamentos móveis" | Vertical ou quadrada |
-| `img/eletrificacao.jpg` | Seção "Eletrificação de frotas" | Vertical ou quadrada |
+| `img/eletrificacao.jpg` | Seção "Projeto de eletrificação de frota" da página Projetos | Vertical ou quadrada |
 | `img/perfil.jpg` | Card "Sobre o profissional" | Vertical ou quadrada |
-| `img/equipamentos/escavadeira.jpg`, `pa-carregadeira.jpg`, `trator-esteiras.jpg`, `motoniveladora.jpg`, `rolo-compactador.jpg`, `retroescavadeira.jpg`, `minicarregadeira.jpg`, `caminhao-munck.jpg`, `caminhao-basculante.jpg`, `caminhao-pipa.jpg`, `caminhao-comboio.jpg`, `veiculos-apoio.jpg` | Grade "Equipamentos atendidos" | Horizontal (4:3) |
-| `img/servicos/laudo-nr12.jpg`, `refrigeracao.jpg`, `treinamentos.jpg`, `consultoria-frotas.jpg`, `eletrificacao.jpg`, `insumos.jpg` | Cards de "Projetos", nesta ordem: Análise e laudo de conformidade, Projetos e laudos de sistemas de refrigeração, Treinamentos técnicos, Consultoria em gestão de ativos, Eletrificação de frota e Indicação de serviços técnicos | Horizontal (16:10) |
+| `img/equipamentos.jpg` | Foto ao lado da lista "Equipamentos atendidos" (enquanto não existir, usa `img/servicos/insumos.jpg`) | Vertical ou quadrada |
+| `img/projetos.jpg` | Faixa do topo da página Projetos (enquanto não existir, usa `img/servicos/consultoria-frotas.jpg`) | Horizontal, 1600 px ou mais |
+| `img/servicos/laudo-nr12.jpg` | Destaque do Laudo NR-12 (página inicial e página Projetos) | Horizontal ou quadrada |
+| `img/servicos/consultoria-frotas.jpg`, `eletrificacao.jpg`, `manutencao-industrial.jpg` | Cards de "Projetos" na página inicial: Consultoria para gestão de frotas, Eletrificação de frotas e Manutenção industrial | Horizontal (16:10) |
 | `img/servicos/laudo-nr12.jpg`, `laudo-nr13.jpg`, `pmoc.jpg` | Faixa do topo das páginas Laudo NR-12, Laudo NR-13 e PMOC (gere as páginas de novo depois de incluir a foto) | Horizontal, 1600 px ou mais |
 
 Use apenas fotos com direito de uso (próprias, com autorização, ou de bancos de imagem com licença comercial), de preferência sem logos de fabricantes ou placas em destaque.
