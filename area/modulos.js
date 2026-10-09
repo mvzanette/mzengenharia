@@ -15,15 +15,15 @@ export const MODULOS = [
   {
     id: "financeiro",
     titulo: "Controle financeiro",
-    descricao: "Recebimentos, despesas e resultado dos serviços.",
-    pagina: null,
+    descricao: "Receitas, despesas, valores a receber e em atraso, resumo mensal e exportação em planilha.",
+    pagina: "financeiro.html",
     icone: svg('<rect x="2" y="5" width="20" height="14" rx="1"/><path d="M2 10h20"/><path d="M6 15h4"/>'),
   },
   {
     id: "demandas",
     titulo: "Controle de demandas",
-    descricao: "Solicitações de clientes, propostas e andamento dos serviços.",
-    pagina: null,
+    descricao: "Solicitações de clientes, propostas, etapas, prazos e lembretes de cada serviço.",
+    pagina: "demandas.html",
     icone: svg('<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/>'),
   },
 ];

@@ -17,7 +17,7 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `img/` | Fotos do site (ver "Fotos"). |
 | `area-restrita.html`, `area/` | **Área restrita**: login, painel de recursos e Controle de ART (ver seção própria abaixo). |
 | `supabase/schema.sql` | Estrutura do banco de dados da área restrita. |
-| `ferramentas/alertas-art.mjs`, `.github/workflows/alertas-art.yml` | Rotina diária que envia os alertas de ART por e-mail. |
+| `ferramentas/alertas-art.mjs`, `.github/workflows/alertas-art.yml` | Rotina diária que envia por e-mail os alertas de ART, os prazos das demandas e os recebimentos em atraso. |
 
 ## Fotos
 
@@ -106,7 +106,7 @@ Endereço: `area-restrita.html` (link discreto no rodapé do site; não aparece 
 ## Como funciona
 
 1. **Login** (`area-restrita.html`): usuário (e-mail) e senha. Tem "Esqueci a senha", que envia um link para criar uma senha nova.
-2. **Painel** (`area/index.html`): página inicial da área, com um card para cada recurso. O Controle de ART mostra ali mesmo quantos alertas estão pendentes.
+2. **Painel gerencial** (`area/index.html`): página inicial da área, com os indicadores (ver abaixo), o gráfico mensal, as listas de prazos e um card para cada recurso.
 3. **Menu** no alto de todas as páginas da área, com os mesmos recursos, "Voltar ao site" e **Sair**.
 4. Qualquer página da área aberta sem login volta para a tela de login e, depois de entrar, retorna para a página pedida.
 
@@ -114,11 +114,36 @@ Recursos:
 
 | Recurso | Página | Situação |
 | --- | --- | --- |
-| Controle de ART | `area/art.html` | Pronto (detalhes abaixo) |
-| Controle financeiro | — | Em breve |
-| Controle de demandas | — | Em breve |
+| Controle de ART | `area/art.html` | Pronto |
+| Controle financeiro | `area/financeiro.html` | Pronto |
+| Controle de demandas | `area/demandas.html` | Pronto |
 
-**Para incluir um recurso novo:** acrescente um item em `area/modulos.js` e crie a página na pasta `area/` (use `area/art.html` como modelo: o cabeçalho, o menu e o login vêm de `area/sessao.js`).
+**Para incluir um recurso novo:** acrescente um item em `area/modulos.js` e crie a página na pasta `area/` (use `area/financeiro.html` como modelo: o cabeçalho, o menu e o login vêm de `area/sessao.js`).
+
+## Painel gerencial
+
+Escolha o período no alto (este ano, este mês, últimos 12 meses, ano anterior ou todo o período). Cada indicador leva ao recurso correspondente.
+
+- **ARTs:** ativas, próximas do vencimento (fim previsto nos próximos 45 dias), vencidas sem baixa e alertas pendentes.
+- **Financeiro:** lucro líquido (com a margem), total recebido, gastos totais, a receber, em atraso e ticket médio. Os valores do período seguem o regime de caixa: contam a data em que o dinheiro foi recebido ou pago.
+- **Demandas:** em aberto, propostas aguardando resposta (com o valor), taxa de aprovação das propostas, carteira aprovada (aprovadas e em execução) e prazos vencidos.
+- **Gráfico** do recebido e do gasto por mês (com "Ver em tabela"), **receita por tipo de serviço** e listas de ARTs a vencer, prazos das demandas e recebimentos em atraso.
+
+## Controle financeiro
+
+- **Receitas e despesas** com categoria, cliente ou fornecedor, valor, data do serviço, vencimento, data de recebimento/pagamento e forma de pagamento.
+- **Ligação com a ART e com a demanda:** ao escolher a ART, a receita puxa o cliente e o valor do contrato; a despesa "Taxa de ART" puxa a taxa. Dentro de cada ART e de cada demanda há botões para lançar a receita ou a taxa direto.
+- **Situação automática:** recebido/pago, a receber/a pagar e atrasado (vencimento passado sem recebimento).
+- **Resumo mensal** (recebido, gastos e resultado de cada mês) e **exportação em planilha**.
+- Valores podem ser digitados como `2.800`, `2.800,50` ou `2800`.
+
+## Controle de demandas
+
+- Cada **solicitação de cliente**, com serviço, cliente, contato, cidade, origem (site, WhatsApp, e-mail, telefone, indicação), valor da proposta e ART vinculada.
+- **Etapas:** recebida → proposta enviada → aprovada → em execução → concluída (ou não aprovada). Ao mudar a etapa, a data correspondente é registrada.
+- **"Colar e-mail do site":** cole o e-mail que o formulário do site envia e os dados do cliente e do serviço são preenchidos sozinhos.
+- **Prazos e lembretes:** o prazo aparece no painel e no e-mail diário (na véspera, no dia e uma vez por semana enquanto estiver atrasado).
+- Bloco **Financeiro** em cada demanda, com o que já foi recebido e o que falta receber, e **exportação em planilha**.
 
 ## Controle de ART
 
@@ -143,7 +168,7 @@ Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **mod
 ### 1. Supabase (banco de dados e login – gratuito)
 
 1. Crie a conta em [supabase.com](https://supabase.com) e um projeto (região **South America (São Paulo)**). Guarde a senha do banco.
-2. Em **SQL Editor**, cole todo o conteúdo de `supabase/schema.sql` e clique em **Run**.
+2. Em **SQL Editor**, cole todo o conteúdo de `supabase/schema.sql` e clique em **Run**. Depois de atualizações do site, rode de novo: o script só cria o que falta e não apaga dados.
 3. Em **Authentication → Users → Add user**, crie o seu usuário (e-mail e senha, marcando *Auto Confirm User*).
 4. Em **Authentication → Sign In / Providers**, **desative "Allow new users to sign up"**: assim ninguém mais consegue criar conta.
 5. Em **Authentication → URL Configuration**:
@@ -183,5 +208,5 @@ Observações:
 ## Testes locais
 
 ```
-node ferramentas/alertas-art.mjs --teste   # simula o e-mail do dia com ARTs fictícias
+node ferramentas/alertas-art.mjs --teste   # simula o e-mail do dia com dados fictícios
 ```

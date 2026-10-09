@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle de demandas | Área restrita</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5b800'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='800' font-size='14' fill='%23111214'%3EMZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="area.css">
+  <script type="module" src="demandas.js"></script>
+</head>
+<body class="area">
+
+  <header class="site-header">
+    <div class="area-esq">
+    <a class="logo" href="../index.html" aria-label="Voltar ao site">
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Área restrita</span>
+    </a>
+      <div id="menu-area"></div>
+    </div>
+    <div class="area-top" id="area-top" hidden>
+      <span class="usuario" id="usuario"></span>
+      <button class="btn-link" id="btn-sair" type="button">Sair</button>
+    </div>
+  </header>
+
+  <div class="aviso-demo" id="aviso-demo" hidden>
+    <strong>Modo demonstração.</strong> Os dados ficam só neste navegador e os e-mails de alerta não são enviados.
+    Para usar de verdade, configure o Supabase conforme o README.
+    <button class="btn-link" id="btn-limpar-demo" type="button">Apagar dados de teste</button>
+  </div>
+
+  <main class="area-main">
+    <section id="tela" hidden>
+      <nav class="trilha" aria-label="Você está em"><a href="index.html">Painel</a> / Controle de demandas</nav>
+      <div class="area-cabecalho">
+        <h1>Controle de demandas</h1>
+        <div class="area-acoes">
+          <button class="btn btn-primary" id="btn-nova" type="button">Nova demanda</button>
+          <button class="btn btn-claro" id="btn-colar" type="button">Colar e-mail do site</button>
+          <button class="btn btn-claro" id="btn-exportar" type="button">Exportar planilha</button>
+        </div>
+      </div>
+
+      <div class="etapas" id="etapas" role="group" aria-label="Filtrar por etapa"></div>
+
+      <div class="filtros filtros-2">
+        <input type="search" id="busca" placeholder="Buscar por serviço, cliente, contato ou cidade" aria-label="Buscar">
+        <select id="filtro-origem" aria-label="Origem"></select>
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela" id="tabela">
+          <thead>
+            <tr>
+              <th>Recebida</th>
+              <th>Serviço</th>
+              <th>Cliente</th>
+              <th>Etapa</th>
+              <th class="num">Valor</th>
+              <th>Prazo</th>
+              <th>Origem</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="vazio" id="vazio" hidden>Nenhuma demanda nesta etapa. Use <b>Nova demanda</b> ou <b>Colar e-mail do site</b>.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="dialogo" id="dlg-demanda"></dialog>
+
+  <dialog class="dialogo" id="dlg-colar">
+    <form method="dialog" id="form-colar">
+      <div class="dlg-cab">
+        <h2>Colar e-mail do site</h2>
+        <button class="btn-link" data-fechar type="button">Fechar</button>
+      </div>
+      <div class="dlg-corpo">
+        <p class="dica">Abra o e-mail "Solicitação de proposta" que chegou pelo formulário do site, selecione todo o texto (Ctrl + A), copie e cole abaixo. Os dados do cliente e do serviço são preenchidos sozinhos.</p>
+        <label>Texto do e-mail<textarea id="texto-email" rows="12" required></textarea></label>
+      </div>
+      <div class="dlg-rodape">
+        <button class="btn btn-claro" data-fechar type="button">Cancelar</button>
+        <button class="btn btn-primary" type="submit" value="ler">Ler e-mail</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

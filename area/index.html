@@ -37,9 +37,70 @@
 
   <main class="area-main" id="conteudo" hidden>
     <div class="area-cabecalho">
-      <h1>Painel</h1>
+      <h1>Painel gerencial</h1>
+      <label class="filtro-periodo">Período<select id="periodo"></select></label>
     </div>
-    <p class="painel-intro">Escolha o recurso que deseja acessar. Os recursos também ficam no <b>Menu</b>, no alto da página.</p>
+
+    <section class="painel-grupo" aria-labelledby="t-art">
+      <h2 class="subtitulo-area" id="t-art">ARTs</h2>
+      <div class="kpis" id="kpis-art"></div>
+    </section>
+
+    <section class="painel-grupo" aria-labelledby="t-fin">
+      <h2 class="subtitulo-area" id="t-fin">Financeiro</h2>
+      <div class="kpis" id="kpis-fin"></div>
+    </section>
+
+    <section class="painel-grupo" aria-labelledby="t-dem">
+      <h2 class="subtitulo-area" id="t-dem">Demandas</h2>
+      <div class="kpis" id="kpis-dem"></div>
+    </section>
+
+    <div class="painel-graficos">
+      <figure class="cartao-painel">
+        <figcaption>
+          <h2>Recebido e gasto por mês</h2>
+          <ul class="legenda" aria-label="Legenda">
+            <li><span class="chave serie-1"></span>Recebido</li>
+            <li><span class="chave serie-2"></span>Gasto</li>
+          </ul>
+        </figcaption>
+        <div class="grafico" id="grafico-mensal"></div>
+        <details class="ver-tabela">
+          <summary>Ver em tabela</summary>
+          <div class="tabela-wrap">
+            <table class="tabela compacta" id="tabela-mensal">
+              <thead><tr><th>Mês</th><th class="num">Recebido</th><th class="num">Gasto</th><th class="num">Resultado</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+      </figure>
+      <figure class="cartao-painel">
+        <figcaption><h2>Receita por tipo de serviço</h2></figcaption>
+        <div id="por-servico"></div>
+      </figure>
+    </div>
+
+    <div class="painel-listas">
+      <div class="cartao-painel">
+        <h2>ARTs a vencer em 45 dias</h2>
+        <ul class="lista-painel" id="lista-art"></ul>
+        <a class="link-painel" href="art.html">Abrir o Controle de ART</a>
+      </div>
+      <div class="cartao-painel">
+        <h2>Prazos das demandas</h2>
+        <ul class="lista-painel" id="lista-dem"></ul>
+        <a class="link-painel" href="demandas.html">Abrir o Controle de demandas</a>
+      </div>
+      <div class="cartao-painel">
+        <h2>Recebimentos em atraso</h2>
+        <ul class="lista-painel" id="lista-rec"></ul>
+        <a class="link-painel" href="financeiro.html">Abrir o Controle financeiro</a>
+      </div>
+    </div>
+
+    <h2 class="subtitulo-area">Recursos</h2>
     <div class="modulos" id="modulos"></div>
   </main>
 </body>

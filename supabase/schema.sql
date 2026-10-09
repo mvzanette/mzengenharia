@@ -1,6 +1,7 @@
 -- ============================================================
--- Controle de ART – estrutura do banco (Supabase)
--- Cole tudo no SQL Editor do Supabase e clique em "Run" (uma única vez).
+-- Área restrita (Controle de ART, financeiro e demandas) – estrutura do banco (Supabase)
+-- Cole tudo no SQL Editor do Supabase e clique em "Run". Pode rodar de novo depois de
+-- atualizações: o script só cria o que ainda não existe e não apaga dados.
 -- ============================================================
 
 -- ARTs cadastradas
@@ -53,6 +54,56 @@ create table if not exists public.alertas (
   unique (art_id, marco)
 );
 
+-- Demandas: solicitações de clientes, propostas e andamento dos serviços
+create table if not exists public.demandas (
+  id            uuid primary key default gen_random_uuid(),
+  user_id       uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  titulo        text not null,
+  cliente       text,
+  contato       text,
+  email         text,
+  telefone      text,
+  cidade        text,
+  uf            text,
+  servico       text,
+  origem        text not null default 'site' check (origem in ('site', 'whatsapp', 'email', 'telefone', 'indicacao', 'outro')),
+  etapa         text not null default 'recebida' check (etapa in ('recebida', 'proposta', 'aprovada', 'execucao', 'concluida', 'perdida')),
+  valor         numeric(14, 2),
+  recebida_em   date not null default current_date,
+  proposta_em   date,
+  aprovada_em   date,
+  concluida_em  date,
+  prazo         date,
+  art_id        uuid references public.arts (id) on delete set null,
+  observacao    text,
+  criado_em     timestamptz not null default now(),
+  atualizado_em timestamptz not null default now()
+);
+
+create index if not exists demandas_etapa_idx on public.demandas (user_id, etapa);
+
+-- Lançamentos financeiros: receitas e despesas
+create table if not exists public.lancamentos (
+  id            uuid primary key default gen_random_uuid(),
+  user_id       uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  tipo          text not null check (tipo in ('receita', 'despesa')),
+  descricao     text not null,
+  categoria     text,
+  cliente       text,
+  valor         numeric(14, 2) not null check (valor >= 0),
+  competencia   date not null default current_date,
+  vencimento    date,
+  pago_em       date,
+  forma         text,
+  art_id        uuid references public.arts (id) on delete set null,
+  demanda_id    uuid references public.demandas (id) on delete set null,
+  observacao    text,
+  criado_em     timestamptz not null default now(),
+  atualizado_em timestamptz not null default now()
+);
+
+create index if not exists lancamentos_data_idx on public.lancamentos (user_id, tipo, pago_em);
+
 -- Atualiza "atualizado_em" a cada alteração
 create or replace function public.tocar_atualizado_em() returns trigger
 language plpgsql as $$
@@ -65,11 +116,21 @@ drop trigger if exists arts_atualizado_em on public.arts;
 create trigger arts_atualizado_em before update on public.arts
   for each row execute function public.tocar_atualizado_em();
 
+drop trigger if exists demandas_atualizado_em on public.demandas;
+create trigger demandas_atualizado_em before update on public.demandas
+  for each row execute function public.tocar_atualizado_em();
+
+drop trigger if exists lancamentos_atualizado_em on public.lancamentos;
+create trigger lancamentos_atualizado_em before update on public.lancamentos
+  for each row execute function public.tocar_atualizado_em();
+
 -- ------------------------------------------------------------
 -- Segurança: cada usuário só enxerga e altera os próprios dados
 -- ------------------------------------------------------------
 alter table public.arts enable row level security;
 alter table public.alertas enable row level security;
+alter table public.demandas enable row level security;
+alter table public.lancamentos enable row level security;
 
 drop policy if exists "arts do proprio usuario" on public.arts;
 create policy "arts do proprio usuario" on public.arts
@@ -79,6 +140,18 @@ create policy "arts do proprio usuario" on public.arts
 
 drop policy if exists "alertas do proprio usuario" on public.alertas;
 create policy "alertas do proprio usuario" on public.alertas
+  for all to authenticated
+  using (user_id = auth.uid())
+  with check (user_id = auth.uid());
+
+drop policy if exists "demandas do proprio usuario" on public.demandas;
+create policy "demandas do proprio usuario" on public.demandas
+  for all to authenticated
+  using (user_id = auth.uid())
+  with check (user_id = auth.uid());
+
+drop policy if exists "lancamentos do proprio usuario" on public.lancamentos;
+create policy "lancamentos do proprio usuario" on public.lancamentos
   for all to authenticated
   using (user_id = auth.uid())
   with check (user_id = auth.uid());

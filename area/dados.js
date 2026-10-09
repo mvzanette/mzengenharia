@@ -8,6 +8,29 @@ const COLUNAS = [
 
 const somenteColunas = (art) => Object.fromEntries(COLUNAS.filter((c) => c in art).map((c) => [c, art[c] ?? null]));
 
+// Demais tabelas da área restrita (financeiro e demandas): colunas gravadas e colunas numéricas
+const TABELAS = {
+  demandas: {
+    colunas: ["id", "titulo", "cliente", "contato", "email", "telefone", "cidade", "uf", "servico", "origem", "etapa",
+      "valor", "recebida_em", "proposta_em", "aprovada_em", "concluida_em", "prazo", "art_id", "observacao"],
+    numeros: ["valor"],
+  },
+  lancamentos: {
+    colunas: ["id", "tipo", "descricao", "categoria", "cliente", "valor", "competencia", "vencimento", "pago_em",
+      "forma", "art_id", "demanda_id", "observacao"],
+    numeros: ["valor"],
+  },
+};
+
+const limpar = (nome, obj) => {
+  const { colunas } = TABELAS[nome];
+  return Object.fromEntries(colunas.filter((c) => c in obj).map((c) => [c, obj[c] === "" ? null : obj[c] ?? null]));
+};
+const numeros = (nome, obj) => {
+  for (const c of TABELAS[nome].numeros) if (obj[c] != null) obj[c] = Number(obj[c]);
+  return obj;
+};
+
 export async function criarArmazem({ url, chave }) {
   return url && chave ? armazemSupabase(url, chave) : armazemDemo();
 }
@@ -51,6 +74,48 @@ function armazemDemo() {
   };
   let estado = ler();
   const id = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
+
+  const colecaoDemo = (nome) => {
+    const chave = `mz-area-demo-${nome}`;
+    const lerColecao = () => {
+      try {
+        return JSON.parse(localStorage.getItem(chave)) || [];
+      } catch {
+        return [];
+      }
+    };
+    const gravarColecao = (lista) => {
+      try {
+        localStorage.setItem(chave, JSON.stringify(lista));
+      } catch {
+        /* sem armazenamento: vale até fechar a página */
+      }
+    };
+    let lista = lerColecao();
+    return {
+      async listar() {
+        return structuredClone(lista);
+      },
+      async salvar(obj) {
+        const linha = limpar(nome, obj);
+        const existente = linha.id && lista.find((x) => x.id === linha.id);
+        let r;
+        if (existente) r = Object.assign(existente, linha);
+        else lista.push((r = { ...linha, id: linha.id || id() }));
+        gravarColecao(lista);
+        return structuredClone(r);
+      },
+      async remover(idItem) {
+        lista = lista.filter((x) => x.id !== idItem);
+        gravarColecao(lista);
+      },
+      limpar() {
+        lista = [];
+        gravarColecao(lista);
+      },
+    };
+  };
+  const colecoes = Object.fromEntries(Object.keys(TABELAS).map((n) => [n, colecaoDemo(n)]));
 
   const salvarUm = (art) => {
     const linha = somenteColunas(art);
@@ -107,9 +172,13 @@ function armazemDemo() {
       if (!estado.tratados.includes(alerta.chave)) estado.tratados.push(alerta.chave);
       gravar(estado);
     },
+    colecao(nome) {
+      return colecoes[nome];
+    },
     async limparTudo() {
       estado = { arts: [], tratados: [] };
       gravar(estado);
+      Object.values(colecoes).forEach((c) => c.limpar());
     },
   };
 }
@@ -184,6 +253,26 @@ async function armazemSupabase(url, chave) {
       const { data, error } = await sb.storage.from("arts").createSignedUrl(caminho, 600);
       falhou(error);
       return data.signedUrl;
+    },
+    colecao(nome) {
+      return {
+        async listar() {
+          const { data, error } = await sb.from(nome).select("*");
+          falhou(error);
+          return (data || []).map((x) => numeros(nome, x));
+        },
+        async salvar(obj) {
+          const linha = { ...limpar(nome, obj), user_id: await uid() };
+          if (!linha.id) delete linha.id;
+          const { data, error } = await sb.from(nome).upsert(linha).select().single();
+          falhou(error);
+          return numeros(nome, data);
+        },
+        async remover(idItem) {
+          const { error } = await sb.from(nome).delete().eq("id", idItem);
+          falhou(error);
+        },
+      };
     },
     async tratados() {
       const { data, error } = await sb.from("alertas").select("art_id, marco").not("lido_em", "is", null);

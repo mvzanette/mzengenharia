@@ -267,6 +267,13 @@ function abrirArt(id, opcoes = {}) {
             <p class="dica">Registre aqui depois de dar a baixa no portal do CREA.</p>`}
       </div>
 
+      <div class="bloco"><h3>Financeiro</h3>
+        <div class="linha-acoes">
+          <a class="btn btn-claro" href="financeiro.html?novo=receita&amp;art=${encodeURIComponent(art.id)}">Lançar receita desta ART</a>
+          <a class="btn btn-claro" href="financeiro.html?novo=despesa&amp;art=${encodeURIComponent(art.id)}&amp;categoria=Taxa%20de%20ART">Lançar taxa da ART</a>
+        </div>
+      </div>
+
       <div class="bloco"><h3>Renovação e histórico</h3>
         ${anterior ? `<p>ART anterior: <button class="btn-link" type="button" data-ver="${esc(anterior.id)}">${esc(anterior.numero)}</button></p>` : ""}
         ${seguintes.length ? `<p>Nova(s) ART(s) vinculada(s): ${seguintes.map((x) => `<button class="btn-link" type="button" data-ver="${esc(x.id)}">${esc(x.numero)}</button>`).join(", ")}</p>` : ""}

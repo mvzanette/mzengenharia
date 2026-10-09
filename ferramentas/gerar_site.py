@@ -469,9 +469,9 @@ NR12_TEXTO = ("Avaliação técnica de conformidade com a NR-12 para equipamento
 
 def destaque_nr12(itens, extra="", contato="#contato"):
     """Bloco escuro de destaque do Laudo NR-12 (página inicial e página de projetos)."""
-    return f"""<article class="destaque" id="laudo-nr12">
-          <div class="destaque-img photo" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela em operação"></div>
-          <div class="destaque-corpo">
+    return f"""<article class="nr12-bloco" id="laudo-nr12">
+          <div class="nr12-bloco-img photo" style="--photo:url('img/servicos/laudo-nr12.jpg') center / cover no-repeat" role="img" aria-label="Equipamentos de linha amarela em operação"></div>
+          <div class="nr12-bloco-corpo">
             <span class="selo">Destaque</span>
             <h3>Laudo NR-12 para equipamentos móveis</h3>
             <p>{NR12_TEXTO} Atende às exigências de fiscalização e aos requisitos de mobilização de grandes contratantes.</p>
@@ -673,8 +673,8 @@ def painel(ancora, ic, titulo, itens, link=None, nota=""):
 def pagina_projetos():
     normas = "\n".join(f"          <li>{n}</li>" for n in NORMAS_NR12)
     quando = """
-            <h4 class="destaque-sub">Quando o laudo é exigido</h4>
-            <ul class="destaque-tags">
+            <h4 class="nr12-bloco-sub">Quando o laudo é exigido</h4>
+            <ul class="nr12-bloco-tags">
               <li>Mobilização em contratantes</li>
               <li>Fiscalização do trabalho</li>
               <li>Locação de equipamentos</li>
