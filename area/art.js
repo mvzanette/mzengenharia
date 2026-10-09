@@ -1,6 +1,5 @@
 // Área restrita – Controle de ART
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config-area.js";
-import { criarArmazem } from "./dados.js";
+import { abrirPagina } from "./sessao.js";
 import * as R from "./regras.js";
 import { extrairLinhas } from "./pdf-texto.js";
 import { lerPdf } from "./leitores.js";
@@ -60,33 +59,12 @@ function ordenar(lista) {
 }
 
 // ---------------------------------------------------------------- início
+// O login, o menu e o aviso do modo demonstração ficam em sessao.js
 async function iniciar() {
-  try {
-    armazem = await criarArmazem({ url: SUPABASE_URL, chave: SUPABASE_ANON_KEY });
-  } catch (e) {
-    $("#tela-login").hidden = false;
-    $("#erro-login").hidden = false;
-    $("#erro-login").textContent = "Não foi possível conectar ao banco de dados. Verifique a internet e a configuração.";
-    return;
-  }
-  if (armazem.modo === "demo") $("#aviso-demo").hidden = false;
-  const usuario = await armazem.usuario();
-  if (usuario) await abrirPainel(usuario);
-  else mostrarLogin();
-}
-
-function mostrarLogin() {
-  $("#tela-login").hidden = false;
-  $("#tela-painel").hidden = true;
-  $("#area-top").hidden = true;
-}
-
-async function abrirPainel(usuario) {
-  $("#tela-login").hidden = true;
+  const sessao = await abrirPagina("art.html");
+  if (!sessao) return;
+  armazem = sessao.armazem;
   $("#tela-painel").hidden = false;
-  $("#area-top").hidden = false;
-  $("#usuario").textContent = usuario.email || "";
-  $("#btn-sair").hidden = armazem.modo === "demo";
   await recarregar();
 }
 
@@ -610,38 +588,5 @@ soltar.addEventListener("drop", (e) => {
 });
 
 $$("dialog").forEach((d) => d.addEventListener("click", (e) => e.target === d && d.close()));
-
-$("#form-login").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const f = new FormData(e.target);
-  const erro = $("#erro-login");
-  erro.hidden = true;
-  try {
-    await armazem.entrar(f.get("email"), f.get("senha"));
-    await abrirPainel(await armazem.usuario());
-  } catch (err) {
-    erro.hidden = false;
-    erro.textContent = "E-mail ou senha inválidos.";
-  }
-});
-$("#btn-recuperar").addEventListener("click", async () => {
-  const email = $("#form-login").elements.email.value;
-  if (!email) return avisar("Digite o e-mail para receber o link de recuperação.");
-  try {
-    await armazem.recuperarSenha(email);
-    avisar("Se o e-mail estiver cadastrado, você receberá um link para criar nova senha.");
-  } catch {
-    avisar("Não foi possível enviar o e-mail de recuperação.");
-  }
-});
-$("#btn-sair").addEventListener("click", async () => {
-  await armazem.sair();
-  location.reload();
-});
-$("#btn-limpar-demo").addEventListener("click", async () => {
-  if (!confirm("Apagar todos os dados de teste deste navegador?")) return;
-  await armazem.limparTudo();
-  await recarregar();
-});
 
 iniciar();

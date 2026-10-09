@@ -312,10 +312,10 @@ def footer(inicio):
         <div>
           <h3>Projetos</h3>
           <ul>
-            <li><a href="{inicio}#projetos">Laudos e projetos de engenharia mecânica</a></li>
-            <li><a href="{inicio}#frotas">Consultoria em gestão de frotas e ativos</a></li>
-            <li><a href="{inicio}#eletrificacao">Projeto de eletrificação de frota</a></li>
-            <li><a href="{inicio}#projetos">Indicação de serviços técnicos</a></li>
+            <li><a href="{inicio}#conformidade">Laudos e projetos de engenharia mecânica</a></li>
+            <li><a href="{inicio}#gestao-ativos">Consultoria em gestão de frotas e ativos</a></li>
+            <li><a href="{inicio}#eletrificacao-frota">Projeto de eletrificação de frota</a></li>
+            <li><a href="{inicio}#indicacao">Indicação de serviços técnicos</a></li>
           </ul>
         </div>
         <div>
@@ -371,19 +371,51 @@ EQUIPAMENTOS = [
     ("Apoio", "Veículos leves e de apoio", "veiculos-apoio"),
 ]
 
-# Cards de serviço (estrutura VIX): ícone, título, texto, link e nome da foto em img/servicos/<foto>.jpg
-SERVICOS = [
-    ("forklift", "Laudo NR-12", "Apreciação de riscos, matriz de conformidade e ART para equipamentos móveis, caminhões e máquinas industriais.", "laudo-nr12.html", "laudo-nr12"),
-    ("gauge", "Laudo NR-13", "Inspeção de segurança de vasos de pressão, compressores, autoclaves e caldeiras.", "laudo-nr13.html", "laudo-nr13"),
-    ("wrench", "Laudos mecânicos e eletromecânicos", "Avaliação técnica de equipamentos, componentes e sistemas mecânicos e eletromecânicos, com ART.", None, "laudos-mecanicos"),
-    ("calendar", "Planos de manutenção", "Planos de manutenção preventiva e corretiva por equipamento, com base em horímetro, quilometragem e recomendações do fabricante.", None, "planos-manutencao"),
-    ("presentation", "Consultoria e treinamento para gestores de frota", "Diagnóstico, indicadores e capacitação para a gestão de manutenção de frotas.", "#frotas", "consultoria-frotas"),
-    ("droplet", "Especificação de insumos", "Indicação dos insumos mais adequados para cada aplicação: material rodante, pneus, insumos de manutenção e combustíveis.", "#frotas", "insumos"),
-    ("bolt", "Eletrificação de frotas", "Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos para modelos elétricos.", "#eletrificacao", "eletrificacao"),
-    ("factory", "Manutenção industrial", "Laudos, consultoria e assessoria técnica para a manutenção de máquinas, equipamentos e instalações industriais.", "#industrial", "manutencao-industrial"),
-    ("fan", "PMOC", "Plano de Manutenção, Operação e Controle de sistemas de climatização, conforme a Lei 13.589/2018.", "pmoc.html", "pmoc"),
-    ("snow", "Projeto de instalação de ar-condicionado", "Projeto de instalação de sistemas de ar-condicionado, com cálculo de carga térmica e ART.", "pmoc.html", "ar-condicionado"),
-    ("file", "ART", "Anotação de Responsabilidade Técnica para obras e serviços de engenharia mecânica.", None, "art"),
+# Cards da seção Projetos (estrutura VIX): âncora, ícone, título, texto, itens, link (endereço, rótulo) e
+# nome da foto em img/servicos/<foto>.jpg
+PROJETOS = [
+    ("conformidade", "clipboard", "Análise e laudo de conformidade",
+     "Avaliação técnica da conformidade de máquinas e equipamentos com as normas regulamentadoras, com ART registrada no CREA.",
+     ["Laudo NR-12 de equipamentos móveis e máquinas industriais",
+      "Laudo NR-13 de vasos de pressão, compressores e caldeiras",
+      "Laudos mecânicos e eletromecânicos",
+      "Vistorias e pareceres técnicos"],
+     ("laudo-nr12.html", "Laudo NR-12"), "laudo-nr12"),
+    ("refrigeracao", "snow", "Projetos e laudos de sistemas de refrigeração",
+     "Projeto, manutenção e conformidade legal de sistemas de climatização e refrigeração.",
+     ["PMOC conforme a Lei 13.589/2018",
+      "Projeto de instalação de ar-condicionado com cálculo de carga térmica",
+      "Laudos técnicos de sistemas de climatização",
+      "ART de projeto, instalação e manutenção"],
+     ("pmoc.html", "PMOC"), "refrigeracao"),
+    ("treinamentos", "presentation", "Treinamentos técnicos",
+     "Capacitação de gestores, mecânicos e operadores, na empresa ou online, com conteúdo adaptado à operação e certificado de participação.",
+     ["Gestão de manutenção de frotas",
+      "NR-12 aplicada a equipamentos móveis",
+      "Inspeção pré-uso para operadores e mecânicos",
+      "Lubrificação, confiabilidade e análise de falhas"],
+     ("#frotas", "Saiba mais"), "treinamentos"),
+    ("gestao-ativos", "chart", "Consultoria em gestão de ativos",
+     "Estruturação e acompanhamento da manutenção de frotas e instalações industriais, com foco em disponibilidade, custo e conformidade.",
+     ["Planos de manutenção preventiva por equipamento",
+      "Indicadores: disponibilidade, MTBF, MTTR e custo por hora",
+      "Criticidade de ativos e análise de falhas recorrentes",
+      "Gestão da manutenção de frotas e plantas industriais"],
+     ("#frotas", "Saiba mais"), "consultoria-frotas"),
+    ("eletrificacao-frota", "bolt", "Eletrificação de frota",
+     "Análise de viabilidade técnica e econômica para a transição de veículos e equipamentos a combustão para modelos elétricos ou híbridos.",
+     ["Diagnóstico da frota e seleção dos candidatos",
+      "Autonomia, ciclo de operação e infraestrutura de recarga",
+      "Custo total de propriedade (TCO) e retorno do investimento",
+      "Redução de emissões e indicadores ESG"],
+     ("#eletrificacao", "Saiba mais"), "eletrificacao"),
+    ("indicacao", "search", "Indicação de serviços técnicos",
+     "Indicação técnica e independente dos insumos e serviços mais adequados a cada equipamento e aplicação, sem vínculo com fabricantes ou fornecedores.",
+     ["Material rodante, pneus e peças de desgaste",
+      "Lubrificantes, filtros e insumos de manutenção",
+      "Eficiência energética de combustíveis",
+      "Serviços especializados de manutenção e reforma"],
+     ("#frotas", "Saiba mais"), "insumos"),
 ]
 
 OUTROS = [
@@ -451,20 +483,23 @@ def pagina_inicial():
           </figure>"""
         for tag, nome, slug in EQUIPAMENTOS
     )
-    servicos = "\n".join(
-        f"""          <article class="svc">
+    projetos = "\n".join(
+        f"""          <article class="svc" id="{ancora}">
             <div class="svc-img" style="--photo:url('img/servicos/{foto}.jpg') center / cover no-repeat">
               <span class="svc-icon">{icon(ic)}</span>
             </div>
             <div class="svc-body">
               <h3>{titulo}</h3>
-              <p>{texto}</p>{f'''
-              <a class="link-arrow" href="{link}">Saiba mais</a>''' if link else ''}
+              <p>{texto}</p>
+              <ul class="svc-itens">
+{chr(10).join(f"                <li>{i}</li>" for i in itens)}
+              </ul>
+              <a class="link-arrow" href="{link[0]}">{link[1]}</a>
             </div>
           </article>"""
-        for ic, titulo, texto, link, foto in SERVICOS
+        for ancora, ic, titulo, texto, itens, link, foto in PROJETOS
     )
-    outros = "\n".join(f"                <li>{o}</li>" for o in OUTROS)
+    outros = " · ".join(OUTROS)
     casos = "\n".join(
         f"""          <article class="case">
             <span class="case-tag">{tag}</span>
@@ -576,18 +611,9 @@ def pagina_inicial():
         <h2 class="section-title">Projetos</h2>
         <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
         <div class="svc-grid">
-{servicos}
-          <article class="svc svc-others">
-            <div class="svc-body">
-              <span class="svc-icon">{icon("list")}</span>
-              <h3>Outros serviços</h3>
-              <ul>
-{outros}
-              </ul>
-              <a class="link-arrow" href="#contato">Solicitar proposta</a>
-            </div>
-          </article>
+{projetos}
         </div>
+        <p class="svc-mais"><b>Outros serviços de engenharia mecânica:</b> {outros}.</p>
       </div>
     </section>
 

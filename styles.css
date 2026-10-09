@@ -614,11 +614,11 @@ svg.i {
   font: 600 0.95rem var(--font-head);
 }
 
-/* ---------- Serviços (cards com foto no topo) ---------- */
+/* ---------- Projetos (cards com foto no topo) ---------- */
 .svc-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .svc {
@@ -693,42 +693,24 @@ svg.i {
   align-self: flex-start;
 }
 
-.svc-others {
-  background: var(--graphite-900);
-  border-color: var(--graphite-900);
-}
-
-.svc-others .svc-body {
-  padding-top: 28px;
-}
-
-.svc-others .svc-icon {
-  box-shadow: none;
-  margin-bottom: 20px;
-}
-
-.svc-others h3 {
-  color: var(--white);
-}
-
-.svc-others ul {
-  flex: 1;
+.svc-itens {
   list-style: none;
-  margin: 0 0 20px;
-  padding: 0;
+  margin: 0 0 22px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--gray-200);
   display: grid;
   gap: 8px;
   font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--graphite-700);
 }
 
-.svc-others li {
+.svc-itens li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 
-.svc-others li::before {
+.svc-itens li::before {
   content: "";
   flex: none;
   width: 6px;
@@ -737,8 +719,15 @@ svg.i {
   background: var(--yellow);
 }
 
-.svc-others .link-arrow {
-  color: var(--white);
+.svc-mais {
+  max-width: 900px;
+  margin: 36px 0 0;
+  font-size: 0.94rem;
+  color: var(--muted);
+}
+
+.svc-mais b {
+  color: var(--graphite-900);
 }
 
 /* Ícone quadrado amarelo (painéis) */
@@ -1394,12 +1383,6 @@ svg.i {
   .nav .btn {
     margin: 20px 0 0;
     padding: 15px 20px;
-  }
-}
-
-@media (max-width: 1180px) {
-  .svc-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 

@@ -12,10 +12,10 @@ Custo: **R$ 0** (hospedagem no GitHub Pages + formulário pelo FormSubmit).
 | `ferramentas/gerar_site.py` | **Todos os textos das páginas.** Gera os arquivos `.html` (ver "Alterar textos"). |
 | `index.html`, `laudo-nr12.html`, `laudo-nr13.html`, `pmoc.html`, `obrigado.html`, `politica-de-privacidade.html` | Páginas geradas pelo script acima. Não edite à mão. |
 | `tos-mecanica.js` | Tabela de Obras e Serviços (TOS) do CREA, área 16 (Mecânica), usada no formulário. |
-| `styles.css` | Visual do site (grafite e amarelo industrial). |
+| `styles.css` | Visual do site (fundo branco, grafite e amarelo industrial). |
 | `main.js` | Menu do celular e formulário. Não precisa mexer. |
 | `img/` | Fotos do site (ver "Fotos"). |
-| `area-restrita.html`, `area/` | **Área restrita – Controle de ART** (ver seção própria abaixo). |
+| `area-restrita.html`, `area/` | **Área restrita**: login, painel de recursos e Controle de ART (ver seção própria abaixo). |
 | `supabase/schema.sql` | Estrutura do banco de dados da área restrita. |
 | `ferramentas/alertas-art.mjs`, `.github/workflows/alertas-art.yml` | Rotina diária que envia os alertas de ART por e-mail. |
 
@@ -30,7 +30,8 @@ Enquanto uma foto não existir, o site mostra um espaço reservado com um ícone
 | `img/eletrificacao.jpg` | Seção "Eletrificação de frotas" | Vertical ou quadrada |
 | `img/perfil.jpg` | Card "Sobre o profissional" | Vertical ou quadrada |
 | `img/equipamentos/escavadeira.jpg`, `pa-carregadeira.jpg`, `trator-esteiras.jpg`, `motoniveladora.jpg`, `rolo-compactador.jpg`, `retroescavadeira.jpg`, `minicarregadeira.jpg`, `caminhao-munck.jpg`, `caminhao-basculante.jpg`, `caminhao-pipa.jpg`, `caminhao-comboio.jpg`, `veiculos-apoio.jpg` | Grade "Equipamentos atendidos" | Horizontal (4:3) |
-| `img/servicos/laudo-nr12.jpg`, `laudo-nr13.jpg`, `laudos-mecanicos.jpg`, `planos-manutencao.jpg`, `consultoria-frotas.jpg`, `insumos.jpg`, `eletrificacao.jpg`, `manutencao-industrial.jpg`, `pmoc.jpg`, `ar-condicionado.jpg`, `art.jpg` | Cards de "Projetos". As fotos `laudo-nr12`, `laudo-nr13` e `pmoc` também aparecem na faixa do topo das páginas desses serviços (gere as páginas de novo depois de incluir a foto). | Horizontal (16:10) |
+| `img/servicos/laudo-nr12.jpg`, `refrigeracao.jpg`, `treinamentos.jpg`, `consultoria-frotas.jpg`, `eletrificacao.jpg`, `insumos.jpg` | Cards de "Projetos", nesta ordem: Análise e laudo de conformidade, Projetos e laudos de sistemas de refrigeração, Treinamentos técnicos, Consultoria em gestão de ativos, Eletrificação de frota e Indicação de serviços técnicos | Horizontal (16:10) |
+| `img/servicos/laudo-nr12.jpg`, `laudo-nr13.jpg`, `pmoc.jpg` | Faixa do topo das páginas Laudo NR-12, Laudo NR-13 e PMOC (gere as páginas de novo depois de incluir a foto) | Horizontal, 1600 px ou mais |
 
 Use apenas fotos com direito de uso (próprias, com autorização, ou de bancos de imagem com licença comercial), de preferência sem logos de fabricantes ou placas em destaque.
 
@@ -97,14 +98,31 @@ O formulário usa o [FormSubmit](https://formsubmit.co), gratuito e sem cadastro
 
 ---
 
-# Área restrita – Controle de ART
+# Área restrita
 
 Endereço: `area-restrita.html` (link discreto no rodapé do site; não aparece no Google).
 
-## O que faz
+## Como funciona
+
+1. **Login** (`area-restrita.html`): usuário (e-mail) e senha. Tem "Esqueci a senha", que envia um link para criar uma senha nova.
+2. **Painel** (`area/index.html`): página inicial da área, com um card para cada recurso. O Controle de ART mostra ali mesmo quantos alertas estão pendentes.
+3. **Menu** no alto de todas as páginas da área, com os mesmos recursos, "Voltar ao site" e **Sair**.
+4. Qualquer página da área aberta sem login volta para a tela de login e, depois de entrar, retorna para a página pedida.
+
+Recursos:
+
+| Recurso | Página | Situação |
+| --- | --- | --- |
+| Controle de ART | `area/art.html` | Pronto (detalhes abaixo) |
+| Controle financeiro | — | Em breve |
+| Controle de demandas | — | Em breve |
+
+**Para incluir um recurso novo:** acrescente um item em `area/modulos.js` e crie a página na pasta `area/` (use `area/art.html` como modelo: o cabeçalho, o menu e o login vêm de `area/sessao.js`).
+
+## Controle de ART
 
 - **Importa PDFs com leitura automática:** ART individual do CREA-MG e do CREA-RJ, e o relatório "ARTs (Todas)" do CREA-MG (várias ARTs de uma vez). O CREA-SP ainda não tem leitor (falta um PDF de exemplo); por enquanto, cadastre manualmente.
-- **Painel:** ARTs ativas, que vencem em até 30 dias, vencidas sem baixa e baixadas, com busca e filtros por CREA e situação.
+- **Quadro de ARTs:** ativas, que vencem em até 30 dias, vencidas sem baixa e baixadas, com busca e filtros por CREA e situação.
 - **Alertas** na plataforma (sino) e por e-mail, com base no **fim previsto** da ART:
   - 30 dias antes: "Daqui a 30 dias a ART nº … do cliente … vencerá (fim previsto em …)."
   - 7 dias antes e no dia;
@@ -117,7 +135,7 @@ A emissão e a baixa da ART continuam sendo feitas no portal de cada CREA. Nenhu
 
 ## Modo demonstração
 
-Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **modo demonstração**: os dados ficam só no navegador em uso e os e-mails não são enviados. Serve para testar a importação e as telas.
+Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **modo demonstração**: a tela de login aparece, mas **qualquer usuário e senha entram**; os dados ficam só no navegador em uso e os e-mails não são enviados. Serve para testar as telas. O acesso só fica protegido de verdade depois de ativar o Supabase (abaixo).
 
 ## Ativar de verdade (uma única vez, ~20 minutos)
 
@@ -127,7 +145,9 @@ Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **mod
 2. Em **SQL Editor**, cole todo o conteúdo de `supabase/schema.sql` e clique em **Run**.
 3. Em **Authentication → Users → Add user**, crie o seu usuário (e-mail e senha, marcando *Auto Confirm User*).
 4. Em **Authentication → Sign In / Providers**, **desative "Allow new users to sign up"**: assim ninguém mais consegue criar conta.
-5. Em **Authentication → URL Configuration**, coloque o endereço do site em *Site URL* (usado no link de "Esqueci a senha").
+5. Em **Authentication → URL Configuration**:
+   - *Site URL*: `https://mvzanette.github.io/mzengenharia/`;
+   - *Redirect URLs* → **Add URL**: `https://mvzanette.github.io/mzengenharia/area-restrita.html` (para onde volta o link de "Esqueci a senha").
 6. Em **Project Settings → API**, copie:
    - **Project URL** e a chave **anon public** → cole em `area/config-area.js`;
    - a chave **service_role** → **não** coloque no site; ela vai só para o GitHub (passo 3).
@@ -143,7 +163,7 @@ Enquanto `area/config-area.js` estiver vazio, a área restrita funciona em **mod
 Em **Settings → Secrets and variables → Actions**:
 
 - aba **Secrets** → *New repository secret*: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY` e `ALERTA_EMAIL` (o e-mail que recebe os alertas);
-- aba **Variables** → `ALERTA_LINK` com o endereço da área restrita (vai no e-mail).
+- aba **Variables** → `ALERTA_LINK` = `https://mvzanette.github.io/mzengenharia/area/art.html` (link do e-mail; se não houver login, pede a senha e depois abre o Controle de ART).
 
 Para testar na hora: **Actions → Alertas de ART → Run workflow**. Depois disso a rotina roda todo dia às 8h (Brasília).
 

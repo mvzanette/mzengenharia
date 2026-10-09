@@ -1,4 +1,4 @@
-// Armazenamento das ARTs: modo demonstração (navegador) ou Supabase (produção).
+// Login e armazenamento da área restrita: modo demonstração (navegador) ou Supabase (produção).
 
 const COLUNAS = [
   "id", "numero", "crea", "tipo", "forma", "contratante", "contratante_doc", "proprietario", "local",
@@ -15,6 +15,25 @@ export async function criarArmazem({ url, chave }) {
 // ---------------------------------------------------------------- demonstração
 function armazemDemo() {
   const CHAVE = "mz-art-demo-v1";
+  // Sessão de demonstração: dura até fechar a aba. Não protege nada; serve só para testar o fluxo de login.
+  const SESSAO = "mz-area-demo-sessao";
+  const sessao = {
+    ler() {
+      try {
+        return sessionStorage.getItem(SESSAO);
+      } catch {
+        return null;
+      }
+    },
+    gravar(valor) {
+      try {
+        if (valor) sessionStorage.setItem(SESSAO, valor);
+        else sessionStorage.removeItem(SESSAO);
+      } catch {
+        /* sem armazenamento: a sessão não se mantém entre as páginas */
+      }
+    },
+  };
   const pdfs = new Map(); // PDFs só durante a sessão
   const ler = () => {
     try {
@@ -44,10 +63,18 @@ function armazemDemo() {
   return {
     modo: "demo",
     async usuario() {
-      return { email: "modo demonstração" };
+      const email = sessao.ler();
+      return email ? { email } : null;
     },
-    async entrar() {},
-    async sair() {},
+    async entrar(email, senha) {
+      if (!email || !senha) throw new Error("Informe usuário e senha.");
+      sessao.gravar(email);
+    },
+    async recuperarSenha() {},
+    async definirSenha() {},
+    async sair() {
+      sessao.gravar(null);
+    },
     async listar() {
       return structuredClone(estado.arts);
     },
@@ -109,8 +136,13 @@ async function armazemSupabase(url, chave) {
       const { error } = await sb.auth.signInWithPassword({ email, password: senha });
       falhou(error);
     },
+    // O link do e-mail volta para a página de login, que então pede a nova senha
     async recuperarSenha(email) {
-      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.href });
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+      falhou(error);
+    },
+    async definirSenha(senha) {
+      const { error } = await sb.auth.updateUser({ password: senha });
       falhou(error);
     },
     async sair() {
