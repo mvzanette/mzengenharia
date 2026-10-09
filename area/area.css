@@ -12,8 +12,25 @@
   --erro: #c62828;
 }
 
+/* Cabeçalho próprio da área restrita: barra escura e compacta */
 .area .site-header {
-  position: sticky;
+  top: 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 24px;
+  background: var(--black);
+  border-bottom: 4px solid var(--yellow);
+}
+
+.area .logo {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.area .logo-sub {
+  color: var(--yellow);
 }
 
 .area-top {
@@ -671,8 +688,12 @@
     display: none;
   }
 
-  .area .logo-text small {
-    display: block;
+  .area .site-header {
+    padding-left: 16px;
+  }
+
+  .area .logo {
+    font-size: 1.25rem;
   }
 
   .campos .c2,

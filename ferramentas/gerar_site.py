@@ -97,7 +97,7 @@ def head(titulo, descricao, com_formulario=False, extra="", indexar=True):
   <link rel="icon" href="{FAVICON}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>{tos}
   <script src="main.js" defer></script>{extra}
@@ -106,24 +106,34 @@ def head(titulo, descricao, com_formulario=False, extra="", indexar=True):
 """
 
 
+def logo(home):
+    return f"""<a class="logo" href="{home}" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Engenharia Mecânica</span>
+    </a>"""
+
+
 def header(inicio, contato="#contato"):
     """inicio = "" na página inicial ou "index.html" nas demais."""
-    home = inicio or "#inicio"
+    home = inicio or "#top"  # "#top" leva ao início da página
     return f"""
   <header class="site-header">
-    <a class="logo" href="{home}" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-      <span class="logo-mark" aria-hidden="true">MZ</span>
-      <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">{icon("menu")}</button>
+    <div class="header-top">
+      <div class="container">
+    {logo(home)}
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">{icon("menu")}</button>
+      </div>
+    </div>
     <nav class="nav" id="menu" aria-label="Principal">
-      <a href="{inicio}#nr12">Laudo NR-12</a>
-      <a href="{inicio}#servicos">Serviços</a>
-      <a href="{inicio}#frotas">Gestão de frotas</a>
-      <a href="{inicio}#eletrificacao">Eletrificação</a>
-      <a href="{inicio}#industrial">Manutenção industrial</a>
-      <a class="btn btn-primary" href="{contato}">Solicitar proposta</a>
+      <div class="container">
+        <a href="{home}">Página inicial</a>
+        <a href="{inicio}#projetos">Projetos</a>
+        <a href="{inicio}#equipamentos">Equipamentos atendidos</a>
+        <a href="{inicio}#perfil">Sobre o profissional</a>
+        <a class="btn btn-primary" href="{contato}">Contato</a>
+      </div>
     </nav>
+    <div class="header-stripe" aria-hidden="true"></div>
   </header>
 """
 
@@ -192,7 +202,7 @@ def contato(selecionado=None):
     ufs = "\n".join(f"                  <option>{uf}</option>" for uf in UFS)
     return f"""
     <!-- ============ CONTATO ============ -->
-    <section class="contact on-dark" id="contato">
+    <section class="contact bg-gray" id="contato">
       <div class="container contact-grid">
         <div class="contact-info">
           <h2 class="section-title">Contato</h2>
@@ -290,34 +300,38 @@ def contato(selecionado=None):
 
 
 def footer(inicio):
-    home = inicio or "#inicio"
+    home = inicio or "#top"  # "#top" leva ao início da página
     return f"""
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a class="logo" href="{home}" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-            <span class="logo-mark" aria-hidden="true">MZ</span>
-            <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
-          </a>
-          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e frotas.</p>
+        <div class="footer-brand">
+          {logo(home)}
+          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal.</p>
         </div>
         <div>
-          <h3>Serviços</h3>
+          <h3>Projetos</h3>
           <ul>
-            <li><a href="laudo-nr12.html">Laudo NR-12</a></li>
-            <li><a href="laudo-nr13.html">Laudo NR-13</a></li>
-            <li><a href="pmoc.html">PMOC</a></li>
-            <li><a href="{inicio}#frotas">Gestão de frotas</a></li>
-            <li><a href="{inicio}#eletrificacao">Eletrificação de frotas</a></li>
-            <li><a href="{inicio}#industrial">Manutenção industrial</a></li>
+            <li><a href="{inicio}#projetos">Laudos e projetos de engenharia mecânica</a></li>
+            <li><a href="{inicio}#frotas">Consultoria em gestão de frotas e ativos</a></li>
+            <li><a href="{inicio}#eletrificacao">Projeto de eletrificação de frota</a></li>
+            <li><a href="{inicio}#projetos">Indicação de serviços técnicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Equipamentos atendidos</h3>
+          <ul>
+            <li><a href="{inicio}#equipamentos">Linha amarela</a></li>
+            <li><a href="{inicio}#equipamentos">Caminhões linha diesel</a></li>
+            <li><a href="{inicio}#equipamentos">Veículos leves e de apoio</a></li>
           </ul>
         </div>
         <div>
           <h3>Contato</h3>
-          <ul>
-            <li><a href="mailto:{EMAIL}" data-email>{EMAIL}</a></li>
-            <li><a href="{inicio}#contato">Solicitar proposta</a></li>
+          <p class="footer-call">Vamos conversar?</p>
+          <ul class="footer-contact">
+            <li><a href="mailto:{EMAIL}?subject=Contato%20pelo%20site" data-email="link">{icon("mail")}Enviar e-mail</a></li>
+            <li><a href="https://wa.me/{WHATS}" data-whatsapp="link" target="_blank" rel="noopener">{icon("phone")}WhatsApp</a></li>
           </ul>
         </div>
         <div>
@@ -479,16 +493,15 @@ def pagina_inicial():
     ) + header("") + f"""
   <main>
     <!-- ============ TOPO ============ -->
-    <section class="hero" id="inicio">
+    <section class="band hero" id="inicio" style="--band-img:url('img/hero.jpg')">
       <div class="container">
         <h1>Soluções em engenharia mecânica</h1>
-        <p class="hero-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
+        <p class="band-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
           <a class="btn btn-outline" href="#nr12">Laudo NR-12</a>
         </div>
       </div>
-      <a class="hero-down" href="#numeros" aria-label="Rolar para o conteúdo">{icon("down")}</a>
     </section>
 
     <!-- ============ NÚMEROS ============ -->
@@ -557,10 +570,10 @@ def pagina_inicial():
       </div>
     </section>
 
-    <!-- ============ SERVIÇOS ============ -->
-    <section id="servicos">
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos">
       <div class="container">
-        <h2 class="section-title">Serviços</h2>
+        <h2 class="section-title">Projetos</h2>
         <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
         <div class="svc-grid">
 {servicos}
@@ -689,26 +702,30 @@ def pagina_inicial():
       </div>
     </section>
 
-    <!-- ============ PERFIL ============ -->
-    <section class="profile on-dark" id="perfil">
-      <div class="profile-text">
-        <h2 class="section-title">Responsável técnico</h2>
-        <p class="profile-name">MARCOS ZANETTE</p>
-        <p class="profile-role">Engenheiro Mecânico · <span data-config="crea">{CREA}</span></p>
-        {checks([
-            "Gerente de manutenção",
-            "Especialista em equipamentos de linha amarela e caminhões linha diesel",
-            "Especialista em confiabilidade e eficiência operacional",
-            "Conformidade com a legislação",
-        ])}
-        <div class="years"><strong>10</strong><span>Anos de atuação<br>na área</span></div>
+    <!-- ============ SOBRE O PROFISSIONAL ============ -->
+    <section id="perfil">
+      <div class="container">
+        <div class="profile">
+          <div class="profile-text">
+            <h2 class="section-title">Sobre o profissional</h2>
+            <p class="profile-name">Marcos Zanette</p>
+            <p class="profile-role">Engenheiro Mecânico · <span data-config="crea">{CREA}</span></p>
+            {checks([
+                "Gerente de manutenção",
+                "Especialista em equipamentos de linha amarela e caminhões linha diesel",
+                "Especialista em confiabilidade e eficiência operacional",
+                "Conformidade com a legislação",
+            ])}
+            <div class="years"><strong>10</strong><span>Anos de atuação<br>na área</span></div>
+          </div>
+          <div class="profile-img photo" role="img" aria-label="Equipamento de linha amarela"></div>
+        </div>
       </div>
-      <div class="profile-img photo" role="img" aria-label="Equipamento de linha amarela"></div>
     </section>
 
     <!-- ============ EXPERIÊNCIA ============ -->
     <!-- Apenas descrições do tipo de trabalho: os laudos são confidenciais e não devem ser publicados. -->
-    <section id="experiencia">
+    <section class="bg-gray" id="experiencia">
       <div class="container">
         <h2 class="section-title">Experiência</h2>
         <p class="section-intro">Laudos e projetos desenvolvidos para grandes empresas de mineração e óleo e gás.</p>
@@ -719,7 +736,7 @@ def pagina_inicial():
     </section>
 
     <!-- ============ PERGUNTAS FREQUENTES ============ -->
-    <section class="bg-gray center" id="duvidas">
+    <section class="center" id="duvidas">
       <div class="container">
         <h2 class="section-title">Perguntas frequentes</h2>
         <div class="faq">
@@ -739,6 +756,7 @@ PAGINAS = [
         "titulo": "Laudo NR-12 para Equipamentos Móveis | Marcos Zanette Engenharia Mecânica",
         "descricao": "Laudo NR-12 com apreciação de riscos, matriz de conformidade e ART para escavadeiras, carregadeiras, caminhões munck, empilhadeiras e máquinas industriais.",
         "migalha": "Laudo NR-12",
+        "foto": "laudo-nr12",
         "h1": "Laudo NR-12",
         "lead": "Apreciação de riscos, matriz de conformidade e ART para equipamentos móveis de linha amarela, caminhões munck, empilhadeiras e máquinas industriais.",
         "quando_titulo": "Quando é exigido",
@@ -787,6 +805,7 @@ PAGINAS = [
         "titulo": "Laudo NR-13 de Vasos de Pressão, Compressores e Caldeiras | Marcos Zanette Engenharia Mecânica",
         "descricao": "Inspeção de segurança e laudo NR-13 de vasos de pressão, compressores de ar, autoclaves e caldeiras, com ART de engenheiro mecânico.",
         "migalha": "Laudo NR-13",
+        "foto": "laudo-nr13",
         "h1": "Laudo NR-13",
         "lead": "Inspeção de segurança e laudo de vasos de pressão, compressores de ar, autoclaves e caldeiras, com ART.",
         "quando_titulo": "Quando é necessário",
@@ -822,6 +841,7 @@ PAGINAS = [
         "titulo": "PMOC e Projeto de Ar-Condicionado com ART | Marcos Zanette Engenharia Mecânica",
         "descricao": "PMOC – Plano de Manutenção, Operação e Controle de sistemas de climatização com responsável técnico e ART, conforme a Lei 13.589/2018, e projeto de instalação de ar-condicionado.",
         "migalha": "PMOC",
+        "foto": "pmoc",
         "h1": "PMOC",
         "lead": "Plano de Manutenção, Operação e Controle de sistemas de climatização, com responsável técnico e ART, conforme a Lei 13.589/2018.",
         "quando_titulo": "Quem precisa",
@@ -861,7 +881,9 @@ def pagina_servico(p):
     inclui = checks(p["inclui"])
     nota = f'\n        <p class="note">{p["nota"]}</p>' if p.get("nota") else ""
     metodo = ""
-    fundo_faq = "bg-gray"
+    foto = RAIZ / "img" / "servicos" / f"{p['foto']}.jpg"
+    faixa = f" style=\"--band-img:url('img/servicos/{foto.name}')\"" if foto.exists() else ""
+    fundo_split = "bg-gray"
     if p.get("metodo"):
         etapas = "\n".join(
             f"          <li>\n            <h3>{t}</h3>\n            <p>{d}</p>\n          </li>" for t, d in p["metodo"]
@@ -881,12 +903,12 @@ def pagina_servico(p):
       </div>
     </section>
 """
-        fundo_faq = ""
+        fundo_split = ""
     return head(p["titulo"], p["descricao"], com_formulario=True) + header("index.html") + f"""
   <main>
-    <section class="page-hero">
+    <section class="band page-hero"{faixa}>
       <div class="container">
-        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Início</a> / {p["migalha"]}</nav>
+        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Página inicial</a> / {p["migalha"]}</nav>
         <h1>{p["h1"]}</h1>
         <p>{p["lead"]}</p>
         <div class="hero-actions">
@@ -895,7 +917,7 @@ def pagina_servico(p):
       </div>
     </section>
 
-    <section>
+    <section class="{fundo_split}">
       <div class="container">
         <div class="split">
           <div class="panel">
@@ -910,7 +932,7 @@ def pagina_servico(p):
       </div>
     </section>
 {metodo}
-    <section class="{fundo_faq} center" id="duvidas">
+    <section class="center" id="duvidas">
       <div class="container">
         <h2 class="section-title">Perguntas frequentes</h2>
         <div class="faq">
@@ -940,9 +962,9 @@ def pagina_privacidade():
     return head("Política de Privacidade | Marcos Zanette Engenharia Mecânica",
                 "Política de privacidade do site Marcos Zanette – Engenharia Mecânica.") + header("index.html", "index.html#contato") + f"""
   <main>
-    <section class="page-hero">
+    <section class="band page-hero">
       <div class="container">
-        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Início</a> / Política de Privacidade</nav>
+        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Página inicial</a> / Política de Privacidade</nav>
         <h1>Política de Privacidade</h1>
         <p>Como os dados enviados pelo formulário de contato são tratados, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
       </div>

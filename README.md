@@ -25,12 +25,12 @@ Enquanto uma foto não existir, o site mostra um espaço reservado com um ícone
 
 | Arquivo | Onde aparece | Formato ideal |
 | --- | --- | --- |
-| `img/hero.jpg` | Topo da página (fica em preto e branco automaticamente) | Horizontal, 1920 px ou mais |
+| `img/hero.jpg` | Faixa do topo da página inicial, à direita (o texto fica sobre o fundo preto, à esquerda) | Horizontal, 1600 px ou mais |
 | `img/nr12.jpg` | Seção "Laudo NR-12 para equipamentos móveis" | Vertical ou quadrada |
 | `img/eletrificacao.jpg` | Seção "Eletrificação de frotas" | Vertical ou quadrada |
-| `img/perfil.jpg` | Card "Responsável técnico" | Vertical ou quadrada |
+| `img/perfil.jpg` | Card "Sobre o profissional" | Vertical ou quadrada |
 | `img/equipamentos/escavadeira.jpg`, `pa-carregadeira.jpg`, `trator-esteiras.jpg`, `motoniveladora.jpg`, `rolo-compactador.jpg`, `retroescavadeira.jpg`, `minicarregadeira.jpg`, `caminhao-munck.jpg`, `caminhao-basculante.jpg`, `caminhao-pipa.jpg`, `caminhao-comboio.jpg`, `veiculos-apoio.jpg` | Grade "Equipamentos atendidos" | Horizontal (4:3) |
-| `img/servicos/laudo-nr12.jpg`, `laudo-nr13.jpg`, `laudos-mecanicos.jpg`, `planos-manutencao.jpg`, `consultoria-frotas.jpg`, `insumos.jpg`, `eletrificacao.jpg`, `manutencao-industrial.jpg`, `pmoc.jpg`, `ar-condicionado.jpg`, `art.jpg` | Cards de "Serviços" | Horizontal (16:10) |
+| `img/servicos/laudo-nr12.jpg`, `laudo-nr13.jpg`, `laudos-mecanicos.jpg`, `planos-manutencao.jpg`, `consultoria-frotas.jpg`, `insumos.jpg`, `eletrificacao.jpg`, `manutencao-industrial.jpg`, `pmoc.jpg`, `ar-condicionado.jpg`, `art.jpg` | Cards de "Projetos". As fotos `laudo-nr12`, `laudo-nr13` e `pmoc` também aparecem na faixa do topo das páginas desses serviços (gere as páginas de novo depois de incluir a foto). | Horizontal (16:10) |
 
 Use apenas fotos com direito de uso (próprias, com autorização, ou de bancos de imagem com licença comercial), de preferência sem logos de fabricantes ou placas em destaque.
 

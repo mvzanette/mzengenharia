@@ -3,16 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const zap =
     "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.whatsappTexto);
 
+  // data-whatsapp="link" e data-email="link": troca só o endereço do link, sem mostrar o número ou o e-mail
   document.querySelectorAll("[data-whatsapp]").forEach((a) => {
     a.href = zap;
-    a.textContent = CONFIG.telefoneExibicao;
+    if (a.dataset.whatsapp !== "link") a.textContent = CONFIG.telefoneExibicao;
   });
   document.querySelectorAll("[data-config]").forEach((el) => {
     el.textContent = CONFIG[el.dataset.config];
   });
   document.querySelectorAll("[data-email]").forEach((a) => {
-    a.href = "mailto:" + CONFIG.email;
-    a.textContent = CONFIG.email;
+    if (a.dataset.email === "link") {
+      a.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Contato pelo site");
+    } else {
+      a.href = "mailto:" + CONFIG.email;
+      a.textContent = CONFIG.email;
+    }
   });
 
   const ano = document.getElementById("ano");

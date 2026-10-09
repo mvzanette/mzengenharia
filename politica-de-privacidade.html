@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5b800'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='800' font-size='14' fill='%23111214'%3EMZ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>
   <script src="main.js" defer></script>
@@ -20,25 +20,31 @@
 <body>
 
   <header class="site-header">
+    <div class="header-top">
+      <div class="container">
     <a class="logo" href="index.html" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-      <span class="logo-mark" aria-hidden="true">MZ</span>
-      <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Engenharia Mecânica</span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
     <nav class="nav" id="menu" aria-label="Principal">
-      <a href="index.html#nr12">Laudo NR-12</a>
-      <a href="index.html#servicos">Serviços</a>
-      <a href="index.html#frotas">Gestão de frotas</a>
-      <a href="index.html#eletrificacao">Eletrificação</a>
-      <a href="index.html#industrial">Manutenção industrial</a>
-      <a class="btn btn-primary" href="index.html#contato">Solicitar proposta</a>
+      <div class="container">
+        <a href="index.html">Página inicial</a>
+        <a href="index.html#projetos">Projetos</a>
+        <a href="index.html#equipamentos">Equipamentos atendidos</a>
+        <a href="index.html#perfil">Sobre o profissional</a>
+        <a class="btn btn-primary" href="index.html#contato">Contato</a>
+      </div>
     </nav>
+    <div class="header-stripe" aria-hidden="true"></div>
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="band page-hero">
       <div class="container">
-        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Início</a> / Política de Privacidade</nav>
+        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Página inicial</a> / Política de Privacidade</nav>
         <h1>Política de Privacidade</h1>
         <p>Como os dados enviados pelo formulário de contato são tratados, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
       </div>
@@ -78,29 +84,36 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
+        <div class="footer-brand">
           <a class="logo" href="index.html" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-            <span class="logo-mark" aria-hidden="true">MZ</span>
-            <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
-          </a>
-          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e frotas.</p>
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Engenharia Mecânica</span>
+    </a>
+          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal.</p>
         </div>
         <div>
-          <h3>Serviços</h3>
+          <h3>Projetos</h3>
           <ul>
-            <li><a href="laudo-nr12.html">Laudo NR-12</a></li>
-            <li><a href="laudo-nr13.html">Laudo NR-13</a></li>
-            <li><a href="pmoc.html">PMOC</a></li>
-            <li><a href="index.html#frotas">Gestão de frotas</a></li>
-            <li><a href="index.html#eletrificacao">Eletrificação de frotas</a></li>
-            <li><a href="index.html#industrial">Manutenção industrial</a></li>
+            <li><a href="index.html#projetos">Laudos e projetos de engenharia mecânica</a></li>
+            <li><a href="index.html#frotas">Consultoria em gestão de frotas e ativos</a></li>
+            <li><a href="index.html#eletrificacao">Projeto de eletrificação de frota</a></li>
+            <li><a href="index.html#projetos">Indicação de serviços técnicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Equipamentos atendidos</h3>
+          <ul>
+            <li><a href="index.html#equipamentos">Linha amarela</a></li>
+            <li><a href="index.html#equipamentos">Caminhões linha diesel</a></li>
+            <li><a href="index.html#equipamentos">Veículos leves e de apoio</a></li>
           </ul>
         </div>
         <div>
           <h3>Contato</h3>
-          <ul>
-            <li><a href="mailto:mvszanette@gmail.com" data-email>mvszanette@gmail.com</a></li>
-            <li><a href="index.html#contato">Solicitar proposta</a></li>
+          <p class="footer-call">Vamos conversar?</p>
+          <ul class="footer-contact">
+            <li><a href="mailto:mvszanette@gmail.com?subject=Contato%20pelo%20site" data-email="link"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="m22 7-10 6L2 7"/></svg>Enviar e-mail</a></li>
+            <li><a href="https://wa.me/5532998111414" data-whatsapp="link" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>WhatsApp</a></li>
           </ul>
         </div>
         <div>

@@ -1,6 +1,7 @@
 /* ============================================================
    Marcos Zanette – Engenharia Mecânica
-   Grafite + amarelo industrial, cantos retos, títulos em caixa alta
+   Fundo branco, grafite e amarelo industrial, títulos condensados
+   (layout inspirado no site da Caterpillar)
    ============================================================ */
 :root {
   --yellow: #f5b800;
@@ -18,9 +19,12 @@
   --text: #1e2125;
   --muted: #59616a;
   --radius: 2px;
-  --font-head: "Montserrat", "Segoe UI", Arial, sans-serif;
+  --font-head: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
   --font-body: "Roboto", "Segoe UI", Arial, sans-serif;
-  --header-h: 72px;
+  --header-h: 72px; /* cabeçalho da área restrita */
+  --top-h: 88px; /* linha do logo */
+  --nav-h: 54px; /* linha do menu */
+  --stripe-h: 11px; /* faixa amarela */
 }
 
 *,
@@ -31,7 +35,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h);
+  scroll-padding-top: calc(var(--nav-h) + var(--stripe-h) + 16px);
 }
 
 body {
@@ -78,27 +82,23 @@ section {
   background: var(--gray-100);
 }
 
-/* Título de seção: caixa alta com barra amarela curta */
+/* Título de seção: condensado, com barra amarela curta */
 .section-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  line-height: 1.1;
   color: var(--graphite-900);
   margin-bottom: 28px;
+  text-wrap: balance;
 }
 
 .section-title::after {
   content: "";
   display: block;
-  width: 72px;
+  width: 48px;
   height: 5px;
-  margin-top: 16px;
+  margin-top: 18px;
   background: var(--yellow);
-}
-
-.on-dark .section-title {
-  color: var(--white);
 }
 
 .center {
@@ -122,10 +122,6 @@ section {
   margin-right: auto;
 }
 
-.on-dark .section-intro {
-  color: rgba(255, 255, 255, 0.75);
-}
-
 /* ---------- Botões ---------- */
 .btn {
   display: inline-flex;
@@ -135,8 +131,8 @@ section {
   padding: 15px 28px;
   border: 2px solid transparent;
   border-radius: var(--radius);
-  font: 700 0.9rem var(--font-head);
-  letter-spacing: 0.08em;
+  font: 700 0.95rem var(--font-head);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -238,113 +234,105 @@ svg.i {
   stroke-linejoin: round;
 }
 
-.on-dark .ck circle {
-  fill: var(--yellow);
-}
 
-.on-dark .ck path {
-  stroke: var(--black);
-}
 
 .checks strong {
   display: block;
   color: var(--graphite-900);
 }
 
-.on-dark .checks strong {
-  color: var(--white);
-}
 
 .checks span {
   color: var(--muted);
 }
 
-.on-dark .checks span {
-  color: rgba(255, 255, 255, 0.78);
-}
 
-/* ---------- Cabeçalho ---------- */
+/* ---------- Cabeçalho ----------
+   Linha do logo, linha do menu e faixa amarela. Ao rolar a página, a linha
+   do logo sai da tela e o menu com a faixa fica fixo no topo. */
 .site-header {
   position: sticky;
-  top: 0;
+  top: calc(-1 * var(--top-h));
   z-index: 50;
-  height: var(--header-h);
-  background: var(--black);
-  color: var(--white);
+  background: var(--white);
+}
+
+.header-top {
+  height: var(--top-h);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.header-top .container {
+  height: 100%;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
 }
 
+/* Logo só em texto. O tamanho é definido em .logo; a segunda linha acompanha a largura do nome. */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 28px;
-  background: var(--yellow);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 2rem;
   color: var(--black);
   text-decoration: none;
 }
 
-.logo-mark {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  background: var(--black);
-  color: var(--yellow);
-  font: 800 1rem var(--font-head);
-  letter-spacing: 0.02em;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  font: 800 1.05rem/1.1 var(--font-head);
-  letter-spacing: 0.1em;
+.logo-name {
+  font: 800 1em/0.9 var(--font-head);
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
-.logo-text small {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  margin-top: 4px;
+.logo-sub {
+  margin-top: 0.6em;
+  font: 500 0.4em/1 var(--font-body);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--graphite-600);
 }
 
-.nav {
+.nav .container {
+  height: var(--nav-h);
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding: 0 28px;
+  gap: 40px;
 }
 
 .nav a:not(.btn) {
-  font: 600 0.8rem var(--font-head);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  padding: 6px 0;
+  border-bottom: 3px solid transparent;
+  font: 500 1rem var(--font-body);
+  color: var(--graphite-900);
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.85);
 }
 
 .nav a:not(.btn):hover {
-  color: var(--yellow);
+  border-bottom-color: var(--yellow);
 }
 
 .nav .btn {
-  padding: 11px 20px;
-  font-size: 0.78rem;
+  margin-left: auto;
+  padding: 10px 26px;
+}
+
+.header-stripe {
+  height: var(--stripe-h);
+  background: linear-gradient(var(--yellow) 0 6px, var(--white) 6px 8px, var(--yellow) 8px);
 }
 
 .menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
-  width: var(--header-h);
+  width: 48px;
+  height: 48px;
+  margin-right: -10px;
   background: none;
   border: 0;
-  color: var(--white);
+  color: var(--graphite-900);
   cursor: pointer;
 }
 
@@ -353,82 +341,98 @@ svg.i {
   height: 28px;
 }
 
-/* ---------- Topo ---------- */
-.hero {
+/* ---------- Faixa do topo (foto à direita, texto sobre o preto) ---------- */
+.band {
   position: relative;
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  align-items: center;
-  padding: 96px 0;
-  color: var(--white);
-  text-align: center;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 40px 40px,
-    radial-gradient(ellipse at 50% 30%, #2c3137, var(--graphite-900) 75%);
+  isolation: isolate;
   overflow: hidden;
+  padding: 0;
+  background: var(--black);
+  color: var(--white);
 }
 
-/* Foto do topo (img/hero.jpg), em cores e escurecida para o texto ficar legível */
-.hero::before {
+.band::before,
+.band::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(17, 18, 20, 0.35), rgba(17, 18, 20, 0.55)),
-    url("img/hero.jpg") center 60% / cover no-repeat;
-  filter: brightness(0.8);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 64%;
 }
 
-.hero .container {
-  position: relative;
+.band::before {
+  z-index: -2;
+  background: var(--band-img, none) center / cover no-repeat;
 }
 
-.hero h1 {
-  font-size: clamp(2.1rem, 5.6vw, 4.4rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 32px;
+.band::after {
+  z-index: -1;
+  background: linear-gradient(90deg, var(--black), rgba(17, 18, 20, 0.8) 25%, rgba(17, 18, 20, 0.25) 60%, rgba(17, 18, 20, 0));
 }
 
-.hero-lead {
-  max-width: 760px;
-  margin: 0 auto 40px;
-  padding: 16px 24px;
-  background: rgba(17, 18, 20, 0.55);
-  font-size: 1.12rem;
-  color: rgba(255, 255, 255, 0.9);
+.band .container {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-block: 56px;
+}
+
+.band h1 {
+  max-width: 600px;
+  margin: 0;
+  font: 700 clamp(2.3rem, 4.6vw, 3.7rem)/1.04 var(--font-head);
+  text-wrap: balance;
+}
+
+.band h1::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 5px;
+  margin-top: 22px;
+  background: var(--yellow);
+}
+
+.band-lead,
+.band p {
+  max-width: 540px;
+  margin: 22px 0 0;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+  gap: 14px;
+  margin-top: 30px;
 }
 
-.hero-down {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-  color: var(--white);
-  opacity: 0.8;
+.hero-actions .btn {
+  padding: 12px 24px;
 }
 
-.hero-down svg {
-  width: 40px;
-  height: 40px;
+.page-hero .container {
+  min-height: 300px;
+}
+
+.crumbs {
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.crumbs a {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ---------- Números ---------- */
 .stats {
   padding: 56px 0;
-  background: var(--graphite-900);
-  color: var(--white);
-  border-top: 4px solid var(--yellow);
+  background: var(--gray-100);
 }
 
 .stats-grid {
@@ -440,35 +444,43 @@ svg.i {
 
 .stat strong {
   display: block;
-  font: 700 clamp(2.4rem, 4vw, 3.2rem) / 1 var(--font-head);
-  color: var(--yellow);
-  margin-bottom: 10px;
+  font: 800 clamp(2.6rem, 4.4vw, 3.4rem) / 1 var(--font-head);
+  color: var(--graphite-900);
+}
+
+.stat strong::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 4px;
+  margin: 14px auto 12px;
+  background: var(--yellow);
 }
 
 .stat span {
-  font: 600 0.8rem var(--font-head);
-  letter-spacing: 0.12em;
+  font: 600 0.85rem var(--font-head);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--muted);
 }
 
 .scope {
-  margin-top: 44px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 40px;
+  padding-top: 26px;
+  border-top: 1px solid var(--gray-300);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px 48px;
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
 }
 
 .scope b {
-  font: 700 0.75rem var(--font-head);
+  font: 700 0.8rem var(--font-head);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--yellow);
+  color: var(--graphite-900);
   margin-right: 8px;
 }
 
@@ -851,39 +863,38 @@ svg.i {
   padding: 36px 30px;
 }
 
-/* ---------- Perfil ---------- */
+/* ---------- Sobre o profissional (card com texto e foto) ---------- */
 .profile {
-  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--graphite-900);
-  color: var(--white);
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--gray-100);
 }
 
 .profile-text {
-  padding: 96px 64px 96px max(24px, calc((100vw - 1200px) / 2 + 24px));
+  padding: 56px;
 }
 
 .profile-name {
-  font: 700 clamp(1.6rem, 3vw, 2.2rem) var(--font-head);
-  letter-spacing: 0.08em;
-  margin: 0 0 4px;
+  font: 800 clamp(1.6rem, 2.8vw, 2.1rem) var(--font-head);
+  text-transform: uppercase;
+  color: var(--graphite-900);
+  margin: 0 0 2px;
 }
 
 .profile-role {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 36px;
+  color: var(--muted);
+  margin-bottom: 30px;
 }
 
 .profile .checks {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .years {
   display: inline-flex;
   align-items: center;
   gap: 18px;
-  padding: 18px 28px;
+  padding: 16px 26px;
   background: var(--yellow);
   color: var(--black);
 }
@@ -899,7 +910,7 @@ svg.i {
 }
 
 .profile-img {
-  min-height: 480px;
+  min-height: 440px;
   --photo: url("img/perfil.jpg") center / cover no-repeat;
 }
 
@@ -914,7 +925,7 @@ svg.i {
   display: flex;
   flex-direction: column;
   padding: 28px;
-  background: var(--gray-100);
+  background: var(--white);
   border-top: 4px solid var(--yellow);
 }
 
@@ -1000,10 +1011,6 @@ svg.i {
 }
 
 /* ---------- Contato ---------- */
-.contact {
-  background: var(--black);
-  color: var(--white);
-}
 
 .contact-grid {
   display: grid;
@@ -1013,7 +1020,7 @@ svg.i {
 }
 
 .contact-info p {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
 }
 
 .contact-list {
@@ -1034,7 +1041,7 @@ svg.i {
   flex: none;
   width: 24px;
   height: 24px;
-  color: var(--yellow);
+  color: var(--graphite-900);
   margin-top: 2px;
 }
 
@@ -1043,7 +1050,7 @@ svg.i {
   font: 700 0.7rem var(--font-head);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--gray-500);
 }
 
 .contact-list a {
@@ -1051,13 +1058,17 @@ svg.i {
 }
 
 .contact-list a:hover {
-  color: var(--yellow);
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .quote-form {
   padding: 40px;
-  border: 1px solid var(--graphite-600);
-  background: var(--graphite-900);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-top: 4px solid var(--yellow);
 }
 
 .form-grid {
@@ -1089,14 +1100,14 @@ svg.i {
   font: 600 0.78rem var(--font-head);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--graphite-900);
 }
 
 .field label .opt {
   font-weight: 500;
   text-transform: none;
   letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--gray-500);
 }
 
 .field input,
@@ -1104,7 +1115,7 @@ svg.i {
 .field textarea {
   width: 100%;
   padding: 13px 14px;
-  border: 1px solid var(--white);
+  border: 1px solid var(--gray-300);
   border-radius: 0;
   background: var(--white);
   color: var(--text);
@@ -1126,7 +1137,8 @@ svg.i {
   display: grid;
   gap: 14px;
   padding: 20px;
-  border: 1px dashed var(--graphite-600);
+  border: 1px dashed var(--gray-300);
+  background: var(--gray-100);
 }
 
 .tos-box[hidden] {
@@ -1136,7 +1148,7 @@ svg.i {
 .tos-box p {
   margin: 0;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--muted);
 }
 
 .honeypot {
@@ -1147,11 +1159,11 @@ svg.i {
 .lgpd {
   margin: 22px 0 18px;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
 }
 
 .lgpd a {
-  color: var(--yellow);
+  color: var(--graphite-900);
 }
 
 .quote-form .btn {
@@ -1164,24 +1176,32 @@ svg.i {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.93rem;
   padding: 64px 0 28px;
-  border-top: 1px solid var(--graphite-700);
+  border-top: 6px solid var(--yellow);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.4fr 1.2fr 1fr 1fr 1fr;
+  gap: 36px;
   margin-bottom: 48px;
 }
 
 .site-footer .logo {
-  display: inline-flex;
-  padding: 12px 18px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  font-size: 1.7rem;
+  color: var(--white);
+}
+
+.site-footer .logo-sub {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-brand p {
+  max-width: 300px;
 }
 
 .site-footer h3 {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--white);
@@ -1204,6 +1224,23 @@ svg.i {
   color: var(--yellow);
 }
 
+.footer-call {
+  margin-bottom: 14px;
+  color: var(--white);
+}
+
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+  color: var(--yellow);
+}
+
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1215,45 +1252,6 @@ svg.i {
 }
 
 /* ---------- Páginas internas ---------- */
-.page-hero {
-  position: relative;
-  padding: 80px 0 72px;
-  color: var(--white);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 40px 40px,
-    var(--graphite-900);
-  border-bottom: 4px solid var(--yellow);
-}
-
-.crumbs {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 20px;
-}
-
-.crumbs a {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.page-hero h1 {
-  font-size: clamp(1.9rem, 4.4vw, 3rem);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.page-hero p {
-  max-width: 760px;
-  font-size: 1.08rem;
-  color: rgba(255, 255, 255, 0.82);
-  margin-bottom: 32px;
-}
-
-.page-hero .hero-actions {
-  justify-content: flex-start;
-}
-
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1344,36 +1342,57 @@ svg.i {
 }
 
 /* ---------- Responsivo ---------- */
-@media (max-width: 1180px) {
+@media (max-width: 900px) {
+  :root {
+    --top-h: 68px;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--top-h) + var(--stripe-h) + 16px);
+  }
+
+  .site-header {
+    top: 0;
+  }
+
   .menu-toggle {
     display: flex;
+  }
+
+  .logo {
+    font-size: 1.6rem;
   }
 
   .nav {
     display: none;
     position: absolute;
-    top: var(--header-h);
+    top: 100%;
     left: 0;
     right: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 8px 24px 24px;
-    background: var(--black);
-    border-top: 1px solid var(--graphite-700);
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+    box-shadow: 0 16px 32px rgba(17, 18, 20, 0.15);
   }
 
   .nav.open {
-    display: flex;
+    display: block;
+  }
+
+  .nav .container {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-block: 4px 24px;
   }
 
   .nav a:not(.btn) {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--graphite-700);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--gray-200);
   }
 
   .nav .btn {
-    margin-top: 20px;
+    margin: 20px 0 0;
     padding: 15px 20px;
   }
 }
@@ -1418,7 +1437,7 @@ svg.i {
   }
 
   .profile-text {
-    padding: 80px 24px;
+    padding: 48px 32px;
   }
 
   .profile-img {
@@ -1427,6 +1446,10 @@ svg.i {
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1439,28 +1462,18 @@ svg.i {
     padding: 0 16px;
   }
 
-  .logo {
-    padding: 0 16px;
-    gap: 10px;
+  .band::before,
+  .band::after {
+    width: 100%;
   }
 
-  .logo-mark {
-    width: 34px;
-    height: 34px;
-    font-size: 0.85rem;
+  .band::after {
+    background: linear-gradient(90deg, rgba(17, 18, 20, 0.9), rgba(17, 18, 20, 0.6));
   }
 
-  .logo-text {
-    font-size: 0.88rem;
-  }
-
-  .logo-text small {
-    font-size: 0.55rem;
-    letter-spacing: 0.16em;
-  }
-
-  .hero {
-    padding: 72px 0 96px;
+  .band .container {
+    min-height: 340px;
+    padding-block: 48px;
   }
 
   .hero-actions .btn {
@@ -1506,7 +1519,7 @@ svg.i {
   }
 
   .profile-text {
-    padding: 64px 16px;
+    padding: 40px 20px;
   }
 
   .years strong {
@@ -1515,8 +1528,8 @@ svg.i {
 }
 
 @media (max-width: 360px) {
-  .logo-text small {
-    display: none;
+  .logo {
+    font-size: 1.4rem;
   }
 }
 

@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5b800'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial, sans-serif' font-weight='800' font-size='14' fill='%23111214'%3EMZ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>
   <script src="tos-mecanica.js" defer></script>
@@ -38,33 +38,38 @@
 <body>
 
   <header class="site-header">
-    <a class="logo" href="#inicio" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-      <span class="logo-mark" aria-hidden="true">MZ</span>
-      <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
+    <div class="header-top">
+      <div class="container">
+    <a class="logo" href="#top" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Engenharia Mecânica</span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
     <nav class="nav" id="menu" aria-label="Principal">
-      <a href="#nr12">Laudo NR-12</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#frotas">Gestão de frotas</a>
-      <a href="#eletrificacao">Eletrificação</a>
-      <a href="#industrial">Manutenção industrial</a>
-      <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+      <div class="container">
+        <a href="#top">Página inicial</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#equipamentos">Equipamentos atendidos</a>
+        <a href="#perfil">Sobre o profissional</a>
+        <a class="btn btn-primary" href="#contato">Contato</a>
+      </div>
     </nav>
+    <div class="header-stripe" aria-hidden="true"></div>
   </header>
 
   <main>
     <!-- ============ TOPO ============ -->
-    <section class="hero" id="inicio">
+    <section class="band hero" id="inicio" style="--band-img:url('img/hero.jpg')">
       <div class="container">
         <h1>Soluções em engenharia mecânica</h1>
-        <p class="hero-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
+        <p class="band-lead">Laudos NR-12 para equipamentos móveis, gestão e eletrificação de frotas e manutenção industrial, com foco em linha amarela e caminhões linha diesel.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
           <a class="btn btn-outline" href="#nr12">Laudo NR-12</a>
         </div>
       </div>
-      <a class="hero-down" href="#numeros" aria-label="Rolar para o conteúdo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
     </section>
 
     <!-- ============ NÚMEROS ============ -->
@@ -191,10 +196,10 @@
       </div>
     </section>
 
-    <!-- ============ SERVIÇOS ============ -->
-    <section id="servicos">
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos">
       <div class="container">
-        <h2 class="section-title">Serviços</h2>
+        <h2 class="section-title">Projetos</h2>
         <p class="section-intro">Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e instalações.</p>
         <div class="svc-grid">
           <article class="svc">
@@ -438,26 +443,30 @@
       </div>
     </section>
 
-    <!-- ============ PERFIL ============ -->
-    <section class="profile on-dark" id="perfil">
-      <div class="profile-text">
-        <h2 class="section-title">Responsável técnico</h2>
-        <p class="profile-name">MARCOS ZANETTE</p>
-        <p class="profile-role">Engenheiro Mecânico · <span data-config="crea">CREA/RNP 1420122860</span></p>
-        <ul class="checks">
+    <!-- ============ SOBRE O PROFISSIONAL ============ -->
+    <section id="perfil">
+      <div class="container">
+        <div class="profile">
+          <div class="profile-text">
+            <h2 class="section-title">Sobre o profissional</h2>
+            <p class="profile-name">Marcos Zanette</p>
+            <p class="profile-role">Engenheiro Mecânico · <span data-config="crea">CREA/RNP 1420122860</span></p>
+            <ul class="checks">
           <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Gerente de manutenção</div></li>
           <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especialista em equipamentos de linha amarela e caminhões linha diesel</div></li>
           <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Especialista em confiabilidade e eficiência operacional</div></li>
           <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="m7 12.5 3.2 3.2L17 9"/></svg><div>Conformidade com a legislação</div></li>
         </ul>
-        <div class="years"><strong>10</strong><span>Anos de atuação<br>na área</span></div>
+            <div class="years"><strong>10</strong><span>Anos de atuação<br>na área</span></div>
+          </div>
+          <div class="profile-img photo" role="img" aria-label="Equipamento de linha amarela"></div>
+        </div>
       </div>
-      <div class="profile-img photo" role="img" aria-label="Equipamento de linha amarela"></div>
     </section>
 
     <!-- ============ EXPERIÊNCIA ============ -->
     <!-- Apenas descrições do tipo de trabalho: os laudos são confidenciais e não devem ser publicados. -->
-    <section id="experiencia">
+    <section class="bg-gray" id="experiencia">
       <div class="container">
         <h2 class="section-title">Experiência</h2>
         <p class="section-intro">Laudos e projetos desenvolvidos para grandes empresas de mineração e óleo e gás.</p>
@@ -497,7 +506,7 @@
     </section>
 
     <!-- ============ PERGUNTAS FREQUENTES ============ -->
-    <section class="bg-gray center" id="duvidas">
+    <section class="center" id="duvidas">
       <div class="container">
         <h2 class="section-title">Perguntas frequentes</h2>
         <div class="faq">
@@ -542,7 +551,7 @@
     </section>
 
     <!-- ============ CONTATO ============ -->
-    <section class="contact on-dark" id="contato">
+    <section class="contact bg-gray" id="contato">
       <div class="container contact-grid">
         <div class="contact-info">
           <h2 class="section-title">Contato</h2>
@@ -710,29 +719,36 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a class="logo" href="#inicio" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
-            <span class="logo-mark" aria-hidden="true">MZ</span>
-            <span class="logo-text">MARCOS ZANETTE<small>ENGENHARIA MECÂNICA</small></span>
-          </a>
-          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal de equipamentos e frotas.</p>
+        <div class="footer-brand">
+          <a class="logo" href="#top" aria-label="Marcos Zanette – Engenharia Mecânica, página inicial">
+      <span class="logo-name">Marcos Zanette</span>
+      <span class="logo-sub">Engenharia Mecânica</span>
+    </a>
+          <p>Engenharia mecânica aplicada à manutenção, à segurança e à conformidade legal.</p>
         </div>
         <div>
-          <h3>Serviços</h3>
+          <h3>Projetos</h3>
           <ul>
-            <li><a href="laudo-nr12.html">Laudo NR-12</a></li>
-            <li><a href="laudo-nr13.html">Laudo NR-13</a></li>
-            <li><a href="pmoc.html">PMOC</a></li>
-            <li><a href="#frotas">Gestão de frotas</a></li>
-            <li><a href="#eletrificacao">Eletrificação de frotas</a></li>
-            <li><a href="#industrial">Manutenção industrial</a></li>
+            <li><a href="#projetos">Laudos e projetos de engenharia mecânica</a></li>
+            <li><a href="#frotas">Consultoria em gestão de frotas e ativos</a></li>
+            <li><a href="#eletrificacao">Projeto de eletrificação de frota</a></li>
+            <li><a href="#projetos">Indicação de serviços técnicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Equipamentos atendidos</h3>
+          <ul>
+            <li><a href="#equipamentos">Linha amarela</a></li>
+            <li><a href="#equipamentos">Caminhões linha diesel</a></li>
+            <li><a href="#equipamentos">Veículos leves e de apoio</a></li>
           </ul>
         </div>
         <div>
           <h3>Contato</h3>
-          <ul>
-            <li><a href="mailto:mvszanette@gmail.com" data-email>mvszanette@gmail.com</a></li>
-            <li><a href="#contato">Solicitar proposta</a></li>
+          <p class="footer-call">Vamos conversar?</p>
+          <ul class="footer-contact">
+            <li><a href="mailto:mvszanette@gmail.com?subject=Contato%20pelo%20site" data-email="link"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="m22 7-10 6L2 7"/></svg>Enviar e-mail</a></li>
+            <li><a href="https://wa.me/5532998111414" data-whatsapp="link" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>WhatsApp</a></li>
           </ul>
         </div>
         <div>
